@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <main>
-      <div>Hello world!</div>
+      <h1>Welcome to Far Biomedical</h1>
     </main>
   );
 }
