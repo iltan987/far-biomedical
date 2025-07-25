@@ -15,6 +15,9 @@ const eslintConfig = [
     "next/typescript",
     "plugin:prettier/recommended",
   ),
+  {
+    ignores: ["src/components/ui/*", "src/lib/utils.ts"],
+  },
 ];
 
 export default eslintConfig;
