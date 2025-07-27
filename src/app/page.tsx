@@ -8,7 +8,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home() {
   return (
@@ -154,67 +154,58 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               <Card className="bg-transparent border-none shadow-none">
-                <CardHeader className="text-center pb-2">
-                  <div
-                    className="text-8xl font-bold text-white mb-6"
-                    style={{ color: "#ffc30b" }}
-                  >
-                    F
-                  </div>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <h3 className="text-2xl font-bold text-white mb-4">
-                    Forward-Thinking
-                  </h3>
-                  <p className="text-white leading-relaxed">
-                    We pioneer innovative solutions that anticipate future needs
-                    and challenges. Our forward-thinking approach ensures that
-                    every project we undertake is designed with tomorrow&apos;s
-                    possibilities in mind.
+                <CardContent className="text-left">
+                  <p className="text-white leading-relaxed text-justify">
+                    <span
+                      className="float-left text-8xl font-bold leading-none mr-3 mt-1"
+                      style={{ color: "#ffc30b", lineHeight: "0.8" }}
+                    >
+                      F
+                    </span>
+                    orward-thinking innovation drives everything we do at FAR.
+                    We pioneer revolutionary solutions that anticipate future
+                    needs and challenges before they emerge. Our visionary
+                    approach ensures that every project we undertake is designed
+                    with tomorrow&apos;s possibilities in mind, creating lasting
+                    impact for generations to come.
                   </p>
                 </CardContent>
               </Card>
 
               <Card className="bg-transparent border-none shadow-none">
-                <CardHeader className="text-center pb-2">
-                  <div
-                    className="text-8xl font-bold text-white mb-6"
-                    style={{ color: "#ffc30b" }}
-                  >
-                    A
-                  </div>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <h3 className="text-2xl font-bold text-white mb-4">
-                    Advanced Research
-                  </h3>
-                  <p className="text-white leading-relaxed">
-                    Our advanced research capabilities combine cutting-edge
-                    technology with world-class expertise. We push the
-                    boundaries of what&apos;s possible through rigorous
-                    scientific methodology and innovative thinking.
+                <CardContent className="text-left">
+                  <p className="text-white leading-relaxed text-justify">
+                    <span
+                      className="float-left text-8xl font-bold leading-none mr-3 mt-1"
+                      style={{ color: "#ffc30b", lineHeight: "0.8" }}
+                    >
+                      A
+                    </span>
+                    dvanced research capabilities combine cutting-edge
+                    technology with world-class expertise to push the boundaries
+                    of what&apos;s possible. Through rigorous scientific
+                    methodology and innovative thinking, we transform
+                    theoretical concepts into practical solutions that address
+                    real-world challenges and create meaningful change.
                   </p>
                 </CardContent>
               </Card>
 
               <Card className="bg-transparent border-none shadow-none">
-                <CardHeader className="text-center pb-2">
-                  <div
-                    className="text-8xl font-bold text-white mb-6"
-                    style={{ color: "#ffc30b" }}
-                  >
-                    R
-                  </div>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <h3 className="text-2xl font-bold text-white mb-4">
-                    Real Impact
-                  </h3>
-                  <p className="text-white leading-relaxed">
-                    Every innovation we develop is designed to create real,
-                    measurable impact in people&apos;s lives. From healthcare
-                    breakthroughs to technological advances, we focus on
-                    solutions that matter.
+                <CardContent className="text-left">
+                  <p className="text-white leading-relaxed text-justify">
+                    <span
+                      className="float-left text-8xl font-bold leading-none mr-3 mt-1"
+                      style={{ color: "#ffc30b", lineHeight: "0.8" }}
+                    >
+                      R
+                    </span>
+                    eal impact is at the heart of every innovation we develop.
+                    Each breakthrough is designed to create measurable, positive
+                    change in people&apos;s lives. From healthcare advances to
+                    technological innovations, we focus on solutions that
+                    matter, ensuring our research translates into tangible
+                    benefits for society and the world.
                   </p>
                 </CardContent>
               </Card>
