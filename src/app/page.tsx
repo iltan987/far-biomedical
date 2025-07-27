@@ -22,19 +22,22 @@ export default function Home() {
               <div className="flex items-center space-x-6">
                 <Button
                   variant="ghost"
-                  className="text-gray-700 hover:text-black font-medium"
+                  className="text-white font-medium px-4 py-2 rounded-md transition-colors duration-200"
+                  style={{ backgroundColor: "#ffc30b" }}
                 >
                   R&D
                 </Button>
                 <Button
                   variant="ghost"
-                  className="text-gray-700 hover:text-black font-medium"
+                  className="text-white font-medium px-4 py-2 rounded-md transition-colors duration-200"
+                  style={{ backgroundColor: "#ffc30b" }}
                 >
                   Products
                 </Button>
                 <Button
                   variant="ghost"
-                  className="text-gray-700 hover:text-black font-medium"
+                  className="text-white font-medium px-4 py-2 rounded-md transition-colors duration-200"
+                  style={{ backgroundColor: "#ffc30b" }}
                 >
                   News
                 </Button>
@@ -47,6 +50,7 @@ export default function Home() {
               >
                 <FaSearch className="w-5 h-5" />
               </Button>
+            </div>
 
             {/* Centered FAR logo */}
             <div className="text-2xl font-bold text-black absolute left-1/2 transform -translate-x-1/2">
@@ -57,13 +61,15 @@ export default function Home() {
             <div className="flex items-center space-x-6 absolute right-0 h-full">
               <Button
                 variant="ghost"
-                className="text-gray-700 hover:text-black font-medium"
+                className="text-white font-medium px-4 py-2 rounded-md transition-colors duration-200"
+                style={{ backgroundColor: "#ffc30b" }}
               >
                 Company
               </Button>
               <Button
                 variant="ghost"
-                className="text-gray-700 hover:text-black font-medium"
+                className="text-white font-medium px-4 py-2 rounded-md transition-colors duration-200"
+                style={{ backgroundColor: "#ffc30b" }}
               >
                 Contact
               </Button>
