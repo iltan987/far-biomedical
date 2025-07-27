@@ -133,6 +133,11 @@ export default function Home() {
         {/* User Type Buttons */}
         <section className="py-12 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-6">
+              <p className="text-lg text-gray-700 font-medium">
+                Are you viewing our website as:
+              </p>
+            </div>
             <div className="flex flex-wrap justify-center gap-4">
               {["Investor", "Doctor", "Researcher", "Patient", "Student"].map(
                 (type) => (
