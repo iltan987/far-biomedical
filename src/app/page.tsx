@@ -16,9 +16,9 @@ export default function Home() {
       {/* Header */}
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-center h-16 relative">
             {/* Left side navigation */}
-            <div className="flex items-center space-x-8">
+            <div className="flex items-center space-x-8 absolute left-0 h-full">
               <div className="flex items-center space-x-6">
                 <Button
                   variant="ghost"
@@ -48,11 +48,13 @@ export default function Home() {
                 <FaSearch className="w-5 h-5" />
               </Button>
 
-              <div className="text-2xl font-bold text-black ml-4">FAR</div>
+            {/* Centered FAR logo */}
+            <div className="text-2xl font-bold text-black absolute left-1/2 transform -translate-x-1/2">
+              FAR
             </div>
 
             {/* Right side navigation */}
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-6 absolute right-0 h-full">
               <Button
                 variant="ghost"
                 className="text-gray-700 hover:text-black font-medium"
