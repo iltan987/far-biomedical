@@ -37,11 +37,9 @@ export const metadata: Metadata = {
   authors: [{ name: "FAR Better" }],
   creator: "FAR Better",
   publisher: "FAR Better",
-  metadataBase: new URL("https://farbetter.com"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://farbetter.com",
     siteName: "FAR Better",
     title: "FAR Better - Making Scientific Research More Accessible",
     description:
