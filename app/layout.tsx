@@ -60,11 +60,6 @@ export const metadata: Metadata = {
       "Innovative laboratory solutions including AutoCeive for cell separation and advanced apheresis technologies.",
     images: ["/logo.png"],
   },
-  icons: {
-    icon: [{ url: "/favicon.ico" }, { url: "/logo.png", type: "image/png" }],
-    shortcut: "/favicon.ico",
-    apple: "/logo.png",
-  },
   robots: {
     index: true,
     follow: true,
