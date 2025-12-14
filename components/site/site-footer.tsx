@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FaEnvelope, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
@@ -11,9 +12,13 @@ export function SiteFooter() {
           {/* Logo and Brand */}
           <div className="flex flex-col space-y-4 lg:col-span-3">
             <div className="flex items-center space-x-3">
-              <div className="relative flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br from-red-700 to-red-900 shadow-sm">
-                <span className="text-2xl font-bold text-white">FB</span>
-              </div>
+              <Image
+                src="/logo.svg"
+                alt="FAR Better Logo"
+                width={48}
+                height={48}
+                className="h-12 w-auto"
+              />
             </div>
             <div className="flex flex-col">
               <span className="text-muted-foreground text-sm">

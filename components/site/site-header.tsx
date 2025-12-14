@@ -1,6 +1,7 @@
 "use client";
 
 import { Menu } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -35,9 +36,14 @@ export function SiteHeader() {
             href="/"
             className="flex items-center space-x-3 transition-opacity hover:opacity-80"
           >
-            <div className="relative flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-br from-red-600 to-red-800 shadow-sm">
-              <span className="text-xl font-bold text-white">FB</span>
-            </div>
+            <Image
+              src="/logo.svg"
+              alt="FAR Better Logo"
+              width={40}
+              height={40}
+              className="h-10 w-auto"
+              priority
+            />
             <div className="hidden flex-col sm:flex">
               <span className="text-sm leading-tight font-semibold">
                 Get Better with
