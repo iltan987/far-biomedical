@@ -13,7 +13,7 @@ export function SiteFooter() {
           <div className="flex flex-col space-y-4 lg:col-span-3">
             <div className="flex items-center space-x-3">
               <Image
-                src="/logo.png"
+                src="/logo.svg"
                 alt="FAR Better Logo"
                 width={48}
                 height={48}
