@@ -17,9 +17,60 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FAR Better - Get Better with FAR Better",
+  title: {
+    default: "FAR Better - Making Scientific Research More Accessible",
+    template: "%s | FAR Better",
+  },
   description:
-    "Making scientific research more accessible with innovative laboratory solutions",
+    "Making scientific research more accessible with innovative laboratory solutions. Discover AutoCeive and advanced apheresis technologies for cell separation and gene therapies.",
+  keywords: [
+    "laboratory equipment",
+    "scientific research",
+    "cell separation",
+    "AutoCeive",
+    "apheresis",
+    "gene therapy",
+    "laboratory consumables",
+    "laboratory instruments",
+    "magnetic separation",
+  ],
+  authors: [{ name: "FAR Better" }],
+  creator: "FAR Better",
+  publisher: "FAR Better",
+  metadataBase: new URL("https://farbetter.com"),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://farbetter.com",
+    siteName: "FAR Better",
+    title: "FAR Better - Making Scientific Research More Accessible",
+    description:
+      "Innovative laboratory solutions including AutoCeive for cell separation and advanced apheresis technologies.",
+    images: [
+      {
+        url: "/logo.svg",
+        width: 1200,
+        height: 630,
+        alt: "FAR Better Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FAR Better - Making Scientific Research More Accessible",
+    description:
+      "Innovative laboratory solutions including AutoCeive for cell separation and advanced apheresis technologies.",
+    images: ["/logo.svg"],
+  },
+  icons: {
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
