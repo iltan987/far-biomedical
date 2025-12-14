@@ -46,7 +46,7 @@ export const metadata: Metadata = {
       "Innovative laboratory solutions including AutoCeive for cell separation and advanced apheresis technologies.",
     images: [
       {
-        url: "/logo.svg",
+        url: "/logo.png",
         width: 1200,
         height: 630,
         alt: "FAR Better Logo",
@@ -58,12 +58,12 @@ export const metadata: Metadata = {
     title: "FAR Better - Making Scientific Research More Accessible",
     description:
       "Innovative laboratory solutions including AutoCeive for cell separation and advanced apheresis technologies.",
-    images: ["/logo.svg"],
+    images: ["/logo.png"],
   },
   icons: {
-    icon: "/logo.svg",
-    shortcut: "/logo.svg",
-    apple: "/logo.svg",
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
   },
   robots: {
     index: true,
