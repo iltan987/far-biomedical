@@ -37,7 +37,7 @@ export function SiteHeader() {
             className="flex items-center space-x-3 transition-opacity hover:opacity-80"
           >
             <Image
-              src="/logo.png"
+              src="/logo.svg"
               alt="FAR Better Logo"
               width={40}
               height={40}
