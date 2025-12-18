@@ -1,7 +1,12 @@
 {
-  "name": "far-better",
+  "name": "far-biomedical",
   "version": "0.1.0",
   "private": true,
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iltan987/far-biomedical.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -20,7 +25,7 @@
     "@radix-ui/react-slot": "^1.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.561.0",
+    "lucide-react": "^0.562.0",
     "next": "16.0.10",
     "react": "19.2.1",
     "react-dom": "19.2.1",
@@ -42,5 +47,15 @@
     "tailwindcss": "^4",
     "tw-animate-css": "^1.4.0",
     "typescript": "^5"
+  },
+  "packageManager": "pnpm@10.26.0",
+  "engines": {
+    "node": ">=20.9.0",
+    "pnpm": ">=10"
+  },
+  "author": {
+    "name": "iltan987",
+    "email": "iltancanerr@gmail.com",
+    "url": "https://github.com/iltan987"
   }
 }
