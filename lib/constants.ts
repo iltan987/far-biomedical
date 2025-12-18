@@ -9,6 +9,7 @@ export const siteConfig: SiteConfig = {
 
   contact: {
     email: "farbiomedical@gmail.com",
+    phone: "+90 555 081 35 08",
     address: {
       line1: "ODTÜ Bilim ve İnovasyon Merkezi, Cozone",
       line2: "Mustafa Kemal Mahallesi, Çankaya",

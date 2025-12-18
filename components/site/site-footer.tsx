@@ -1,4 +1,4 @@
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
@@ -98,6 +98,15 @@ export function SiteFooter() {
                 >
                   <Mail className="mt-0.5 h-4 w-4 shrink-0" />
                   <span>{siteConfig.contact.email}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`}
+                  className="text-muted-foreground hover:text-primary flex items-start gap-2 text-sm transition-colors"
+                >
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0" />
+                  <span>{siteConfig.contact.phone}</span>
                 </a>
               </li>
               <li className="text-muted-foreground flex items-start gap-2 text-sm">

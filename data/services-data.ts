@@ -53,6 +53,6 @@ export const serviceFAQs: FAQItem[] = [
   {
     question: "How can I contact your team for inquiries or support?",
     answer:
-      "You can contact us directly via our website contact form or email. For international clients, we also provide online technical support to ensure smooth communication and guidance.",
+      "You can contact us directly via our website contact form, email, or phone. For international clients, we also provide online technical support to ensure smooth communication and guidance.",
   },
 ];
