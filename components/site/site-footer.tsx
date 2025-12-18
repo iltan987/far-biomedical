@@ -1,152 +1,131 @@
+import { Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaEnvelope, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
 
 import { Separator } from "@/components/ui/separator";
+import { footerLinks } from "@/data/navigation";
+import { siteConfig } from "@/lib/constants";
 
 export function SiteFooter() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="border-border/40 bg-muted/50 border-t">
-      <div className="container mx-auto px-4 py-8 sm:py-12 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
-          {/* Logo and Brand */}
-          <div className="flex flex-col space-y-4 lg:col-span-3">
-            <div className="flex items-center space-x-3">
+    <footer className="bg-muted/30 border-t">
+      <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+          {/* Brand */}
+          <div className="sm:col-span-2 lg:col-span-1">
+            <Link href="/" className="mb-4 flex items-center gap-2">
               <Image
                 src="/logo.svg"
-                alt="FAR Better Logo"
-                width={48}
-                height={48}
-                className="h-12 w-auto"
+                alt="FAR Better Bio"
+                width={40}
+                height={40}
+                className="h-10 w-auto"
               />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-muted-foreground text-sm">
-                Get better with,
-              </span>
-              <span className="text-xl font-bold text-red-600">FAR Better</span>
-            </div>
-            <p className="text-muted-foreground text-sm">
-              Making scientific research more accessible through innovative
-              solutions.
+              <span className="text-xl font-bold">FAR Better</span>
+            </Link>
+            <p className="text-muted-foreground mb-4 text-sm">
+              Advanced blood-cell separation and apheretic blood filtration
+              technologies for research and clinical applications.
             </p>
-          </div>
-
-          {/* About Us */}
-          <div className="flex flex-col space-y-3 sm:space-y-4 lg:col-span-3">
-            <h3 className="text-base font-semibold sm:text-lg">About Us</h3>
-            <nav className="flex flex-col space-y-2">
-              <Link
-                href="/about/board"
-                className="text-muted-foreground group w-fit text-sm transition-all hover:translate-x-1 hover:text-red-600 focus-visible:translate-x-1 focus-visible:text-red-600 focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:outline-none"
-              >
-                <span className="relative">
-                  Board
-                  <span className="absolute -bottom-0.5 left-0 h-0.5 w-0 bg-red-600 transition-all group-hover:w-full"></span>
-                </span>
-              </Link>
-              <Link
-                href="/about/team"
-                className="text-muted-foreground group w-fit text-sm transition-all hover:translate-x-1 hover:text-red-600 focus-visible:translate-x-1 focus-visible:text-red-600 focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:outline-none"
-              >
-                <span className="relative">
-                  Team
-                  <span className="absolute -bottom-0.5 left-0 h-0.5 w-0 bg-red-600 transition-all group-hover:w-full"></span>
-                </span>
-              </Link>
-              <Link
-                href="/about/locations"
-                className="text-muted-foreground group w-fit text-sm transition-all hover:translate-x-1 hover:text-red-600 focus-visible:translate-x-1 focus-visible:text-red-600 focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:outline-none"
-              >
-                <span className="relative">
-                  Locations
-                  <span className="absolute -bottom-0.5 left-0 h-0.5 w-0 bg-red-600 transition-all group-hover:w-full"></span>
-                </span>
-              </Link>
-            </nav>
-          </div>
-
-          {/* Privacy */}
-          <div className="flex flex-col space-y-3 sm:space-y-4 lg:col-span-3">
-            <h3 className="text-base font-semibold sm:text-lg">Privacy</h3>
-            <nav className="flex flex-col space-y-2">
-              <Link
-                href="/privacy"
-                className="text-muted-foreground group w-fit text-sm transition-all hover:translate-x-1 hover:text-red-600 focus-visible:translate-x-1 focus-visible:text-red-600 focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:outline-none"
-              >
-                <span className="relative">
-                  Privacy Statement
-                  <span className="absolute -bottom-0.5 left-0 h-0.5 w-0 bg-red-600 transition-all group-hover:w-full"></span>
-                </span>
-              </Link>
-              <Link
-                href="/terms"
-                className="text-muted-foreground group w-fit text-sm transition-all hover:translate-x-1 hover:text-red-600 focus-visible:translate-x-1 focus-visible:text-red-600 focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:outline-none"
-              >
-                <span className="relative">
-                  Terms and Conditions
-                  <span className="absolute -bottom-0.5 left-0 h-0.5 w-0 bg-red-600 transition-all group-hover:w-full"></span>
-                </span>
-              </Link>
-            </nav>
-          </div>
-
-          {/* Connect With Us */}
-          <div className="flex flex-col space-y-3 sm:space-y-4 lg:col-span-3">
-            <h3 className="text-base font-semibold sm:text-lg">
-              Connect With Us
-            </h3>
-            <p className="text-muted-foreground text-sm">
-              Follow us on social media or get in touch.
-            </p>
+            {/* Social Links */}
             <div className="flex gap-3">
               <a
-                href="https://linkedin.com"
+                href={siteConfig.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-muted flex h-10 w-10 items-center justify-center rounded-lg transition-all hover:scale-110 hover:bg-red-600 hover:text-white focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+                className="bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground flex h-10 w-10 items-center justify-center rounded-full transition-colors"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin className="h-5 w-5" />
               </a>
               <a
-                href="https://instagram.com"
+                href={siteConfig.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-muted flex h-10 w-10 items-center justify-center rounded-lg transition-all hover:scale-110 hover:bg-red-600 hover:text-white focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+                className="bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground flex h-10 w-10 items-center justify-center rounded-full transition-colors"
                 aria-label="Instagram"
               >
                 <FaInstagram className="h-5 w-5" />
               </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-muted flex h-10 w-10 items-center justify-center rounded-lg transition-all hover:scale-110 hover:bg-red-600 hover:text-white focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:outline-none"
-                aria-label="Twitter"
-              >
-                <FaTwitter className="h-5 w-5" />
-              </a>
-              <Link
-                href="/contact"
-                className="bg-muted flex h-10 w-10 items-center justify-center rounded-lg transition-all hover:scale-110 hover:bg-red-600 hover:text-white focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:outline-none"
-                aria-label="Contact Us"
-              >
-                <FaEnvelope className="h-5 w-5" />
-              </Link>
             </div>
+          </div>
+
+          {/* Company Links */}
+          <div>
+            <h3 className="mb-4 text-base font-semibold">Company</h3>
+            <ul className="space-y-3">
+              {footerLinks.company.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-muted-foreground hover:text-primary text-sm transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Products Links */}
+          <div>
+            <h3 className="mb-4 text-base font-semibold">Products</h3>
+            <ul className="space-y-3">
+              {footerLinks.products.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-muted-foreground hover:text-primary text-sm transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="mb-4 text-base font-semibold">Contact</h3>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href={`mailto:${siteConfig.contact.email}`}
+                  className="text-muted-foreground hover:text-primary flex items-start gap-2 text-sm transition-colors"
+                >
+                  <Mail className="mt-0.5 h-4 w-4 shrink-0" />
+                  <span>{siteConfig.contact.email}</span>
+                </a>
+              </li>
+              <li className="text-muted-foreground flex items-start gap-2 text-sm">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
+                <span>
+                  {siteConfig.contact.address.line1}
+                  <br />
+                  {siteConfig.contact.address.city},{" "}
+                  {siteConfig.contact.address.country}
+                </span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <Separator className="my-6 sm:my-8" />
+        <Separator className="my-8" />
 
-        <div className="flex flex-col items-center justify-between gap-3 text-center md:flex-row md:gap-4 md:text-left">
-          <p className="text-muted-foreground text-xs sm:text-sm">
-            © {new Date().getFullYear()} FAR Better. All rights reserved.
-          </p>
-          <p className="text-muted-foreground text-xs sm:text-sm">
-            Making scientific research more accessible
-          </p>
+        {/* Copyright */}
+        <div className="text-muted-foreground flex flex-col items-center justify-between gap-4 text-sm sm:flex-row">
+          <p>&copy; {currentYear} FAR Better Bio. All rights reserved.</p>
+          <div className="flex gap-4">
+            <Link
+              href="/contact"
+              className="hover:text-primary transition-colors"
+            >
+              Contact Us
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,0 +1,49 @@
+import type { SiteConfig } from "@/types";
+
+export const siteConfig: SiteConfig = {
+  name: "FAR Better Bio",
+  description:
+    "Advanced blood-cell separation and apheretic blood filtration technologies",
+  url: "https://farbetterbio.com", // Update with actual domain
+  ogImage: "/og-image.png",
+
+  contact: {
+    email: "farbiomedical@gmail.com",
+    address: {
+      line1: "ODTÜ Bilim ve İnovasyon Merkezi, Cozone",
+      line2: "Mustafa Kemal Mahallesi, Çankaya",
+      city: "Ankara",
+      country: "Turkey",
+      postalCode: "06510",
+    },
+  },
+
+  social: {
+    linkedin: "#", // Placeholder - update with actual LinkedIn URL
+    instagram: "#", // Placeholder - update with actual Instagram URL
+  },
+
+  location: {
+    name: "ODTÜ Bilim ve İnovasyon Merkezi",
+    // Placeholder coordinates for METU Teknokent, Ankara
+    // To update: Change latitude and longitude to your exact location
+    coordinates: {
+      latitude: 39.9077973,
+      longitude: 32.7499313,
+    },
+  },
+};
+
+export const instrumentCategories: Record<string, string> = {
+  "fume-hoods": "Fume Hoods",
+  ovens: "Ovens",
+  incubators: "Incubators",
+  "ultrasonic-baths": "Ultrasonic Baths",
+  shakers: "Shakers",
+  "vortex-mixers": "Vortex Mixers",
+  pipettes: "Pipettes & Micropipettes",
+  centrifuges: "Centrifuges",
+  balances: "Balances",
+  autoclaves: "Autoclaves",
+  pumps: "Pumps",
+};
