@@ -9,11 +9,9 @@ We believe that innovation should not be slowed down by repetitive groundwork. O
 We are moving steadily toward that vision.
 Our first milestone, **AutoCeive**, a benchtop blood cell separation device, will be available very soon!
 
-<!-- Image 1 here -->
-
 <!-- Section 2 -->
 
-# FAR: Filtrate Alternate Return!
+# FAR: Filtrate Alternate Return
 
 Our long-term goal is to build **cell-targeted blood filtration and processing** devices engineered for **advanced apheresis and gene therapies**. By supporting both research and future clinical applications, we aim to help bridge the gap between today’s capabilities and tomorrow’s cures.
 
@@ -43,7 +41,7 @@ We work with local and international companies to provide necessary laboratory t
 
 You can contact us about the product you need. Our team is here to provide you the highest quality and most ideal product.
 
-<!-- Contact Us button here -->
+<!-- Contact Us button -->
 
 ## AutoCeive
 
@@ -51,16 +49,9 @@ You can contact us about the product you need. Our team is here to provide you t
 - Processes high numbers of cells in short notice, while being cost-efficient.
 - Offers an ideal alternative for cell biology and research laboratories.
 
-<!-- Image 2 here -->
-
-<!-- Carousel for 2 images -->
-
 **Laboratory equipment and reagents** now available at our products page!
 
 <!-- Section 3 -->
 
-<quote><b>
-"Cure is not far away, as long as you and I are willing to take things... a little further.”
-</b></quote>
-
-CEO, FAR Better
+> "Cure is not far away, as long as you and I are willing to take things... a little further.”
+> _\- CEO, FAR Better_
