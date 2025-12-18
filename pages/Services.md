@@ -4,8 +4,6 @@
 
 **We offer comprehensive laboratory services including the processing of blood samples into PBMCs, isolation of target cells with high efficiency, and the provision of high-quality microscopic imaging. Our services are available nationwide across Türkiye. For international clients, we provide remote technical support to ensure seamless guidance and continuity throughout the workflow. We are committed to delivering reliable, efficient, and scientifically robust solutions for our partners and clients.**
 
-<!-- Image 1 here -->
-
 <!-- Section 2 -->
 
 <!-- Image 2 here -->
@@ -43,8 +41,6 @@ Depending on client requirements, final samples are analyzed, documented, stored
 Our services are available throughout Türkiye, and for international clients, we provide remote technical support to ensure seamless operation and guidance.
 
 <!-- Section 3 -->
-
-<!-- Image 3 here -->
 
 ## Laboratory Supply Services
 
