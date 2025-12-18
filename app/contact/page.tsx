@@ -1,219 +1,95 @@
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Mail, MapPin } from "lucide-react";
+import type { Metadata } from "next";
+
+import { ContactForm } from "@/components/contact/contact-form";
+import { GoogleMap } from "@/components/contact/google-map";
+import { siteConfig } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description:
+    "Get in touch with FAR Better Bio. Located at METU Teknokent, Ankara, Turkey. Contact us for laboratory services and products.",
+  openGraph: {
+    title: "Contact FAR Better Bio",
+    description: "Reach out to our team for inquiries and support.",
+  },
+};
 
 export default function ContactPage() {
   return (
-    <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative bg-linear-to-br from-red-950 via-black to-red-950 py-24 text-white">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl">
-            <h1 className="mb-6 text-5xl font-bold tracking-tight">
+    <>
+      {/* Minimal Hero Section */}
+      <section className="from-primary/5 to-background bg-linear-to-b py-8 sm:py-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="animate-fade-in-up mx-auto max-w-2xl text-center">
+            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Contact Us
             </h1>
-            <p className="text-xl text-red-100">
-              Get in touch with our team. We&apos;re here to help with your
-              laboratory needs and answer any questions you may have.
+            <p className="text-muted-foreground mt-3 text-base leading-relaxed">
+              Have questions? We&apos;d love to hear from you.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="bg-white py-16">
-        <div className="container max-w-4xl">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-            {/* Contact Information */}
-            <div>
-              <h2 className="mb-6 text-3xl font-bold text-gray-900">
-                Get In Touch
-              </h2>
-              <p className="mb-8 text-gray-600">
-                Whether you need product information, technical support, or want
-                to discuss a partnership, our team is ready to assist you.
-              </p>
+      {/* Main Content Section */}
+      <section className="py-10 sm:py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Row 1: Form + Contact Info */}
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
+            {/* Contact Form */}
+            <div className="animate-fade-in" style={{ animationDelay: "150ms" }}>
+              <h2 className="mb-4 text-xl font-semibold">Send Us a Message</h2>
+              <ContactForm />
+            </div>
 
-              <div className="space-y-6">
-                <Card className="border-red-200">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-red-600">
-                      <span>📧</span> Email
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600">info@farbetter.com</p>
-                  </CardContent>
-                </Card>
+            {/* Contact Info */}
+            <div className="animate-fade-in" style={{ animationDelay: "400ms" }}>
+              <h2 className="mb-4 text-xl font-semibold">Contact Information</h2>
+              <div className="space-y-3">
+                <div className="bg-muted/50 flex items-start gap-3 rounded-lg p-4 transition-colors hover:bg-muted/70">
+                  <div className="bg-primary/10 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-lg">
+                    <Mail className="h-4 w-4" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="text-sm font-semibold">Email</h3>
+                    <a
+                      href={`mailto:${siteConfig.contact.email}`}
+                      className="text-muted-foreground hover:text-primary block truncate text-sm transition-colors"
+                    >
+                      {siteConfig.contact.email}
+                    </a>
+                  </div>
+                </div>
 
-                <Card className="border-red-200">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-red-600">
-                      <span>📱</span> Phone
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600">+90 (XXX) XXX-XXXX</p>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-red-200">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-red-600">
-                      <span>📍</span> Location
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600">
-                      Türkiye
+                <div className="bg-muted/50 flex items-start gap-3 rounded-lg p-4 transition-colors hover:bg-muted/70">
+                  <div className="bg-primary/10 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-lg">
+                    <MapPin className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-semibold">Address</h3>
+                    <p className="text-muted-foreground text-sm">
+                      {siteConfig.contact.address.line1}
                       <br />
-                      International support available
+                      {siteConfig.contact.address.line2}
+                      <br />
+                      {siteConfig.contact.address.city},{" "}
+                      {siteConfig.contact.address.country}{" "}
+                      {siteConfig.contact.address.postalCode}
                     </p>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
 
-            {/* Contact Form Placeholder */}
-            <div>
-              <Card className="border-red-200">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-gray-900">
-                    Send us a message
-                  </CardTitle>
-                  <CardDescription>
-                    Fill out the form below and we&apos;ll get back to you as
-                    soon as possible.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form className="space-y-4">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="mb-1 block text-sm font-medium text-gray-700"
-                      >
-                        Name
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        className="w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-red-600 focus:outline-none"
-                        placeholder="Your name"
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="mb-1 block text-sm font-medium text-gray-700"
-                      >
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        className="w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-red-600 focus:outline-none"
-                        placeholder="your@email.com"
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="subject"
-                        className="mb-1 block text-sm font-medium text-gray-700"
-                      >
-                        Subject
-                      </label>
-                      <input
-                        type="text"
-                        id="subject"
-                        name="subject"
-                        className="w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-red-600 focus:outline-none"
-                        placeholder="What is this regarding?"
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="message"
-                        className="mb-1 block text-sm font-medium text-gray-700"
-                      >
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows={5}
-                        className="w-full rounded-md border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-red-600 focus:outline-none"
-                        placeholder="Your message..."
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      className="w-full bg-red-600 hover:bg-red-700"
-                    >
-                      Send Message
-                    </Button>
-                  </form>
-                  <p className="mt-4 text-sm text-gray-500">
-                    Note: Email functionality will be implemented in the next
-                    phase.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
+          {/* Row 2: Full-width Map */}
+          <div className="animate-fade-in mt-10" style={{ animationDelay: "650ms" }}>
+            <h2 className="mb-4 text-xl font-semibold">Our Location</h2>
+            <GoogleMap />
           </div>
         </div>
       </section>
-
-      {/* Support Section */}
-      <section className="bg-red-50 py-16">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="mx-auto max-w-4xl">
-            <h2 className="mb-6 text-center text-3xl font-bold text-gray-900">
-              Technical Support
-            </h2>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              <Card className="border-red-200">
-                <CardHeader>
-                  <CardTitle className="text-red-600">
-                    Domestic Support
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">
-                    Our full laboratory services are available throughout
-                    Türkiye, including on-site support and consultation.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-red-200">
-                <CardHeader>
-                  <CardTitle className="text-red-600">
-                    International Support
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">
-                    Remote technical support is available for international
-                    clients to guide through procedures and protocols.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+    </>
   );
 }
