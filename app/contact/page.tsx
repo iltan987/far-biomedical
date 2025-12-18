@@ -1,4 +1,4 @@
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import type { Metadata } from "next";
 
 import { ContactForm } from "@/components/contact/contact-form";
@@ -58,6 +58,21 @@ export default function ContactPage() {
                       className="text-muted-foreground hover:text-primary block truncate text-sm transition-colors"
                     >
                       {siteConfig.contact.email}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="bg-muted/50 flex items-start gap-3 rounded-lg p-4 transition-colors hover:bg-muted/70">
+                  <div className="bg-primary/10 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-lg">
+                    <Phone className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-semibold">Phone</h3>
+                    <a
+                      href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`}
+                      className="text-muted-foreground hover:text-primary text-sm transition-colors"
+                    >
+                      {siteConfig.contact.phone}
                     </a>
                   </div>
                 </div>
