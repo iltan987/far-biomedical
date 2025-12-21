@@ -4,8 +4,7 @@ export const siteConfig: SiteConfig = {
   name: "FAR Better Bio",
   description:
     "Advanced blood-cell separation and apheretic blood filtration technologies",
-  url: "https://farbetterbio.com", // Update with actual domain
-  ogImage: "/og-image.png",
+  url: "", // Set when domain is acquired
 
   contact: {
     email: "farbiomedical@gmail.com",
