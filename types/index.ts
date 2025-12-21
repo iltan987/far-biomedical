@@ -55,7 +55,6 @@ export interface SiteConfig {
   name: string;
   description: string;
   url: string;
-  ogImage: string;
   contact: {
     email: string;
     phone: string;
