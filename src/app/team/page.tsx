@@ -36,17 +36,29 @@ export default function TeamPage() {
       </section>
 
       {/* Team Grid */}
-      <section className="py-12 sm:py-16">
+      <section
+        className="animate-fade-in py-12 sm:py-16"
+        aria-labelledby="team-grid-heading"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 id="team-grid-heading" className="sr-only">
+            Team Members
+          </h2>
           <TeamGrid />
         </div>
       </section>
 
       {/* Join Us CTA */}
-      <section className="bg-muted/30 py-12 sm:py-16">
+      <section
+        className="animate-fade-in bg-muted/30 py-12 sm:py-16"
+        aria-labelledby="join-heading"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="mb-4 text-2xl font-bold sm:text-3xl">
+            <h2
+              id="join-heading"
+              className="mb-4 text-2xl font-bold sm:text-3xl"
+            >
               Work With Us
             </h2>
             <p className="text-muted-foreground mb-6">
