@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 
 import { ContactForm } from "@/components/contact/contact-form";
 import { GoogleMap } from "@/components/contact/google-map";
+import { FadeIn } from "@/components/motion";
 import { siteConfig } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -21,14 +22,14 @@ export default function ContactPage() {
       {/* Minimal Hero Section */}
       <section className="from-primary/5 to-background bg-linear-to-b py-8 sm:py-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-fade-in-up mx-auto max-w-2xl text-center">
+          <FadeIn className="mx-auto max-w-2xl text-center">
             <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Contact Us
             </h1>
             <p className="text-muted-foreground mt-3 text-base leading-relaxed">
               Have questions? We&apos;d love to hear from you.
             </p>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -44,19 +45,13 @@ export default function ContactPage() {
           {/* Row 1: Form + Contact Info */}
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
             {/* Contact Form */}
-            <div
-              className="animate-fade-in"
-              style={{ animationDelay: "150ms" }}
-            >
+            <FadeIn delay={0.1}>
               <h3 className="mb-4 text-xl font-semibold">Send Us a Message</h3>
               <ContactForm />
-            </div>
+            </FadeIn>
 
             {/* Contact Info */}
-            <div
-              className="animate-fade-in"
-              style={{ animationDelay: "400ms" }}
-            >
+            <FadeIn delay={0.2}>
               <h3 className="mb-4 text-xl font-semibold">
                 Contact Information
               </h3>
@@ -118,17 +113,14 @@ export default function ContactPage() {
                   </div>
                 </article>
               </div>
-            </div>
+            </FadeIn>
           </div>
 
           {/* Row 2: Full-width Map */}
-          <div
-            className="animate-fade-in mt-10"
-            style={{ animationDelay: "650ms" }}
-          >
+          <FadeIn delay={0.3} className="mt-10">
             <h3 className="mb-4 text-xl font-semibold">Our Location</h3>
             <GoogleMap />
-          </div>
+          </FadeIn>
         </div>
       </section>
     </>

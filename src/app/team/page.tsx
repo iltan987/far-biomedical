@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { FadeIn } from "@/components/motion";
 import { TeamGrid } from "@/components/team/team-grid";
 import { Button } from "@/components/ui/button";
 
@@ -21,7 +22,7 @@ export default function TeamPage() {
       {/* Hero Section */}
       <section className="from-primary/5 to-background bg-linear-to-b py-10 sm:py-14">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-fade-in-up mx-auto max-w-3xl text-center">
+          <FadeIn className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
               Our Team
             </h1>
@@ -31,15 +32,12 @@ export default function TeamPage() {
               engineering, research, and technology to advance blood-cell
               separation solutions.
             </p>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* Team Grid */}
-      <section
-        className="animate-fade-in py-12 sm:py-16"
-        aria-labelledby="team-grid-heading"
-      >
+      <section className="py-12 sm:py-16" aria-labelledby="team-grid-heading">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 id="team-grid-heading" className="sr-only">
             Team Members
@@ -50,11 +48,11 @@ export default function TeamPage() {
 
       {/* Join Us CTA */}
       <section
-        className="animate-fade-in bg-muted/30 py-12 sm:py-16"
+        className="bg-muted/30 py-12 sm:py-16"
         aria-labelledby="join-heading"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
+          <FadeIn direction="none" className="mx-auto max-w-2xl text-center">
             <h2
               id="join-heading"
               className="mb-4 text-2xl font-bold sm:text-3xl"
@@ -69,7 +67,7 @@ export default function TeamPage() {
             <Button asChild>
               <Link href="/contact">Get in Touch</Link>
             </Button>
-          </div>
+          </FadeIn>
         </div>
       </section>
     </>

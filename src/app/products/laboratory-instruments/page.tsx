@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import Link from "next/link";
 
+import { FadeIn } from "@/components/motion";
 import { InstrumentsList } from "@/components/products/instruments-list";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/constants";
@@ -45,7 +46,7 @@ export default async function LaboratoryInstrumentsPage() {
             </Button>
           </div>
 
-          <div className="animate-fade-in-up mx-auto max-w-3xl text-center">
+          <FadeIn className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
               Laboratory Instruments
             </h1>
@@ -54,15 +55,12 @@ export default async function LaboratoryInstrumentsPage() {
               instruments. From centrifuges and incubators to balances and
               autoclaves, we provide equipment for all your research needs.
             </p>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* Instruments List */}
-      <section
-        className="animate-fade-in py-12 sm:py-16"
-        aria-labelledby="instruments-heading"
-      >
+      <section className="py-12 sm:py-16" aria-labelledby="instruments-heading">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 id="instruments-heading" className="sr-only">
             Available Instruments
@@ -73,11 +71,11 @@ export default async function LaboratoryInstrumentsPage() {
 
       {/* Contact CTA */}
       <section
-        className="animate-fade-in bg-muted/30 py-12 sm:py-16"
+        className="bg-muted/30 py-12 sm:py-16"
         aria-labelledby="help-heading"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
+          <FadeIn direction="none" className="mx-auto max-w-2xl text-center">
             <h2
               id="help-heading"
               className="mb-4 text-2xl font-bold sm:text-3xl"
@@ -94,7 +92,7 @@ export default async function LaboratoryInstrumentsPage() {
                 Contact Us
               </a>
             </Button>
-          </div>
+          </FadeIn>
         </div>
       </section>
     </>

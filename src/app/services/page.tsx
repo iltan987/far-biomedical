@@ -2,6 +2,7 @@ import { Globe, Mail, Truck } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { ServiceFAQs } from "@/components/services/service-faqs";
 import { WorkflowSteps } from "@/components/services/workflow-steps";
 import { Button } from "@/components/ui/button";
@@ -22,7 +23,7 @@ export default function ServicesPage() {
       {/* Hero Section */}
       <section className="from-primary/5 to-background bg-linear-to-b py-10 sm:py-14">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-fade-in-up mx-auto max-w-3xl text-center">
+          <FadeIn className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
               Our Services
             </h1>
@@ -32,50 +33,54 @@ export default function ServicesPage() {
               with high efficiency, and the provision of high-quality
               microscopic imaging.
             </p>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* Service Area */}
-      <section className="animate-fade-in border-b py-12">
+      <section className="border-b py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-12">
-            <article className="flex items-center gap-3">
-              <div
-                className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full"
-                aria-hidden="true"
-              >
-                <Truck className="h-5 w-5" />
-              </div>
-              <div>
-                <p className="font-semibold">Nationwide Coverage</p>
-                <p className="text-muted-foreground text-sm">
-                  Available across Türkiye
-                </p>
-              </div>
-            </article>
-            <article className="flex items-center gap-3">
-              <div
-                className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full"
-                aria-hidden="true"
-              >
-                <Globe className="h-5 w-5" />
-              </div>
-              <div>
-                <p className="font-semibold">International Support</p>
-                <p className="text-muted-foreground text-sm">
-                  Remote technical assistance
-                </p>
-              </div>
-            </article>
-          </div>
+          <StaggerContainer className="flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-12">
+            <StaggerItem>
+              <article className="flex items-center gap-3">
+                <div
+                  className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full"
+                  aria-hidden="true"
+                >
+                  <Truck className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="font-semibold">Nationwide Coverage</p>
+                  <p className="text-muted-foreground text-sm">
+                    Available across Türkiye
+                  </p>
+                </div>
+              </article>
+            </StaggerItem>
+            <StaggerItem>
+              <article className="flex items-center gap-3">
+                <div
+                  className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full"
+                  aria-hidden="true"
+                >
+                  <Globe className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="font-semibold">International Support</p>
+                  <p className="text-muted-foreground text-sm">
+                    Remote technical assistance
+                  </p>
+                </div>
+              </article>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Workflow Section */}
       <section className="py-12 sm:py-16" aria-labelledby="workflow-heading">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-fade-in-up mx-auto mb-12 max-w-2xl text-center">
+          <FadeIn className="mx-auto mb-12 max-w-2xl text-center">
             <h2
               id="workflow-heading"
               className="text-2xl font-bold sm:text-3xl"
@@ -88,7 +93,7 @@ export default function ServicesPage() {
               industry-level requirements. Each step is performed under
               standardized quality protocols.
             </p>
-          </div>
+          </FadeIn>
           <WorkflowSteps />
         </div>
       </section>
@@ -99,7 +104,7 @@ export default function ServicesPage() {
         aria-labelledby="supply-heading"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-fade-in mx-auto max-w-3xl text-center">
+          <FadeIn direction="none" className="mx-auto max-w-3xl text-center">
             <h2
               id="supply-heading"
               className="mb-4 text-2xl font-bold sm:text-3xl"
@@ -125,7 +130,7 @@ export default function ServicesPage() {
                 </Link>
               </Button>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -133,12 +138,14 @@ export default function ServicesPage() {
       <section className="py-12 sm:py-16" aria-labelledby="faqs-heading">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl">
-            <h2
-              id="faqs-heading"
-              className="animate-fade-in-up mb-8 text-center text-2xl font-bold sm:text-3xl"
-            >
-              Frequently Asked Questions
-            </h2>
+            <FadeIn>
+              <h2
+                id="faqs-heading"
+                className="mb-8 text-center text-2xl font-bold sm:text-3xl"
+              >
+                Frequently Asked Questions
+              </h2>
+            </FadeIn>
             <ServiceFAQs />
           </div>
         </div>
@@ -150,7 +157,7 @@ export default function ServicesPage() {
         aria-labelledby="contact-heading"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-fade-in mx-auto max-w-2xl text-center">
+          <FadeIn direction="none" className="mx-auto max-w-2xl text-center">
             <h2
               id="contact-heading"
               className="mb-4 text-2xl font-bold sm:text-3xl"
@@ -173,7 +180,7 @@ export default function ServicesPage() {
                 Contact Us
               </Link>
             </Button>
-          </div>
+          </FadeIn>
         </div>
       </section>
     </>
