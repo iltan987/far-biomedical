@@ -2,6 +2,7 @@ import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { FadeIn } from "@/components/motion";
 import { ConsumablesGrid } from "@/components/products/consumables-grid";
 import { Button } from "@/components/ui/button";
 
@@ -31,7 +32,7 @@ export default function LaboratoryConsumablesPage() {
             </Button>
           </div>
 
-          <div className="animate-fade-in-up mx-auto max-w-3xl text-center">
+          <FadeIn className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
               Laboratory Consumables
             </h1>
@@ -40,15 +41,12 @@ export default function LaboratoryConsumablesPage() {
               provide high-quality tubes, pipettes, slides, and storage
               containers.
             </p>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* Consumables Grid */}
-      <section
-        className="animate-fade-in py-12 sm:py-16"
-        aria-labelledby="consumables-heading"
-      >
+      <section className="py-12 sm:py-16" aria-labelledby="consumables-heading">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 id="consumables-heading" className="sr-only">
             Available Consumables

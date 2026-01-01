@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import { services } from "@/data/services";
 
@@ -13,7 +14,7 @@ export function ServicesPreview() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Content */}
-          <div className="animate-fade-in-up">
+          <FadeIn>
             <h2 className="text-primary mb-3 text-sm font-semibold tracking-wider uppercase">
               Our Services
             </h2>
@@ -29,31 +30,32 @@ export function ServicesPreview() {
               international clients.
             </p>
 
-            <div
+            <StaggerContainer
               className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2"
               role="list"
             >
               {services.map((service) => (
-                <article
-                  key={service.title}
-                  role="listitem"
-                  className="bg-muted/50 hover:bg-muted flex items-start gap-3 rounded-lg p-4 transition-colors"
-                >
-                  <div
-                    className="bg-primary/10 text-primary flex h-10 w-10 shrink-0 items-center justify-center rounded-lg"
-                    aria-hidden="true"
+                <StaggerItem key={service.title}>
+                  <article
+                    role="listitem"
+                    className="bg-muted/50 hover:bg-muted flex h-full items-start gap-3 rounded-lg p-4 transition-colors"
                   >
-                    <service.icon className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold">{service.title}</h3>
-                    <p className="text-muted-foreground mt-1 text-sm">
-                      {service.description}
-                    </p>
-                  </div>
-                </article>
+                    <div
+                      className="bg-primary/10 text-primary flex h-10 w-10 shrink-0 items-center justify-center rounded-lg"
+                      aria-hidden="true"
+                    >
+                      <service.icon className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-semibold">{service.title}</h3>
+                      <p className="text-muted-foreground mt-1 text-sm">
+                        {service.description}
+                      </p>
+                    </div>
+                  </article>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
 
             <Button asChild className="mt-8">
               <Link href="/services">
@@ -61,10 +63,10 @@ export function ServicesPreview() {
                 <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
               </Link>
             </Button>
-          </div>
+          </FadeIn>
 
           {/* AutoCeive Features */}
-          <aside className="animate-fade-in relative">
+          <FadeIn direction="none" delay={0.2} className="relative">
             <div className="bg-card rounded-2xl border p-8 shadow-sm">
               <h3 className="mb-6 text-2xl font-bold">AutoCeive Features</h3>
               <ol className="space-y-4" aria-label="AutoCeive key features">
@@ -112,7 +114,7 @@ export function ServicesPreview() {
                 </p>
               </div>
             </div>
-          </aside>
+          </FadeIn>
         </div>
       </div>
     </section>

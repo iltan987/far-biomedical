@@ -2,6 +2,7 @@ import { ArrowRight, Beaker, FlaskConical, Package } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -53,7 +54,7 @@ export default function ProductsPage() {
       {/* Hero Section */}
       <section className="from-primary/5 to-background bg-linear-to-b py-10 sm:py-14">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-fade-in-up mx-auto max-w-3xl text-center">
+          <FadeIn className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
               Our Products
             </h1>
@@ -62,76 +63,75 @@ export default function ProductsPage() {
               range of laboratory equipment and consumables, we provide
               everything you need for your research.
             </p>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* Product Categories */}
-      <section
-        className="animate-fade-in py-12 sm:py-16"
-        aria-labelledby="categories-heading"
-      >
+      <section className="py-12 sm:py-16" aria-labelledby="categories-heading">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 id="categories-heading" className="sr-only">
             Product Categories
           </h2>
-          <div
+          <StaggerContainer
             className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8"
             role="list"
           >
             {productCategories.map((category) => (
-              <article key={category.title} role="listitem">
-                <Card className="relative h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <div
-                        className="bg-primary/10 text-primary flex h-12 w-12 items-center justify-center rounded-lg"
-                        aria-hidden="true"
-                      >
-                        <category.icon className="h-6 w-6" />
+              <StaggerItem key={category.title}>
+                <article role="listitem">
+                  <Card className="relative h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    <CardHeader>
+                      <div className="flex items-start justify-between">
+                        <div
+                          className="bg-primary/10 text-primary flex h-12 w-12 items-center justify-center rounded-lg"
+                          aria-hidden="true"
+                        >
+                          <category.icon className="h-6 w-6" />
+                        </div>
+                        {category.badge && (
+                          <Badge variant="secondary">{category.badge}</Badge>
+                        )}
                       </div>
-                      {category.badge && (
-                        <Badge variant="secondary">{category.badge}</Badge>
+                      <CardTitle className="mt-4 text-xl">
+                        {category.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="mb-4 text-base">
+                        {category.description}
+                      </CardDescription>
+                      {category.href ? (
+                        <Button asChild variant="outline" className="w-full">
+                          <Link href={category.href}>
+                            Browse {category.title}
+                            <ArrowRight
+                              className="ml-2 h-4 w-4"
+                              aria-hidden="true"
+                            />
+                          </Link>
+                        </Button>
+                      ) : (
+                        <Button disabled variant="outline" className="w-full">
+                          Coming Soon
+                        </Button>
                       )}
-                    </div>
-                    <CardTitle className="mt-4 text-xl">
-                      {category.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="mb-4 text-base">
-                      {category.description}
-                    </CardDescription>
-                    {category.href ? (
-                      <Button asChild variant="outline" className="w-full">
-                        <Link href={category.href}>
-                          Browse {category.title}
-                          <ArrowRight
-                            className="ml-2 h-4 w-4"
-                            aria-hidden="true"
-                          />
-                        </Link>
-                      </Button>
-                    ) : (
-                      <Button disabled variant="outline" className="w-full">
-                        Coming Soon
-                      </Button>
-                    )}
-                  </CardContent>
-                </Card>
-              </article>
+                    </CardContent>
+                  </Card>
+                </article>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Contact CTA */}
       <section
-        className="animate-fade-in bg-muted/30 py-12 sm:py-16"
+        className="bg-muted/30 py-12 sm:py-16"
         aria-labelledby="contact-cta-heading"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
+          <FadeIn direction="none" className="mx-auto max-w-2xl text-center">
             <h2
               id="contact-cta-heading"
               className="mb-4 text-2xl font-bold sm:text-3xl"
@@ -146,7 +146,7 @@ export default function ProductsPage() {
             <Button asChild>
               <Link href="/contact">Contact Us</Link>
             </Button>
-          </div>
+          </FadeIn>
         </div>
       </section>
     </>

@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,7 +21,7 @@ export function ProductsOverview() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="animate-fade-in-up mx-auto mb-12 max-w-2xl text-center lg:mb-16">
+        <FadeIn className="mx-auto mb-12 max-w-2xl text-center lg:mb-16">
           <h2 className="text-primary mb-3 text-sm font-semibold tracking-wider uppercase">
             FAR: Filtrate Alternate Return
           </h2>
@@ -35,44 +36,46 @@ export function ProductsOverview() {
             processing devices engineered for advanced apheresis and gene
             therapies.
           </p>
-        </div>
+        </FadeIn>
 
         {/* Product Cards */}
-        <div
+        <StaggerContainer
           className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8"
           role="list"
         >
           {products.map((product) => (
-            <article key={product.title} role="listitem">
-              <Card className="group focus-within:ring-ring relative h-full overflow-hidden transition-all duration-300 focus-within:ring-2 hover:-translate-y-1 hover:shadow-lg">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div
-                      className="bg-primary/10 text-primary flex h-12 w-12 items-center justify-center rounded-lg"
-                      aria-hidden="true"
-                    >
-                      <product.icon className="h-6 w-6" />
+            <StaggerItem key={product.title}>
+              <article role="listitem">
+                <Card className="group focus-within:ring-ring relative h-full overflow-hidden transition-all duration-300 focus-within:ring-2 hover:-translate-y-1 hover:shadow-lg">
+                  <CardHeader>
+                    <div className="flex items-start justify-between">
+                      <div
+                        className="bg-primary/10 text-primary flex h-12 w-12 items-center justify-center rounded-lg"
+                        aria-hidden="true"
+                      >
+                        <product.icon className="h-6 w-6" />
+                      </div>
+                      {product.badge && (
+                        <Badge variant="secondary">{product.badge}</Badge>
+                      )}
                     </div>
-                    {product.badge && (
-                      <Badge variant="secondary">{product.badge}</Badge>
-                    )}
-                  </div>
-                  <CardTitle className="mt-4 text-xl">
-                    {product.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base leading-relaxed">
-                    {product.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </article>
+                    <CardTitle className="mt-4 text-xl">
+                      {product.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-base leading-relaxed">
+                      {product.description}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </article>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* Additional Products CTA */}
-        <div className="animate-fade-in mt-12 text-center lg:mt-16">
+        <FadeIn direction="none" className="mt-12 text-center lg:mt-16">
           <div className="bg-card inline-flex flex-col items-center justify-center gap-4 rounded-2xl border p-6 sm:flex-row">
             <div className="text-center sm:text-left">
               <p className="font-semibold">Looking for laboratory supplies?</p>
@@ -88,7 +91,7 @@ export function ProductsOverview() {
               </Link>
             </Button>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

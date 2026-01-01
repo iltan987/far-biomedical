@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+import { FadeIn } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
@@ -10,7 +11,7 @@ export function HeroSection() {
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,var(--primary-glow),transparent)]" />
 
       <div className="container mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
-        <div className="animate-fade-in-up mx-auto max-w-3xl text-center">
+        <FadeIn className="mx-auto max-w-3xl text-center">
           {/* Badge */}
           <div className="border-primary/20 bg-primary/5 text-primary mb-6 inline-flex items-center rounded-full border px-4 py-1.5 text-sm">
             <span className="bg-primary mr-2 h-2 w-2 animate-pulse rounded-full" />
@@ -52,7 +53,7 @@ export function HeroSection() {
               <Link href="/contact">Contact Us</Link>
             </Button>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

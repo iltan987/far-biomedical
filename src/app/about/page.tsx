@@ -2,6 +2,7 @@ import { Building2, Mail } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { products } from "@/data/products";
@@ -26,7 +27,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="from-primary/5 to-background bg-linear-to-b py-10 sm:py-14">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-fade-in-up mx-auto max-w-3xl text-center">
+          <FadeIn className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
               About Us
             </h1>
@@ -35,44 +36,48 @@ export default function AboutPage() {
               advanced blood-cell separation and apheretic blood filtration
               technologies.
             </p>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* Core Platforms */}
       <section className="py-12 sm:py-16" aria-labelledby="platforms-heading">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2
-            id="platforms-heading"
-            className="animate-fade-in-up mb-12 text-center text-2xl font-bold sm:text-3xl"
-          >
-            Our Core Platforms
-          </h2>
-          <div
+          <FadeIn>
+            <h2
+              id="platforms-heading"
+              className="mb-12 text-center text-2xl font-bold sm:text-3xl"
+            >
+              Our Core Platforms
+            </h2>
+          </FadeIn>
+          <StaggerContainer
             className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8"
             role="list"
           >
             {platforms.map((platform) => (
-              <article key={platform.title} role="listitem">
-                <Card className="hover:border-primary/50 focus-within:ring-ring h-full border-2 transition-colors focus-within:ring-2">
-                  <CardContent className="p-6">
-                    <div
-                      className="bg-primary/10 text-primary mb-4 flex h-12 w-12 items-center justify-center rounded-lg"
-                      aria-hidden="true"
-                    >
-                      <platform.icon className="h-6 w-6" />
-                    </div>
-                    <h3 className="mb-2 text-xl font-semibold">
-                      {platform.title}™
-                    </h3>
-                    <p className="text-muted-foreground">
-                      {platform.longDescription ?? platform.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </article>
+              <StaggerItem key={platform.title}>
+                <article role="listitem">
+                  <Card className="hover:border-primary/50 focus-within:ring-ring h-full border-2 transition-colors focus-within:ring-2">
+                    <CardContent className="p-6">
+                      <div
+                        className="bg-primary/10 text-primary mb-4 flex h-12 w-12 items-center justify-center rounded-lg"
+                        aria-hidden="true"
+                      >
+                        <platform.icon className="h-6 w-6" />
+                      </div>
+                      <h3 className="mb-2 text-xl font-semibold">
+                        {platform.title}™
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {platform.longDescription ?? platform.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </article>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -82,7 +87,7 @@ export default function AboutPage() {
         aria-labelledby="locations-heading"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-fade-in mx-auto max-w-3xl">
+          <FadeIn direction="none" className="mx-auto max-w-3xl">
             <h2
               id="locations-heading"
               className="mb-8 text-center text-2xl font-bold sm:text-3xl"
@@ -120,14 +125,14 @@ export default function AboutPage() {
                 </div>
               </article>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* Additional Business */}
       <section className="py-12 sm:py-16" aria-labelledby="research-heading">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-fade-in-up mx-auto max-w-3xl text-center">
+          <FadeIn className="mx-auto max-w-3xl text-center">
             <h2
               id="research-heading"
               className="mb-4 text-2xl font-bold sm:text-3xl"
@@ -152,7 +157,7 @@ export default function AboutPage() {
                 </Link>
               </Button>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -162,7 +167,7 @@ export default function AboutPage() {
         aria-labelledby="contact-heading"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-fade-in mx-auto max-w-2xl text-center">
+          <FadeIn direction="none" className="mx-auto max-w-2xl text-center">
             <h2
               id="contact-heading"
               className="mb-4 text-2xl font-bold sm:text-3xl"
@@ -189,7 +194,7 @@ export default function AboutPage() {
                 <Link href="/contact">Contact Us</Link>
               </Button>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
     </>
