@@ -1,10 +1,13 @@
-import { Building2, FlaskConical, Magnet, Mail } from "lucide-react";
+import { Building2, Mail } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { products } from "@/data/products";
 import { siteConfig } from "@/lib/constants";
+
+const platforms = products.slice(0, 3);
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -37,60 +40,53 @@ export default function AboutPage() {
       </section>
 
       {/* Core Platforms */}
-      <section className="py-12 sm:py-16">
+      <section className="py-12 sm:py-16" aria-labelledby="platforms-heading">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-12 text-center text-2xl font-bold sm:text-3xl">
+          <h2
+            id="platforms-heading"
+            className="animate-fade-in-up mb-12 text-center text-2xl font-bold sm:text-3xl"
+          >
             Our Core Platforms
           </h2>
-          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
-            <Card className="hover:border-primary/50 border-2 transition-colors">
-              <CardContent className="p-6">
-                <div className="bg-primary/10 text-primary mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
-                  <Magnet className="h-6 w-6" />
-                </div>
-                <h3 className="mb-2 text-xl font-semibold">MiniCeive™</h3>
-                <p className="text-muted-foreground">
-                  A compact laboratory device that enables fast and practical
-                  magnetic separation and liquid handling using magnet-based
-                  tubes and containers.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="hover:border-primary/50 border-2 transition-colors">
-              <CardContent className="p-6">
-                <div className="bg-primary/10 text-primary mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
-                  <FlaskConical className="h-6 w-6" />
-                </div>
-                <h3 className="mb-2 text-xl font-semibold">AutoCeive™</h3>
-                <p className="text-muted-foreground">
-                  An automated benchtop blood-cell separation device designed
-                  for rapid, sterile, and efficient cell enrichment from fluid
-                  laboratory samples.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="hover:border-primary/50 border-2 transition-colors">
-              <CardContent className="p-6">
-                <div className="bg-primary/10 text-primary mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
-                  <FlaskConical className="h-6 w-6" />
-                </div>
-                <h3 className="mb-2 text-xl font-semibold">AphereCeive™</h3>
-                <p className="text-muted-foreground">
-                  A programmable, cell-specific apheretic collection system
-                  enabling targeted isolation of immune and circulating cells
-                  directly from continuously processed blood.
-                </p>
-              </CardContent>
-            </Card>
+          <div
+            className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8"
+            role="list"
+          >
+            {platforms.map((platform) => (
+              <article key={platform.title} role="listitem">
+                <Card className="hover:border-primary/50 focus-within:ring-ring h-full border-2 transition-colors focus-within:ring-2">
+                  <CardContent className="p-6">
+                    <div
+                      className="bg-primary/10 text-primary mb-4 flex h-12 w-12 items-center justify-center rounded-lg"
+                      aria-hidden="true"
+                    >
+                      <platform.icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="mb-2 text-xl font-semibold">
+                      {platform.title}™
+                    </h3>
+                    <p className="text-muted-foreground">
+                      {platform.longDescription ?? platform.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Locations */}
-      <section className="bg-muted/30 py-12 sm:py-16">
+      <section
+        className="bg-muted/30 py-12 sm:py-16"
+        aria-labelledby="locations-heading"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl">
-            <h2 className="mb-8 text-center text-2xl font-bold sm:text-3xl">
+          <div className="animate-fade-in mx-auto max-w-3xl">
+            <h2
+              id="locations-heading"
+              className="mb-8 text-center text-2xl font-bold sm:text-3xl"
+            >
               Our Locations
             </h2>
             <p className="text-muted-foreground mb-8 text-center">
@@ -99,34 +95,43 @@ export default function AboutPage() {
               engineers and scientists.
             </p>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div className="bg-card flex items-start gap-3 rounded-lg border p-4">
-                <Building2 className="text-primary mt-0.5 h-5 w-5" />
+              <article className="bg-card flex items-start gap-3 rounded-lg border p-4">
+                <Building2
+                  className="text-primary mt-0.5 h-5 w-5"
+                  aria-hidden="true"
+                />
                 <div>
                   <h3 className="font-semibold">METU Teknokent</h3>
                   <p className="text-muted-foreground text-sm">
                     Middle East Technical University Technopark
                   </p>
                 </div>
-              </div>
-              <div className="bg-card flex items-start gap-3 rounded-lg border p-4">
-                <Building2 className="text-primary mt-0.5 h-5 w-5" />
+              </article>
+              <article className="bg-card flex items-start gap-3 rounded-lg border p-4">
+                <Building2
+                  className="text-primary mt-0.5 h-5 w-5"
+                  aria-hidden="true"
+                />
                 <div>
                   <h3 className="font-semibold">BIOMATEN</h3>
                   <p className="text-muted-foreground text-sm">
                     METU Research Center
                   </p>
                 </div>
-              </div>
+              </article>
             </div>
           </div>
         </div>
       </section>
 
       {/* Additional Business */}
-      <section className="py-12 sm:py-16">
+      <section className="py-12 sm:py-16" aria-labelledby="research-heading">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="mb-4 text-2xl font-bold sm:text-3xl">
+          <div className="animate-fade-in-up mx-auto max-w-3xl text-center">
+            <h2
+              id="research-heading"
+              className="mb-4 text-2xl font-bold sm:text-3xl"
+            >
               Supporting Research Excellence
             </h2>
             <p className="text-muted-foreground mb-8">
@@ -152,10 +157,16 @@ export default function AboutPage() {
       </section>
 
       {/* Contact CTA */}
-      <section className="bg-primary text-primary-foreground py-12 sm:py-16">
+      <section
+        className="bg-primary text-primary-foreground py-12 sm:py-16"
+        aria-labelledby="contact-heading"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="mb-4 text-2xl font-bold sm:text-3xl">
+          <div className="animate-fade-in mx-auto max-w-2xl text-center">
+            <h2
+              id="contact-heading"
+              className="mb-4 text-2xl font-bold sm:text-3xl"
+            >
               Get in Touch
             </h2>
             <p className="mb-6 opacity-90">
@@ -167,13 +178,13 @@ export default function AboutPage() {
                 href={`mailto:${siteConfig.contact.email}`}
                 className="text-primary-foreground/90 hover:text-primary-foreground flex items-center gap-2"
               >
-                <Mail className="h-5 w-5" />
+                <Mail className="h-5 w-5" aria-hidden="true" />
                 {siteConfig.contact.email}
               </a>
               <Button
                 asChild
                 variant="secondary"
-                className="text-primary bg-white hover:bg-white/90"
+                className="text-primary bg-primary-foreground hover:bg-primary-foreground/90"
               >
                 <Link href="/contact">Contact Us</Link>
               </Button>
