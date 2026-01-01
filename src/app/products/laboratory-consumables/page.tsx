@@ -25,7 +25,7 @@ export default function LaboratoryConsumablesPage() {
           <div className="mb-6">
             <Button asChild variant="ghost" size="sm">
               <Link href="/products">
-                <ArrowLeft className="mr-2 h-4 w-4" />
+                <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" />
                 Back to Products
               </Link>
             </Button>
@@ -45,8 +45,14 @@ export default function LaboratoryConsumablesPage() {
       </section>
 
       {/* Consumables Grid */}
-      <section className="py-12 sm:py-16">
+      <section
+        className="animate-fade-in py-12 sm:py-16"
+        aria-labelledby="consumables-heading"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 id="consumables-heading" className="sr-only">
+            Available Consumables
+          </h2>
           <ConsumablesGrid />
         </div>
       </section>
