@@ -26,12 +26,12 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval'", // Next.js requires unsafe-inline/eval
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com", // Next.js requires unsafe-inline/eval
       "style-src 'self' 'unsafe-inline'", // Tailwind requires unsafe-inline
       "img-src 'self' data: blob:",
       "font-src 'self'",
       "frame-src 'self' https://www.google.com", // Google Maps iframe
-      "connect-src 'self'",
+      "connect-src 'self' https://va.vercel-scripts.com",
     ].join("; "),
   },
 ];
