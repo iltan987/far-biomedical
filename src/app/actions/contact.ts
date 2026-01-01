@@ -82,14 +82,17 @@ function checkRateLimit(ip: string): { allowed: boolean; retryAfter?: number } {
 }
 
 // Clean up old rate limit entries periodically
-setInterval(() => {
-  const now = Date.now();
-  for (const [ip, record] of rateLimitMap.entries()) {
-    if (now > record.resetTime) {
-      rateLimitMap.delete(ip);
+setInterval(
+  () => {
+    const now = Date.now();
+    for (const [ip, record] of rateLimitMap.entries()) {
+      if (now > record.resetTime) {
+        rateLimitMap.delete(ip);
+      }
     }
-  }
-}, 5 * 60 * 1000); // Clean up every 5 minutes
+  },
+  5 * 60 * 1000
+); // Clean up every 5 minutes
 
 export async function sendContactEmail(
   data: ContactFormData
@@ -175,7 +178,9 @@ export async function sendContactEmail(
 
   // Check if environment variables are configured
   if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-    console.error("Email configuration missing: GMAIL_USER or GMAIL_APP_PASSWORD not set");
+    console.error(
+      "Email configuration missing: GMAIL_USER or GMAIL_APP_PASSWORD not set"
+    );
     return {
       success: false,
       message: "Email service is not configured. Please contact us directly.",
@@ -271,7 +276,8 @@ IP: ${clientIp}
     console.error("Failed to send email:", error);
     return {
       success: false,
-      message: "Failed to send message. Please try again later or contact us directly.",
+      message:
+        "Failed to send message. Please try again later or contact us directly.",
     };
   }
 }

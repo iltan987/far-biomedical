@@ -2,4 +2,7 @@ node_modules
 .next
 .env*.local
 pnpm-lock.yaml
+
+# Shadcn UI generated files
 src/components/ui/**
+src/lib/utils.ts

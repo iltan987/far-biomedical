@@ -91,7 +91,11 @@ const InstrumentsLayout = ({
     [defaultLayout]
   );
 
-  const layout = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const layout = useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getServerSnapshot
+  );
 
   const setLayout = useCallback(
     (value: LayoutType) => {
@@ -178,4 +182,3 @@ function script(
     document.documentElement.setAttribute(attribute, defaultLayout);
   }
 }
-

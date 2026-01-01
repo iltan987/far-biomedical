@@ -140,59 +140,56 @@ export function InstrumentsList() {
 
       {/* Instruments Grid */}
       <div className="instruments-grid">
-          {filteredInstruments.map((instrument) => {
-            const isExpanded = expandedItems.has(instrument.id);
-            const specsLimit = layout === "list" ? 6 : 4;
-            const displaySpecs = isExpanded
-              ? instrument.specifications
-              : instrument.specifications.slice(0, specsLimit);
+        {filteredInstruments.map((instrument) => {
+          const isExpanded = expandedItems.has(instrument.id);
+          const specsLimit = layout === "list" ? 6 : 4;
+          const displaySpecs = isExpanded
+            ? instrument.specifications
+            : instrument.specifications.slice(0, specsLimit);
 
-            return (
-              <Card
-                key={instrument.id}
-                className="instrument-card overflow-hidden transition-shadow hover:shadow-md"
-              >
-                <CardHeader className="instrument-card-header">
-                  <CardTitle className="text-lg">{instrument.name}</CardTitle>
-                  <Badge
-                    variant="secondary"
-                    className="instrument-card-badge"
+          return (
+            <Card
+              key={instrument.id}
+              className="instrument-card overflow-hidden transition-shadow hover:shadow-md"
+            >
+              <CardHeader className="instrument-card-header">
+                <CardTitle className="text-lg">{instrument.name}</CardTitle>
+                <Badge variant="secondary" className="instrument-card-badge">
+                  {instrumentCategoryLabels[instrument.category]}
+                </Badge>
+              </CardHeader>
+              <CardContent className="instrument-card-content">
+                <ul className="instrument-card-specs text-muted-foreground text-sm">
+                  {displaySpecs.map((spec, specIndex) => (
+                    <li key={specIndex} className="flex items-start gap-2">
+                      <span className="bg-primary mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" />
+                      <span>{spec}</span>
+                    </li>
+                  ))}
+                </ul>
+                {instrument.specifications.length > specsLimit && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="instrument-card-button"
+                    onClick={() => toggleExpanded(instrument.id)}
                   >
-                    {instrumentCategoryLabels[instrument.category]}
-                  </Badge>
-                </CardHeader>
-                <CardContent className="instrument-card-content">
-                  <ul className="instrument-card-specs text-muted-foreground text-sm">
-                    {displaySpecs.map((spec, specIndex) => (
-                      <li key={specIndex} className="flex items-start gap-2">
-                        <span className="bg-primary mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" />
-                        <span>{spec}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  {instrument.specifications.length > specsLimit && (
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="instrument-card-button"
-                      onClick={() => toggleExpanded(instrument.id)}
-                    >
-                      {isExpanded ? (
-                        <>
-                          Show Less <ChevronUp className="ml-1 h-4 w-4" />
-                        </>
-                      ) : (
-                        <>
-                          +{instrument.specifications.length - specsLimit} more
-                          <ChevronDown className="ml-1 h-4 w-4" />
-                        </>
-                      )}
-                    </Button>
-                  )}
-                </CardContent>
-              </Card>
-            );
-          })}
+                    {isExpanded ? (
+                      <>
+                        Show Less <ChevronUp className="ml-1 h-4 w-4" />
+                      </>
+                    ) : (
+                      <>
+                        +{instrument.specifications.length - specsLimit} more
+                        <ChevronDown className="ml-1 h-4 w-4" />
+                      </>
+                    )}
+                  </Button>
+                )}
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
 
       {filteredInstruments.length === 0 && (

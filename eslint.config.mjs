@@ -46,7 +46,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+
+    // Shadcn UI generated files
     "src/components/ui/**",
+    "src/lib/utils.ts",
   ]),
 ]);
 
