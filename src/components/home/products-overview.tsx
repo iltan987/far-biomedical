@@ -84,7 +84,7 @@ export function ProductsOverview() {
             <Button asChild variant="default" className="shrink-0">
               <Link href="/products/laboratory-instruments">
                 Browse Products
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
               </Link>
             </Button>
           </div>
