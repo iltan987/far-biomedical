@@ -37,11 +37,14 @@ export default function ServicesPage() {
       </section>
 
       {/* Service Area */}
-      <section className="border-b py-12">
+      <section className="animate-fade-in border-b py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-12">
-            <div className="flex items-center gap-3">
-              <div className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full">
+            <article className="flex items-center gap-3">
+              <div
+                className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full"
+                aria-hidden="true"
+              >
                 <Truck className="h-5 w-5" />
               </div>
               <div>
@@ -50,9 +53,12 @@ export default function ServicesPage() {
                   Available across Türkiye
                 </p>
               </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full">
+            </article>
+            <article className="flex items-center gap-3">
+              <div
+                className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full"
+                aria-hidden="true"
+              >
                 <Globe className="h-5 w-5" />
               </div>
               <div>
@@ -61,16 +67,19 @@ export default function ServicesPage() {
                   Remote technical assistance
                 </p>
               </div>
-            </div>
+            </article>
           </div>
         </div>
       </section>
 
       {/* Workflow Section */}
-      <section className="py-12 sm:py-16">
+      <section className="py-12 sm:py-16" aria-labelledby="workflow-heading">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto mb-12 max-w-2xl text-center">
-            <h2 className="text-2xl font-bold sm:text-3xl">
+          <div className="animate-fade-in-up mx-auto mb-12 max-w-2xl text-center">
+            <h2
+              id="workflow-heading"
+              className="text-2xl font-bold sm:text-3xl"
+            >
               Target Cell Isolation – How We Do It?
             </h2>
             <p className="text-muted-foreground mt-4">
@@ -85,10 +94,16 @@ export default function ServicesPage() {
       </section>
 
       {/* Laboratory Supply Services */}
-      <section className="bg-muted/30 py-12 sm:py-16">
+      <section
+        className="bg-muted/30 py-12 sm:py-16"
+        aria-labelledby="supply-heading"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="mb-4 text-2xl font-bold sm:text-3xl">
+          <div className="animate-fade-in mx-auto max-w-3xl text-center">
+            <h2
+              id="supply-heading"
+              className="mb-4 text-2xl font-bold sm:text-3xl"
+            >
               Laboratory Supply Services
             </h2>
             <p className="text-muted-foreground mb-8">
@@ -115,10 +130,13 @@ export default function ServicesPage() {
       </section>
 
       {/* FAQs Section */}
-      <section className="py-12 sm:py-16">
+      <section className="py-12 sm:py-16" aria-labelledby="faqs-heading">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl">
-            <h2 className="mb-8 text-center text-2xl font-bold sm:text-3xl">
+            <h2
+              id="faqs-heading"
+              className="animate-fade-in-up mb-8 text-center text-2xl font-bold sm:text-3xl"
+            >
               Frequently Asked Questions
             </h2>
             <ServiceFAQs />
@@ -127,10 +145,16 @@ export default function ServicesPage() {
       </section>
 
       {/* Contact CTA */}
-      <section className="bg-primary text-primary-foreground py-12 sm:py-16">
+      <section
+        className="bg-primary text-primary-foreground py-12 sm:py-16"
+        aria-labelledby="contact-heading"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="mb-4 text-2xl font-bold sm:text-3xl">
+          <div className="animate-fade-in mx-auto max-w-2xl text-center">
+            <h2
+              id="contact-heading"
+              className="mb-4 text-2xl font-bold sm:text-3xl"
+            >
               Ready to Get Started?
             </h2>
             <p className="mb-6 opacity-90">
@@ -142,10 +166,10 @@ export default function ServicesPage() {
               asChild
               variant="secondary"
               size="lg"
-              className="text-primary bg-white hover:bg-white/90"
+              className="text-primary bg-primary-foreground hover:bg-primary-foreground/90"
             >
               <Link href="/contact">
-                <Mail className="mr-2 h-4 w-4" />
+                <Mail className="mr-2 h-4 w-4" aria-hidden="true" />
                 Contact Us
               </Link>
             </Button>
