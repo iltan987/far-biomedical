@@ -33,7 +33,13 @@ export default function ContactPage() {
       </section>
 
       {/* Main Content Section */}
-      <section className="py-10 sm:py-12">
+      <section
+        className="py-10 sm:py-12"
+        aria-labelledby="contact-main-heading"
+      >
+        <h2 id="contact-main-heading" className="sr-only">
+          Contact Details
+        </h2>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Row 1: Form + Contact Info */}
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
@@ -42,7 +48,7 @@ export default function ContactPage() {
               className="animate-fade-in"
               style={{ animationDelay: "150ms" }}
             >
-              <h2 className="mb-4 text-xl font-semibold">Send Us a Message</h2>
+              <h3 className="mb-4 text-xl font-semibold">Send Us a Message</h3>
               <ContactForm />
             </div>
 
@@ -51,16 +57,19 @@ export default function ContactPage() {
               className="animate-fade-in"
               style={{ animationDelay: "400ms" }}
             >
-              <h2 className="mb-4 text-xl font-semibold">
+              <h3 className="mb-4 text-xl font-semibold">
                 Contact Information
-              </h2>
+              </h3>
               <div className="space-y-3">
-                <div className="bg-muted/50 hover:bg-muted/70 flex items-start gap-3 rounded-lg p-4 transition-colors">
-                  <div className="bg-primary/10 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-lg">
+                <article className="bg-muted/50 hover:bg-muted/70 flex items-start gap-3 rounded-lg p-4 transition-colors">
+                  <div
+                    className="bg-primary/10 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
+                    aria-hidden="true"
+                  >
                     <Mail className="h-4 w-4" />
                   </div>
                   <div className="min-w-0">
-                    <h3 className="text-sm font-semibold">Email</h3>
+                    <h4 className="text-sm font-semibold">Email</h4>
                     <a
                       href={`mailto:${siteConfig.contact.email}`}
                       className="text-muted-foreground hover:text-primary block truncate text-sm transition-colors"
@@ -68,14 +77,17 @@ export default function ContactPage() {
                       {siteConfig.contact.email}
                     </a>
                   </div>
-                </div>
+                </article>
 
-                <div className="bg-muted/50 hover:bg-muted/70 flex items-start gap-3 rounded-lg p-4 transition-colors">
-                  <div className="bg-primary/10 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-lg">
+                <article className="bg-muted/50 hover:bg-muted/70 flex items-start gap-3 rounded-lg p-4 transition-colors">
+                  <div
+                    className="bg-primary/10 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
+                    aria-hidden="true"
+                  >
                     <Phone className="h-4 w-4" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold">Phone</h3>
+                    <h4 className="text-sm font-semibold">Phone</h4>
                     <a
                       href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`}
                       className="text-muted-foreground hover:text-primary text-sm transition-colors"
@@ -83,14 +95,17 @@ export default function ContactPage() {
                       {siteConfig.contact.phone}
                     </a>
                   </div>
-                </div>
+                </article>
 
-                <div className="bg-muted/50 hover:bg-muted/70 flex items-start gap-3 rounded-lg p-4 transition-colors">
-                  <div className="bg-primary/10 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-lg">
+                <article className="bg-muted/50 hover:bg-muted/70 flex items-start gap-3 rounded-lg p-4 transition-colors">
+                  <div
+                    className="bg-primary/10 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
+                    aria-hidden="true"
+                  >
                     <MapPin className="h-4 w-4" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold">Address</h3>
+                    <h4 className="text-sm font-semibold">Address</h4>
                     <p className="text-muted-foreground text-sm">
                       {siteConfig.contact.address.line1}
                       <br />
@@ -101,7 +116,7 @@ export default function ContactPage() {
                       {siteConfig.contact.address.postalCode}
                     </p>
                   </div>
-                </div>
+                </article>
               </div>
             </div>
           </div>
@@ -111,7 +126,7 @@ export default function ContactPage() {
             className="animate-fade-in mt-10"
             style={{ animationDelay: "650ms" }}
           >
-            <h2 className="mb-4 text-xl font-semibold">Our Location</h2>
+            <h3 className="mb-4 text-xl font-semibold">Our Location</h3>
             <GoogleMap />
           </div>
         </div>
