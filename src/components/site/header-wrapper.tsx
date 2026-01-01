@@ -12,10 +12,15 @@ export function HeaderWrapper({ children }: HeaderWrapperProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
 
+    handleScroll(); // Initial check
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);

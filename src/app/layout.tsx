@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { InstrumentsLayoutProvider } from "@/components/instruments-layout-provider";
+import { ScrollRestoration } from "@/components/scroll-restoration";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 
@@ -76,6 +77,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col antialiased`}
       >
+        <ScrollRestoration />
         <InstrumentsLayoutProvider>
           <SiteHeader />
           <main className="flex-1">{children}</main>
