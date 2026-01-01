@@ -1,3 +1,7 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,6 +14,7 @@ import {
 import { navigationItems } from "@/data/navigation";
 
 export function DesktopNav() {
+  const pathname = usePathname();
   return (
     <NavigationMenu viewport={false} className="hidden lg:flex">
       <NavigationMenuList>
@@ -21,7 +26,12 @@ export function DesktopNav() {
                 <ul className="grid w-50 gap-1 p-2">
                   {item.children.map((child) => (
                     <li key={child.name}>
-                      <NavigationMenuLink href={child.href}>
+                      <NavigationMenuLink
+                        href={child.href}
+                        onClick={(e) => {
+                          if (pathname === child.href) e.preventDefault();
+                        }}
+                      >
                         {child.name}
                       </NavigationMenuLink>
                     </li>
@@ -34,6 +44,9 @@ export function DesktopNav() {
               <NavigationMenuLink
                 href={item.href}
                 className={navigationMenuTriggerStyle()}
+                onClick={(e) => {
+                  if (pathname === item.href) e.preventDefault();
+                }}
               >
                 {item.name}
               </NavigationMenuLink>
