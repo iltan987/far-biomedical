@@ -7,7 +7,7 @@ export function HeroSection() {
   return (
     <section className="from-primary/5 via-background to-background relative overflow-hidden bg-linear-to-b">
       {/* Background Pattern */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,var(--primary-glow,oklch(0.577_0.245_27.325/0.1)),transparent)]" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,var(--primary-glow),transparent)]" />
 
       <div className="container mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
         <div className="animate-fade-in-up mx-auto max-w-3xl text-center">
@@ -40,7 +40,7 @@ export function HeroSection() {
             <Button asChild size="lg" className="w-full sm:w-auto">
               <Link href="/products">
                 Explore Products
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
               </Link>
             </Button>
             <Button

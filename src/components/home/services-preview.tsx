@@ -58,7 +58,7 @@ export function ServicesPreview() {
             <Button asChild className="mt-8">
               <Link href="/services">
                 Learn More About Our Services
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
               </Link>
             </Button>
           </div>

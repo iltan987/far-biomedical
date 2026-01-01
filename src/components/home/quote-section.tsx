@@ -38,7 +38,7 @@ export function QuoteSection() {
           >
             <Link href="/contact">
               Contact Us
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
             </Link>
           </Button>
         </div>
