@@ -7,19 +7,22 @@ export function QuoteSection() {
   return (
     <section className="bg-primary text-primary-foreground py-16 sm:py-24 lg:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <Quote className="mx-auto mb-6 h-12 w-12 opacity-50" />
+        <figure className="animate-fade-in-up mx-auto max-w-3xl text-center">
+          <Quote
+            className="mx-auto mb-6 h-12 w-12 opacity-50"
+            aria-hidden="true"
+          />
           <blockquote className="text-2xl leading-relaxed font-medium italic sm:text-3xl lg:text-4xl">
             &quot;Cure is not far away, as long as you and I are willing to take
             things... a little further.&quot;
           </blockquote>
-          <cite className="mt-6 block text-lg font-semibold not-italic opacity-90">
+          <figcaption className="mt-6 text-lg font-semibold opacity-90">
             — CEO, FAR Better
-          </cite>
-        </div>
+          </figcaption>
+        </figure>
 
         {/* CTA */}
-        <div className="mt-12 text-center">
+        <div className="animate-fade-in mt-12 text-center">
           <h3 className="mb-4 text-xl font-bold sm:text-2xl">
             What do you need?
           </h3>
@@ -31,7 +34,7 @@ export function QuoteSection() {
             asChild
             variant="secondary"
             size="lg"
-            className="text-primary bg-white hover:bg-white/90"
+            className="text-primary bg-primary-foreground hover:bg-primary-foreground/90"
           >
             <Link href="/contact">
               Contact Us

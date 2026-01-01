@@ -7,10 +7,10 @@ export function HeroSection() {
   return (
     <section className="from-primary/5 via-background to-background relative overflow-hidden bg-linear-to-b">
       {/* Background Pattern */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,0,0,0.1),transparent)]" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,var(--primary-glow,oklch(0.577_0.245_27.325/0.1)),transparent)]" />
 
       <div className="container mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="animate-fade-in-up mx-auto max-w-3xl text-center">
           {/* Badge */}
           <div className="border-primary/20 bg-primary/5 text-primary mb-6 inline-flex items-center rounded-full border px-4 py-1.5 text-sm">
             <span className="bg-primary mr-2 h-2 w-2 animate-pulse rounded-full" />

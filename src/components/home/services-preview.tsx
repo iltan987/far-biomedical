@@ -1,50 +1,26 @@
-import {
-  ArrowRight,
-  FlaskConical,
-  Microscope,
-  Shield,
-  Truck,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
-
-const services = [
-  {
-    title: "Sample Preparation",
-    description:
-      "Controlled collection, stabilization, and processing of blood samples.",
-    icon: FlaskConical,
-  },
-  {
-    title: "Cell Isolation",
-    description:
-      "Target cell isolation using proprietary device technology for high efficiency.",
-    icon: Microscope,
-  },
-  {
-    title: "Quality Control",
-    description: "Viability testing, purity analysis, and microscopic imaging.",
-    icon: Shield,
-  },
-  {
-    title: "Delivery & Reporting",
-    description: "Comprehensive analysis, documentation, and secure delivery.",
-    icon: Truck,
-  },
-];
+import { services } from "@/data/services";
 
 export function ServicesPreview() {
   return (
-    <section className="py-16 sm:py-24 lg:py-32">
+    <section
+      className="py-16 sm:py-24 lg:py-32"
+      aria-labelledby="services-heading"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Content */}
-          <div>
+          <div className="animate-fade-in-up">
             <h2 className="text-primary mb-3 text-sm font-semibold tracking-wider uppercase">
               Our Services
             </h2>
-            <p className="text-3xl font-bold tracking-tight sm:text-4xl">
+            <p
+              id="services-heading"
+              className="text-3xl font-bold tracking-tight sm:text-4xl"
+            >
               Professional Laboratory Services
             </p>
             <p className="text-muted-foreground mt-4 text-lg">
@@ -53,13 +29,20 @@ export function ServicesPreview() {
               international clients.
             </p>
 
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div
+              className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2"
+              role="list"
+            >
               {services.map((service) => (
-                <div
+                <article
                   key={service.title}
+                  role="listitem"
                   className="bg-muted/50 hover:bg-muted flex items-start gap-3 rounded-lg p-4 transition-colors"
                 >
-                  <div className="bg-primary/10 text-primary flex h-10 w-10 shrink-0 items-center justify-center rounded-lg">
+                  <div
+                    className="bg-primary/10 text-primary flex h-10 w-10 shrink-0 items-center justify-center rounded-lg"
+                    aria-hidden="true"
+                  >
                     <service.icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -68,7 +51,7 @@ export function ServicesPreview() {
                       {service.description}
                     </p>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
 
@@ -81,12 +64,15 @@ export function ServicesPreview() {
           </div>
 
           {/* AutoCeive Features */}
-          <div className="relative">
+          <aside className="animate-fade-in relative">
             <div className="bg-card rounded-2xl border p-8 shadow-sm">
               <h3 className="mb-6 text-2xl font-bold">AutoCeive Features</h3>
-              <ul className="space-y-4">
+              <ol className="space-y-4" aria-label="AutoCeive key features">
                 <li className="flex items-start gap-3">
-                  <div className="bg-primary text-primary-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium">
+                  <div
+                    className="bg-primary text-primary-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium"
+                    aria-hidden="true"
+                  >
                     1
                   </div>
                   <p className="text-muted-foreground">
@@ -95,7 +81,10 @@ export function ServicesPreview() {
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="bg-primary text-primary-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium">
+                  <div
+                    className="bg-primary text-primary-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium"
+                    aria-hidden="true"
+                  >
                     2
                   </div>
                   <p className="text-muted-foreground">
@@ -104,7 +93,10 @@ export function ServicesPreview() {
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="bg-primary text-primary-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium">
+                  <div
+                    className="bg-primary text-primary-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium"
+                    aria-hidden="true"
+                  >
                     3
                   </div>
                   <p className="text-muted-foreground">
@@ -112,7 +104,7 @@ export function ServicesPreview() {
                     laboratories.
                   </p>
                 </li>
-              </ul>
+              </ol>
               <div className="mt-6 border-t pt-6">
                 <p className="text-primary text-sm font-medium">
                   Laboratory equipment and reagents now available at our
@@ -120,7 +112,7 @@ export function ServicesPreview() {
                 </p>
               </div>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
     </section>
