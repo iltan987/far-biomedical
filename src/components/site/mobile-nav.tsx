@@ -40,6 +40,7 @@ export function MobileNav() {
       <SheetContent
         side="right"
         className="w-75 sm:w-87.5 [&>button:last-child]:hidden"
+        aria-describedby={undefined}
       >
         <SheetHeader className="flex-row items-center justify-between gap-4 border-b pb-4">
           <SheetTitle asChild>
