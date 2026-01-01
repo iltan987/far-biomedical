@@ -108,8 +108,8 @@ export function InstrumentsList({ initialLayout }: InstrumentsListProps) {
               />
             </div>
 
-            {/* Layout Toggle */}
-            <div className="bg-muted flex items-center gap-1 rounded-lg p-1">
+            {/* Layout Toggle - hidden on mobile where all layouts look identical */}
+            <div className="bg-muted hidden items-center gap-1 rounded-lg p-1 sm:flex">
               <Button
                 variant="ghost"
                 size="sm"
