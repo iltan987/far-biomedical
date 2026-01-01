@@ -19,8 +19,8 @@ export const siteConfig: SiteConfig = {
   },
 
   social: {
-    linkedin: "#", // Placeholder - update with actual LinkedIn URL
-    instagram: "#", // Placeholder - update with actual Instagram URL
+    linkedin: "https://www.linkedin.com/in/farbetterbio",
+    instagram: "https://www.instagram.com/farbetterbio",
   },
 
   location: {
