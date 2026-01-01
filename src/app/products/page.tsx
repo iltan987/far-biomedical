@@ -67,55 +67,75 @@ export default function ProductsPage() {
       </section>
 
       {/* Product Categories */}
-      <section className="py-12 sm:py-16">
+      <section
+        className="animate-fade-in py-12 sm:py-16"
+        aria-labelledby="categories-heading"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
+          <h2 id="categories-heading" className="sr-only">
+            Product Categories
+          </h2>
+          <div
+            className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8"
+            role="list"
+          >
             {productCategories.map((category) => (
-              <Card
-                key={category.title}
-                className="relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-              >
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="bg-primary/10 text-primary flex h-12 w-12 items-center justify-center rounded-lg">
-                      <category.icon className="h-6 w-6" />
+              <article key={category.title} role="listitem">
+                <Card className="relative h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                  <CardHeader>
+                    <div className="flex items-start justify-between">
+                      <div
+                        className="bg-primary/10 text-primary flex h-12 w-12 items-center justify-center rounded-lg"
+                        aria-hidden="true"
+                      >
+                        <category.icon className="h-6 w-6" />
+                      </div>
+                      {category.badge && (
+                        <Badge variant="secondary">{category.badge}</Badge>
+                      )}
                     </div>
-                    {category.badge && (
-                      <Badge variant="secondary">{category.badge}</Badge>
+                    <CardTitle className="mt-4 text-xl">
+                      {category.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="mb-4 text-base">
+                      {category.description}
+                    </CardDescription>
+                    {category.href ? (
+                      <Button asChild variant="outline" className="w-full">
+                        <Link href={category.href}>
+                          Browse {category.title}
+                          <ArrowRight
+                            className="ml-2 h-4 w-4"
+                            aria-hidden="true"
+                          />
+                        </Link>
+                      </Button>
+                    ) : (
+                      <Button disabled variant="outline" className="w-full">
+                        Coming Soon
+                      </Button>
                     )}
-                  </div>
-                  <CardTitle className="mt-4 text-xl">
-                    {category.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="mb-4 text-base">
-                    {category.description}
-                  </CardDescription>
-                  {category.href ? (
-                    <Button asChild variant="outline" className="w-full">
-                      <Link href={category.href}>
-                        Browse {category.title}
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  ) : (
-                    <Button disabled variant="outline" className="w-full">
-                      Coming Soon
-                    </Button>
-                  )}
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
       {/* Contact CTA */}
-      <section className="bg-muted/30 py-12 sm:py-16">
+      <section
+        className="animate-fade-in bg-muted/30 py-12 sm:py-16"
+        aria-labelledby="contact-cta-heading"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="mb-4 text-2xl font-bold sm:text-3xl">
+            <h2
+              id="contact-cta-heading"
+              className="mb-4 text-2xl font-bold sm:text-3xl"
+            >
               Can&apos;t Find What You Need?
             </h2>
             <p className="text-muted-foreground mb-6">

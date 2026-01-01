@@ -10,23 +10,25 @@ import {
 export function ConsumablesGrid() {
   return (
     <div>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        role="list"
+      >
         {laboratoryConsumables.map((consumable) => (
-          <Card
-            key={consumable.id}
-            className="transition-shadow hover:shadow-md"
-          >
-            <CardHeader className="pb-3">
-              <CardTitle className="text-lg">{consumable.name}</CardTitle>
-            </CardHeader>
-            {consumable.description && (
-              <CardContent>
-                <p className="text-muted-foreground text-sm">
-                  {consumable.description}
-                </p>
-              </CardContent>
-            )}
-          </Card>
+          <article key={consumable.id} role="listitem">
+            <Card className="h-full transition-shadow hover:shadow-md">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg">{consumable.name}</CardTitle>
+              </CardHeader>
+              {consumable.description && (
+                <CardContent>
+                  <p className="text-muted-foreground text-sm">
+                    {consumable.description}
+                  </p>
+                </CardContent>
+              )}
+            </Card>
+          </article>
         ))}
       </div>
 
@@ -38,7 +40,7 @@ export function ConsumablesGrid() {
         </p>
         <Button asChild>
           <a href={`mailto:${consumablesOrderEmail}`}>
-            <Mail className="mr-2 h-4 w-4" />
+            <Mail className="mr-2 h-4 w-4" aria-hidden="true" />
             {consumablesOrderEmail}
           </a>
         </Button>

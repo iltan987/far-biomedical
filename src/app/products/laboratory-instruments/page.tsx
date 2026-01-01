@@ -1,10 +1,15 @@
 import { ArrowLeft, Mail } from "lucide-react";
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import Link from "next/link";
 
 import { InstrumentsList } from "@/components/products/instruments-list";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/constants";
+
+type LayoutType = "list" | "2-col" | "3-col";
+const VALID_LAYOUTS: LayoutType[] = ["list", "2-col", "3-col"];
+const DEFAULT_LAYOUT: LayoutType = "2-col";
 
 export const metadata: Metadata = {
   title: "Laboratory Instruments",
@@ -17,7 +22,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function LaboratoryInstrumentsPage() {
+export default async function LaboratoryInstrumentsPage() {
+  const cookieStore = await cookies();
+  const layoutCookie = cookieStore.get("instruments-layout")?.value;
+  const initialLayout =
+    layoutCookie && VALID_LAYOUTS.includes(layoutCookie as LayoutType)
+      ? (layoutCookie as LayoutType)
+      : DEFAULT_LAYOUT;
+
   return (
     <>
       {/* Hero Section */}
@@ -27,7 +39,7 @@ export default function LaboratoryInstrumentsPage() {
           <div className="mb-6">
             <Button asChild variant="ghost" size="sm">
               <Link href="/products">
-                <ArrowLeft className="mr-2 h-4 w-4" />
+                <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" />
                 Back to Products
               </Link>
             </Button>
@@ -47,17 +59,29 @@ export default function LaboratoryInstrumentsPage() {
       </section>
 
       {/* Instruments List */}
-      <section className="py-12 sm:py-16">
+      <section
+        className="animate-fade-in py-12 sm:py-16"
+        aria-labelledby="instruments-heading"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <InstrumentsList />
+          <h2 id="instruments-heading" className="sr-only">
+            Available Instruments
+          </h2>
+          <InstrumentsList initialLayout={initialLayout} />
         </div>
       </section>
 
       {/* Contact CTA */}
-      <section className="bg-muted/30 py-12 sm:py-16">
+      <section
+        className="animate-fade-in bg-muted/30 py-12 sm:py-16"
+        aria-labelledby="help-heading"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="mb-4 text-2xl font-bold sm:text-3xl">
+            <h2
+              id="help-heading"
+              className="mb-4 text-2xl font-bold sm:text-3xl"
+            >
               Need Help Choosing?
             </h2>
             <p className="text-muted-foreground mb-6">
@@ -66,7 +90,7 @@ export default function LaboratoryInstrumentsPage() {
             </p>
             <Button asChild>
               <a href={`mailto:${siteConfig.contact.email}`}>
-                <Mail className="mr-2 h-4 w-4" />
+                <Mail className="mr-2 h-4 w-4" aria-hidden="true" />
                 Contact Us
               </a>
             </Button>

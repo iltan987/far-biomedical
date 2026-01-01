@@ -256,19 +256,3 @@ html:not([data-instruments-layout]) .instruments-grid {
 [data-instruments-layout="list"] .instrument-card-button {
   @apply w-auto;
 }
-
-/* Layout toggle buttons - prevents flash on page load */
-.layout-toggle {
-  @apply text-muted-foreground hover:bg-background/50 hover:text-foreground h-8 px-3 transition-all;
-}
-
-.layout-toggle-active {
-  @apply bg-background text-foreground hover:bg-background shadow-sm;
-}
-
-/* Active states based on data attribute */
-[data-instruments-layout="list"] .layout-toggle-list,
-[data-instruments-layout="2-col"] .layout-toggle-2col,
-[data-instruments-layout="3-col"] .layout-toggle-3col {
-  @apply bg-background text-foreground hover:bg-background shadow-sm;
-}
