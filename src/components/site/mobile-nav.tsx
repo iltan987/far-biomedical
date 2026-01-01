@@ -3,6 +3,7 @@
 import { ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -18,6 +19,7 @@ import { navigationItems } from "@/data/navigation";
 import { cn } from "@/lib/utils";
 
 export function MobileNav() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
 
@@ -94,7 +96,10 @@ export function MobileNav() {
                     <Link
                       key={child.href}
                       href={child.href}
-                      onClick={() => setOpen(false)}
+                      onClick={(e) => {
+                        if (pathname === child.href) e.preventDefault();
+                        setOpen(false);
+                      }}
                       className="text-muted-foreground hover:bg-accent hover:text-accent-foreground rounded-md px-3 py-2 text-sm transition-colors"
                     >
                       {child.name}
@@ -106,7 +111,10 @@ export function MobileNav() {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={() => setOpen(false)}
+                onClick={(e) => {
+                  if (pathname === item.href) e.preventDefault();
+                  setOpen(false);
+                }}
                 className="hover:bg-accent hover:text-accent-foreground rounded-md px-3 py-2 text-base font-medium transition-colors"
               >
                 {item.name}
