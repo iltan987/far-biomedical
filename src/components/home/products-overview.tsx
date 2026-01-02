@@ -41,7 +41,7 @@ export function ProductsOverview() {
 
         {/* Product Cards */}
         <StaggerContainer
-          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-8"
           role="list"
         >
           {products.map((product) => (
