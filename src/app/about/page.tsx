@@ -1,5 +1,6 @@
 import { Building2, Mail } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { ImagePlaceholder } from "@/components/image-placeholder";
@@ -70,11 +71,21 @@ export default function AboutPage() {
                 <article role="listitem" className="h-full">
                   <Card className="group hover:border-primary/50 focus-within:ring-ring h-full overflow-hidden border-2 transition-colors focus-within:ring-2">
                     {/* Platform Image */}
-                    <div className="overflow-hidden">
-                      <ImagePlaceholder
-                        aspectRatio="4/3"
-                        className="rounded-none transition-transform duration-300 group-hover:scale-105"
-                      />
+                    <div className="aspect-4/3 overflow-hidden">
+                      {platform.image ? (
+                        <Image
+                          src={platform.image.src}
+                          alt={platform.title}
+                          width={platform.image.width}
+                          height={platform.image.height}
+                          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      ) : (
+                        <ImagePlaceholder
+                          aspectRatio="4/3"
+                          className="rounded-none transition-transform duration-300 group-hover:scale-105"
+                        />
+                      )}
                     </div>
                     <CardContent className="px-6 pt-6 pb-4">
                       <div
