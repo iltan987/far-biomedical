@@ -8,6 +8,11 @@ export type Product = {
   icon: LucideIcon;
   badge: string;
   href: string;
+  image?: {
+    src: string;
+    width: number;
+    height: number;
+  };
 };
 
 export const products: Product[] = [
@@ -20,6 +25,11 @@ export const products: Product[] = [
     icon: Magnet,
     badge: "Coming Soon",
     href: "/products",
+    image: {
+      src: "/images/home/img-3.jpeg",
+      width: 1024,
+      height: 1024,
+    },
   },
   {
     title: "AutoCeive",
@@ -30,6 +40,11 @@ export const products: Product[] = [
     icon: Beaker,
     badge: "Coming Soon",
     href: "/products",
+    image: {
+      src: "/images/home/img-2.jpeg",
+      width: 1365,
+      height: 768,
+    },
   },
   {
     title: "AphereCeive",
@@ -40,6 +55,11 @@ export const products: Product[] = [
     icon: Activity,
     badge: "In Development",
     href: "/products",
+    image: {
+      src: "/images/home/img-4.jpeg",
+      width: 1365,
+      height: 768,
+    },
   },
   {
     title: "Software Tools",
@@ -48,5 +68,10 @@ export const products: Product[] = [
     icon: Code,
     badge: "Coming Soon",
     href: "/products",
+    image: {
+      src: "/images/home/img-5.jpeg",
+      width: 1365,
+      height: 768,
+    },
   },
 ];

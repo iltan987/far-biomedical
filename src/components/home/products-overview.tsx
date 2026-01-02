@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { ImagePlaceholder } from "@/components/image-placeholder";
@@ -49,11 +50,21 @@ export function ProductsOverview() {
               <article role="listitem" className="h-full">
                 <Card className="group focus-within:ring-ring relative h-full overflow-hidden transition-all duration-300 focus-within:ring-2 hover:-translate-y-1 hover:shadow-lg">
                   {/* Product Image */}
-                  <div className="overflow-hidden">
-                    <ImagePlaceholder
-                      aspectRatio="4/3"
-                      className="rounded-none transition-transform duration-300 group-hover:scale-105"
-                    />
+                  <div className="aspect-4/3 overflow-hidden">
+                    {product.image ? (
+                      <Image
+                        src={product.image.src}
+                        alt={product.title}
+                        width={product.image.width}
+                        height={product.image.height}
+                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    ) : (
+                      <ImagePlaceholder
+                        aspectRatio="4/3"
+                        className="rounded-none transition-transform duration-300 group-hover:scale-105"
+                      />
+                    )}
                   </div>
                   <CardHeader>
                     <div className="flex items-start justify-between">

@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
-import { ImagePlaceholder } from "@/components/image-placeholder";
 import { FadeIn } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 
@@ -60,11 +60,15 @@ export function HeroSection() {
 
           {/* Hero Image */}
           <FadeIn direction="right" delay={0.2}>
-            <ImagePlaceholder
-              aspectRatio="video"
-              label="Hero Image"
-              className="shadow-lg"
-            />
+            <div className="aspect-video overflow-hidden rounded-lg shadow-lg">
+              <Image
+                src="/images/home/img-1.jpg"
+                alt="Hero Image"
+                width={2889}
+                height={1664}
+                priority
+              />
+            </div>
           </FadeIn>
         </div>
       </div>
