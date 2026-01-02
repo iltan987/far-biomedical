@@ -79,9 +79,9 @@ export default function ProductsPage() {
             role="list"
           >
             {productCategories.map((category) => (
-              <StaggerItem key={category.title}>
-                <article role="listitem">
-                  <Card className="group relative h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+              <StaggerItem key={category.title} className="h-full">
+                <article role="listitem" className="h-full">
+                  <Card className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                     {/* Category Image */}
                     <div className="overflow-hidden">
                       <ImagePlaceholder
@@ -105,8 +105,8 @@ export default function ProductsPage() {
                         {category.title}
                       </CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <CardDescription className="mb-4 text-base">
+                    <CardContent className="flex grow flex-col">
+                      <CardDescription className="mb-4 grow text-base">
                         {category.description}
                       </CardDescription>
                       {category.href ? (
