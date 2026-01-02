@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
-import { ImagePlaceholder } from "@/components/image-placeholder";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import { services } from "@/data/services";
@@ -70,10 +70,12 @@ export function ServicesPreview() {
           <FadeIn direction="none" delay={0.2} className="relative">
             <div className="bg-card overflow-hidden rounded-2xl border shadow-sm">
               {/* AutoCeive Image */}
-              <ImagePlaceholder
-                aspectRatio="video"
-                label="AutoCeive Device"
-                className="rounded-none"
+              <Image
+                src="/images/home/img-6.jpeg"
+                alt="AutoCeive Device"
+                width={1365}
+                height={768}
+                className="w-full"
               />
               <div className="p-8">
                 <h3 className="mb-6 text-2xl font-bold">AutoCeive Features</h3>
