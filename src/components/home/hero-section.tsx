@@ -1,9 +1,9 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+import { ImagePlaceholder } from "@/components/image-placeholder";
 import { FadeIn } from "@/components/motion";
 import { Button } from "@/components/ui/button";
-import { ImagePlaceholder } from "@/components/image-placeholder";
 
 export function HeroSection() {
   return (
