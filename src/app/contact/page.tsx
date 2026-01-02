@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact/contact-form";
 import { GoogleMap } from "@/components/contact/google-map";
 import { FadeIn } from "@/components/motion";
+import { ImagePlaceholder } from "@/components/image-placeholder";
 import { siteConfig } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -19,17 +20,27 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      {/* Minimal Hero Section */}
-      <section className="from-primary/5 to-background bg-linear-to-b py-8 sm:py-10">
+      {/* Hero Section */}
+      <section className="from-primary/5 to-background bg-linear-to-b py-8 sm:py-10 lg:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn className="mx-auto max-w-2xl text-center">
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Contact Us
-            </h1>
-            <p className="text-muted-foreground mt-3 text-base leading-relaxed">
-              Have questions? We&apos;d love to hear from you.
-            </p>
-          </FadeIn>
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <FadeIn className="text-center lg:text-left">
+              <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                Contact Us
+              </h1>
+              <p className="text-muted-foreground mt-3 text-base leading-relaxed">
+                Have questions? We&apos;d love to hear from you. Get in touch
+                with our team for inquiries about our products and services.
+              </p>
+            </FadeIn>
+            <FadeIn direction="right" delay={0.2}>
+              <ImagePlaceholder
+                aspectRatio="video"
+                label="Office Image"
+                className="shadow-lg"
+              />
+            </FadeIn>
+          </div>
         </div>
       </section>
 

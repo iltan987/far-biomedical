@@ -6,6 +6,7 @@ import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { ServiceFAQs } from "@/components/services/service-faqs";
 import { WorkflowSteps } from "@/components/services/workflow-steps";
 import { Button } from "@/components/ui/button";
+import { ImagePlaceholder } from "@/components/image-placeholder";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -21,19 +22,28 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="from-primary/5 to-background bg-linear-to-b py-10 sm:py-14">
+      <section className="from-primary/5 to-background bg-linear-to-b py-10 sm:py-14 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              Our Services
-            </h1>
-            <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
-              We offer comprehensive laboratory services including the
-              processing of blood samples into PBMCs, isolation of target cells
-              with high efficiency, and the provision of high-quality
-              microscopic imaging.
-            </p>
-          </FadeIn>
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <FadeIn className="text-center lg:text-left">
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+                Our Services
+              </h1>
+              <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
+                We offer comprehensive laboratory services including the
+                processing of blood samples into PBMCs, isolation of target
+                cells with high efficiency, and the provision of high-quality
+                microscopic imaging.
+              </p>
+            </FadeIn>
+            <FadeIn direction="right" delay={0.2}>
+              <ImagePlaceholder
+                aspectRatio="video"
+                label="Laboratory Services"
+                className="shadow-lg"
+              />
+            </FadeIn>
+          </div>
         </div>
       </section>
 
@@ -104,33 +114,42 @@ export default function ServicesPage() {
         aria-labelledby="supply-heading"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn direction="none" className="mx-auto max-w-3xl text-center">
-            <h2
-              id="supply-heading"
-              className="mb-4 text-2xl font-bold sm:text-3xl"
-            >
-              Laboratory Supply Services
-            </h2>
-            <p className="text-muted-foreground mb-8">
-              We provide comprehensive supply services for research
-              laboratories. Whatever your needs may be, our specialized team
-              identifies high-quality, specific products from around the world
-              and delivers them to you in a manner tailored to your
-              requirements.
-            </p>
-            <div className="flex flex-col justify-center gap-4 sm:flex-row">
-              <Button asChild>
-                <Link href="/products/laboratory-instruments">
-                  Browse Instruments
-                </Link>
-              </Button>
-              <Button asChild variant="outline">
-                <Link href="/products/laboratory-consumables">
-                  Browse Consumables
-                </Link>
-              </Button>
-            </div>
-          </FadeIn>
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <FadeIn direction="left">
+              <ImagePlaceholder
+                aspectRatio="video"
+                label="Laboratory Supplies"
+                className="shadow-lg"
+              />
+            </FadeIn>
+            <FadeIn direction="none" delay={0.1}>
+              <h2
+                id="supply-heading"
+                className="mb-4 text-center text-2xl font-bold sm:text-3xl lg:text-left"
+              >
+                Laboratory Supply Services
+              </h2>
+              <p className="text-muted-foreground mb-8 text-center lg:text-left">
+                We provide comprehensive supply services for research
+                laboratories. Whatever your needs may be, our specialized team
+                identifies high-quality, specific products from around the world
+                and delivers them to you in a manner tailored to your
+                requirements.
+              </p>
+              <div className="flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
+                <Button asChild>
+                  <Link href="/products/laboratory-instruments">
+                    Browse Instruments
+                  </Link>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link href="/products/laboratory-consumables">
+                    Browse Consumables
+                  </Link>
+                </Button>
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </section>
 

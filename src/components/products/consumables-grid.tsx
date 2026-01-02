@@ -3,6 +3,7 @@ import { Mail } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ImagePlaceholder } from "@/components/image-placeholder";
 import {
   consumablesOrderEmail,
   laboratoryConsumables,
@@ -18,7 +19,14 @@ export function ConsumablesGrid() {
         {laboratoryConsumables.map((consumable) => (
           <StaggerItem key={consumable.id}>
             <article role="listitem">
-              <Card className="h-full transition-shadow hover:shadow-md">
+              <Card className="group h-full overflow-hidden transition-shadow hover:shadow-md">
+                {/* Consumable Image */}
+                <div className="overflow-hidden">
+                  <ImagePlaceholder
+                    aspectRatio="4/3"
+                    className="rounded-none transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
                 <CardHeader className="pb-3">
                   <CardTitle className="text-lg">{consumable.name}</CardTitle>
                 </CardHeader>

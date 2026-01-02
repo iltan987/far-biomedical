@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { ImagePlaceholder } from "@/components/image-placeholder";
 import { products } from "@/data/products";
 import { siteConfig } from "@/lib/constants";
 
@@ -25,18 +26,27 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="from-primary/5 to-background bg-linear-to-b py-10 sm:py-14">
+      <section className="from-primary/5 to-background bg-linear-to-b py-10 sm:py-14 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              About Us
-            </h1>
-            <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
-              <strong>FAR Better Bio</strong> is an R&D company developing
-              advanced blood-cell separation and apheretic blood filtration
-              technologies.
-            </p>
-          </FadeIn>
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <FadeIn className="text-center lg:text-left">
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+                About Us
+              </h1>
+              <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
+                <strong>FAR Better Bio</strong> is an R&D company developing
+                advanced blood-cell separation and apheretic blood filtration
+                technologies.
+              </p>
+            </FadeIn>
+            <FadeIn direction="right" delay={0.2}>
+              <ImagePlaceholder
+                aspectRatio="video"
+                label="Company Image"
+                className="shadow-lg"
+              />
+            </FadeIn>
+          </div>
         </div>
       </section>
 
@@ -56,10 +66,17 @@ export default function AboutPage() {
             role="list"
           >
             {platforms.map((platform) => (
-              <StaggerItem key={platform.title}>
-                <article role="listitem">
-                  <Card className="hover:border-primary/50 focus-within:ring-ring h-full border-2 transition-colors focus-within:ring-2">
-                    <CardContent className="p-6">
+              <StaggerItem key={platform.title} className="h-full">
+                <article role="listitem" className="h-full">
+                  <Card className="group hover:border-primary/50 focus-within:ring-ring h-full overflow-hidden border-2 transition-colors focus-within:ring-2">
+                    {/* Platform Image */}
+                    <div className="overflow-hidden">
+                      <ImagePlaceholder
+                        aspectRatio="4/3"
+                        className="rounded-none transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    <CardContent className="px-6 pt-6 pb-4">
                       <div
                         className="bg-primary/10 text-primary mb-4 flex h-12 w-12 items-center justify-center rounded-lg"
                         aria-hidden="true"
@@ -99,29 +116,41 @@ export default function AboutPage() {
               Center (BIOMATEN), where we collaborate with multidisciplinary
               engineers and scientists.
             </p>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <article className="bg-card flex items-start gap-3 rounded-lg border p-4">
-                <Building2
-                  className="text-primary mt-0.5 h-5 w-5"
-                  aria-hidden="true"
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              <article className="bg-card overflow-hidden rounded-xl border">
+                <ImagePlaceholder
+                  aspectRatio="video"
+                  className="rounded-none"
                 />
-                <div>
-                  <h3 className="font-semibold">METU Teknokent</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Middle East Technical University Technopark
-                  </p>
+                <div className="flex items-start gap-3 p-4">
+                  <Building2
+                    className="text-primary mt-0.5 h-5 w-5 shrink-0"
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <h3 className="font-semibold">METU Teknokent</h3>
+                    <p className="text-muted-foreground text-sm">
+                      Middle East Technical University Technopark
+                    </p>
+                  </div>
                 </div>
               </article>
-              <article className="bg-card flex items-start gap-3 rounded-lg border p-4">
-                <Building2
-                  className="text-primary mt-0.5 h-5 w-5"
-                  aria-hidden="true"
+              <article className="bg-card overflow-hidden rounded-xl border">
+                <ImagePlaceholder
+                  aspectRatio="video"
+                  className="rounded-none"
                 />
-                <div>
-                  <h3 className="font-semibold">BIOMATEN</h3>
-                  <p className="text-muted-foreground text-sm">
-                    METU Research Center
-                  </p>
+                <div className="flex items-start gap-3 p-4">
+                  <Building2
+                    className="text-primary mt-0.5 h-5 w-5 shrink-0"
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <h3 className="font-semibold">BIOMATEN</h3>
+                    <p className="text-muted-foreground text-sm">
+                      METU Research Center
+                    </p>
+                  </div>
                 </div>
               </article>
             </div>
