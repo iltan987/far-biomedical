@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+import { ImagePlaceholder } from "@/components/image-placeholder";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -44,9 +45,16 @@ export function ProductsOverview() {
           role="list"
         >
           {products.map((product) => (
-            <StaggerItem key={product.title}>
-              <article role="listitem">
+            <StaggerItem key={product.title} className="h-full">
+              <article role="listitem" className="h-full">
                 <Card className="group focus-within:ring-ring relative h-full overflow-hidden transition-all duration-300 focus-within:ring-2 hover:-translate-y-1 hover:shadow-lg">
+                  {/* Product Image */}
+                  <div className="overflow-hidden">
+                    <ImagePlaceholder
+                      aspectRatio="4/3"
+                      className="rounded-none transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div
@@ -63,7 +71,7 @@ export function ProductsOverview() {
                       {product.title}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="pb-4">
                     <CardDescription className="text-base leading-relaxed">
                       {product.description}
                     </CardDescription>

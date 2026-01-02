@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { ImagePlaceholder } from "@/components/image-placeholder";
 
 export const metadata: Metadata = {
   title: "Our Products",
@@ -80,7 +81,14 @@ export default function ProductsPage() {
             {productCategories.map((category) => (
               <StaggerItem key={category.title}>
                 <article role="listitem">
-                  <Card className="relative h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                  <Card className="group relative h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    {/* Category Image */}
+                    <div className="overflow-hidden">
+                      <ImagePlaceholder
+                        aspectRatio="4/3"
+                        className="rounded-none transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
                     <CardHeader>
                       <div className="flex items-start justify-between">
                         <div

@@ -12,6 +12,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ImagePlaceholder } from "@/components/image-placeholder";
 import { Input } from "@/components/ui/input";
 import {
   instrumentCategoryLabels,
@@ -196,7 +197,14 @@ export function InstrumentsList({ initialLayout }: InstrumentsListProps) {
 
             return (
               <article key={instrument.id} role="listitem">
-                <Card className="instrument-card h-full overflow-hidden transition-shadow hover:shadow-md">
+                <Card className="instrument-card group h-full overflow-hidden transition-shadow hover:shadow-md">
+                  {/* Instrument Image */}
+                  <div className="instrument-card-image overflow-hidden">
+                    <ImagePlaceholder
+                      aspectRatio="4/3"
+                      className="rounded-none transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
                   <CardHeader className="instrument-card-header">
                     <CardTitle className="text-lg">{instrument.name}</CardTitle>
                     <Badge

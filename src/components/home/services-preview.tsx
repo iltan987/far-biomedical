@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { Button } from "@/components/ui/button";
+import { ImagePlaceholder } from "@/components/image-placeholder";
 import { services } from "@/data/services";
 
 export function ServicesPreview() {
@@ -67,51 +68,59 @@ export function ServicesPreview() {
 
           {/* AutoCeive Features */}
           <FadeIn direction="none" delay={0.2} className="relative">
-            <div className="bg-card rounded-2xl border p-8 shadow-sm">
-              <h3 className="mb-6 text-2xl font-bold">AutoCeive Features</h3>
-              <ol className="space-y-4" aria-label="AutoCeive key features">
-                <li className="flex items-start gap-3">
-                  <div
-                    className="bg-primary text-primary-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium"
-                    aria-hidden="true"
-                  >
-                    1
-                  </div>
-                  <p className="text-muted-foreground">
-                    Isolates desired cells from fluid sample using an
-                    immunomagnetic cell separation system.
+            <div className="bg-card overflow-hidden rounded-2xl border shadow-sm">
+              {/* AutoCeive Image */}
+              <ImagePlaceholder
+                aspectRatio="video"
+                label="AutoCeive Device"
+                className="rounded-none"
+              />
+              <div className="p-8">
+                <h3 className="mb-6 text-2xl font-bold">AutoCeive Features</h3>
+                <ol className="space-y-4" aria-label="AutoCeive key features">
+                  <li className="flex items-start gap-3">
+                    <div
+                      className="bg-primary text-primary-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium"
+                      aria-hidden="true"
+                    >
+                      1
+                    </div>
+                    <p className="text-muted-foreground">
+                      Isolates desired cells from fluid sample using an
+                      immunomagnetic cell separation system.
+                    </p>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div
+                      className="bg-primary text-primary-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium"
+                      aria-hidden="true"
+                    >
+                      2
+                    </div>
+                    <p className="text-muted-foreground">
+                      Processes high numbers of cells in short notice, while
+                      being cost-efficient.
+                    </p>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div
+                      className="bg-primary text-primary-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium"
+                      aria-hidden="true"
+                    >
+                      3
+                    </div>
+                    <p className="text-muted-foreground">
+                      Offers an ideal alternative for cell biology and research
+                      laboratories.
+                    </p>
+                  </li>
+                </ol>
+                <div className="mt-6 border-t pt-6">
+                  <p className="text-primary text-sm font-medium">
+                    Laboratory equipment and reagents now available at our
+                    products page!
                   </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div
-                    className="bg-primary text-primary-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium"
-                    aria-hidden="true"
-                  >
-                    2
-                  </div>
-                  <p className="text-muted-foreground">
-                    Processes high numbers of cells in short notice, while being
-                    cost-efficient.
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div
-                    className="bg-primary text-primary-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium"
-                    aria-hidden="true"
-                  >
-                    3
-                  </div>
-                  <p className="text-muted-foreground">
-                    Offers an ideal alternative for cell biology and research
-                    laboratories.
-                  </p>
-                </li>
-              </ol>
-              <div className="mt-6 border-t pt-6">
-                <p className="text-primary text-sm font-medium">
-                  Laboratory equipment and reagents now available at our
-                  products page!
-                </p>
+                </div>
               </div>
             </div>
           </FadeIn>
