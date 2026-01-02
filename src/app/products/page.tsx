@@ -2,6 +2,7 @@ import { ArrowRight, Beaker, FlaskConical, Package } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { ImagePlaceholder } from "@/components/image-placeholder";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -12,7 +13,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ImagePlaceholder } from "@/components/image-placeholder";
 
 export const metadata: Metadata = {
   title: "Our Products",

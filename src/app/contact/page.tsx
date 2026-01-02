@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 
 import { ContactForm } from "@/components/contact/contact-form";
 import { GoogleMap } from "@/components/contact/google-map";
-import { FadeIn } from "@/components/motion";
 import { ImagePlaceholder } from "@/components/image-placeholder";
+import { FadeIn } from "@/components/motion";
 import { siteConfig } from "@/lib/constants";
 
 export const metadata: Metadata = {

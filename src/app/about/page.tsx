@@ -2,10 +2,10 @@ import { Building2, Mail } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { ImagePlaceholder } from "@/components/image-placeholder";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ImagePlaceholder } from "@/components/image-placeholder";
 import { products } from "@/data/products";
 import { siteConfig } from "@/lib/constants";
 

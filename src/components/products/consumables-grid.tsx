@@ -1,9 +1,9 @@
 import { Mail } from "lucide-react";
 
+import { ImagePlaceholder } from "@/components/image-placeholder";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ImagePlaceholder } from "@/components/image-placeholder";
 import {
   consumablesOrderEmail,
   laboratoryConsumables,

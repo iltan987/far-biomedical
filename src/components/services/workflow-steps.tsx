@@ -1,5 +1,5 @@
-import { StaggerContainer, StaggerItem } from "@/components/motion";
 import { ImagePlaceholder } from "@/components/image-placeholder";
+import { StaggerContainer, StaggerItem } from "@/components/motion";
 import { workflowSteps } from "@/data/services-data";
 
 export function WorkflowSteps() {
