@@ -30,6 +30,7 @@ interface ContactFormData {
 interface ContactResult {
   success: boolean;
   message: string;
+  confirmationSent?: boolean;
 }
 
 function getClientIp(headersList: Headers): string {
@@ -265,12 +266,36 @@ IP: ${clientIp}
       `.trim(),
     };
 
-    // Send email
-    await transporter.sendMail(mailOptions);
+    // Check if confirmation emails are enabled (defaults to true)
+    const sendConfirmation = process.env.SEND_CONFIRMATION_EMAIL !== "false";
+
+    if (sendConfirmation) {
+      // Confirmation email options (best effort - failures are logged but don't fail the submission)
+      const confirmationMailOptions = {
+        from: process.env.GMAIL_USER,
+        to: email,
+        subject: `Thank you for contacting FAR Better Bio - ${subject}`,
+        text: generateConfirmationText(name, email, subject, message),
+        html: generateConfirmationHtml(name, email, subject, message),
+      };
+
+      // Send both emails in parallel
+      // Business email must succeed; confirmation email failures are logged but don't fail the submission
+      await Promise.all([
+        transporter.sendMail(mailOptions),
+        transporter.sendMail(confirmationMailOptions).catch((err) => {
+          console.error("Failed to send confirmation email:", err);
+        }),
+      ]);
+    } else {
+      // Only send business notification
+      await transporter.sendMail(mailOptions);
+    }
 
     return {
       success: true,
       message: "Thank you for your message. We'll get back to you soon!",
+      confirmationSent: sendConfirmation,
     };
   } catch (error) {
     console.error("Failed to send email:", error);
@@ -292,4 +317,267 @@ function escapeHtml(text: string): string {
     "'": "&#39;",
   };
   return text.replace(/[&<>"']/g, (char) => htmlEntities[char] || char);
+}
+
+// Generate plain text confirmation email
+function generateConfirmationText(
+  name: string,
+  email: string,
+  subject: string,
+  message: string
+): string {
+  const timestamp = new Date().toLocaleString("en-US", {
+    dateStyle: "full",
+    timeStyle: "short",
+  });
+
+  return `
+Dear ${name},
+
+Thank you for contacting FAR Better Bio. This email confirms that we have received your inquiry.
+
+SUBMISSION DETAILS
+------------------
+Date: ${timestamp}
+Email: ${email}
+Subject: ${subject}
+
+YOUR MESSAGE:
+${message}
+
+------------------
+
+We typically respond within 1-2 business days. If your matter is urgent, please call us at ${siteConfig.contact.phone}.
+
+Best regards,
+FAR Better Bio Team
+
+---
+FAR Better Bio
+Advanced blood-cell separation and apheretic blood filtration technologies
+${siteConfig.contact.address.line1}
+${siteConfig.contact.address.line2}
+${siteConfig.contact.address.city}, ${siteConfig.contact.address.country} ${siteConfig.contact.address.postalCode}
+
+This is an automated confirmation. Please do not reply to this email.
+  `.trim();
+}
+
+// Generate HTML confirmation email
+function generateConfirmationHtml(
+  name: string,
+  email: string,
+  subject: string,
+  message: string
+): string {
+  const timestamp = new Date().toLocaleString("en-US", {
+    dateStyle: "full",
+    timeStyle: "short",
+  });
+
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .container {
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .header {
+      background-color: #991b1b;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+    }
+    .header p {
+      margin: 10px 0 0;
+      opacity: 0.9;
+      font-size: 14px;
+    }
+    .content {
+      padding: 30px 20px;
+    }
+    .greeting {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    .confirmation-box {
+      background-color: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 20px 0;
+    }
+    .details-section {
+      background-color: #f9fafb;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .details-section h3 {
+      margin: 0 0 15px;
+      color: #374151;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .detail-row {
+      margin-bottom: 12px;
+    }
+    .detail-label {
+      font-size: 12px;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .detail-value {
+      margin-top: 4px;
+      color: #111827;
+    }
+    .message-box {
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 15px;
+      margin-top: 8px;
+      white-space: pre-wrap;
+    }
+    .next-steps {
+      margin: 25px 0;
+      padding: 20px;
+      background-color: #fefce8;
+      border-radius: 8px;
+      border-left: 4px solid #eab308;
+    }
+    .next-steps h4 {
+      margin: 0 0 10px;
+      color: #854d0e;
+    }
+    .next-steps p {
+      margin: 0;
+      color: #713f12;
+      font-size: 14px;
+    }
+    .footer {
+      background-color: #f9fafb;
+      padding: 20px;
+      text-align: center;
+      border-top: 1px solid #e5e7eb;
+    }
+    .footer-logo {
+      font-weight: 600;
+      color: #991b1b;
+      font-size: 16px;
+    }
+    .footer-tagline {
+      font-size: 12px;
+      color: #6b7280;
+      margin: 5px 0 15px;
+    }
+    .footer-address {
+      font-size: 12px;
+      color: #9ca3af;
+      line-height: 1.5;
+    }
+    .footer-note {
+      margin-top: 15px;
+      font-size: 11px;
+      color: #9ca3af;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div class="header">
+        <h1>FAR Better Bio</h1>
+        <p>Thank you for contacting us</p>
+      </div>
+
+      <div class="content">
+        <p class="greeting">Dear ${escapeHtml(name)},</p>
+
+        <div class="confirmation-box">
+          <strong>&#10003; Message Received</strong><br>
+          <span style="font-size: 14px; color: #166534;">
+            Your inquiry has been successfully submitted. This email serves as your confirmation and record.
+          </span>
+        </div>
+
+        <div class="details-section">
+          <h3>Submission Details</h3>
+
+          <div class="detail-row">
+            <div class="detail-label">Date & Time</div>
+            <div class="detail-value">${timestamp}</div>
+          </div>
+
+          <div class="detail-row">
+            <div class="detail-label">Your Email</div>
+            <div class="detail-value">${escapeHtml(email)}</div>
+          </div>
+
+          <div class="detail-row">
+            <div class="detail-label">Subject</div>
+            <div class="detail-value">${escapeHtml(subject)}</div>
+          </div>
+
+          <div class="detail-row">
+            <div class="detail-label">Your Message</div>
+            <div class="message-box">${escapeHtml(message).replace(/\n/g, "<br>")}</div>
+          </div>
+        </div>
+
+        <div class="next-steps">
+          <h4>What happens next?</h4>
+          <p>
+            Our team typically responds within 1-2 business days.
+            If your matter is urgent, please call us at <strong>${siteConfig.contact.phone}</strong>.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="footer-logo">FAR Better Bio</div>
+        <div class="footer-tagline">
+          Advanced blood-cell separation and apheretic blood filtration technologies
+        </div>
+        <div class="footer-address">
+          ${siteConfig.contact.address.line1}<br>
+          ${siteConfig.contact.address.line2}<br>
+          ${siteConfig.contact.address.city}, ${siteConfig.contact.address.country} ${siteConfig.contact.address.postalCode}
+        </div>
+        <div class="footer-note">
+          This is an automated confirmation. Please do not reply to this email.
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+  `.trim();
 }
