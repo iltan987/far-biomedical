@@ -66,7 +66,9 @@ export function HeroSection() {
                 alt="Hero Image"
                 width={2889}
                 height={1664}
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
+                className="h-full w-full object-cover"
               />
             </div>
           </FadeIn>

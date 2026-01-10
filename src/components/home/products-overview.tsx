@@ -57,6 +57,7 @@ export function ProductsOverview() {
                         alt={product.title}
                         width={product.image.width}
                         height={product.image.height}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     ) : (

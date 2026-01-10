@@ -75,7 +75,8 @@ export function ServicesPreview() {
                 alt="AutoCeive Device"
                 width={1365}
                 height={768}
-                className="w-full"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="h-full w-full object-cover"
               />
               <div className="p-8">
                 <h3 className="mb-6 text-2xl font-bold">AutoCeive Features</h3>
