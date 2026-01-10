@@ -1,4 +1,5 @@
 import { Mail } from "lucide-react";
+import Image from "next/image";
 
 import { ImagePlaceholder } from "@/components/image-placeholder";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
@@ -21,11 +22,21 @@ export function ConsumablesGrid() {
             <article role="listitem">
               <Card className="group h-full overflow-hidden transition-shadow hover:shadow-md">
                 {/* Consumable Image */}
-                <div className="overflow-hidden">
-                  <ImagePlaceholder
-                    aspectRatio="4/3"
-                    className="rounded-none transition-transform duration-300 group-hover:scale-105"
-                  />
+                <div className="relative aspect-4/3 overflow-hidden">
+                  {consumable.image ? (
+                    <Image
+                      src={consumable.image}
+                      alt={consumable.name}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  ) : (
+                    <ImagePlaceholder
+                      aspectRatio="4/3"
+                      className="rounded-none transition-transform duration-300 group-hover:scale-105"
+                    />
+                  )}
                 </div>
                 <CardHeader className="pb-3">
                   <CardTitle className="text-lg">{consumable.name}</CardTitle>

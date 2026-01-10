@@ -7,6 +7,7 @@ import {
   LayoutList,
   Search,
 } from "lucide-react";
+import Image from "next/image";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { ImagePlaceholder } from "@/components/image-placeholder";
@@ -199,11 +200,21 @@ export function InstrumentsList({ initialLayout }: InstrumentsListProps) {
               <article key={instrument.id} role="listitem">
                 <Card className="instrument-card group h-full overflow-hidden transition-shadow hover:shadow-md">
                   {/* Instrument Image */}
-                  <div className="instrument-card-image overflow-hidden">
-                    <ImagePlaceholder
-                      aspectRatio="4/3"
-                      className="rounded-none transition-transform duration-300 group-hover:scale-105"
-                    />
+                  <div className="instrument-card-image relative aspect-4/3 overflow-hidden">
+                    {instrument.image ? (
+                      <Image
+                        src={instrument.image}
+                        alt={instrument.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    ) : (
+                      <ImagePlaceholder
+                        aspectRatio="4/3"
+                        className="rounded-none transition-transform duration-300 group-hover:scale-105"
+                      />
+                    )}
                   </div>
                   <CardHeader className="instrument-card-header">
                     <CardTitle className="text-lg">{instrument.name}</CardTitle>
