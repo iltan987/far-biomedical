@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import { services } from "@/data/services";
+import autoCeiveImage from "@/images/home/auto-ceive2.jpeg";
 
 export function ServicesPreview() {
   return (
@@ -71,11 +72,10 @@ export function ServicesPreview() {
             <div className="bg-card overflow-hidden rounded-2xl border shadow-sm">
               {/* AutoCeive Image */}
               <Image
-                src="/images/home/img-6.jpeg"
+                src={autoCeiveImage}
                 alt="AutoCeive Device"
-                width={1365}
-                height={768}
                 sizes="(max-width: 1024px) 100vw, 50vw"
+                placeholder="blur"
                 className="h-full w-full object-cover"
               />
               <div className="p-8">

@@ -53,11 +53,10 @@ export function ProductsOverview() {
                   <div className="aspect-4/3 overflow-hidden">
                     {product.image ? (
                       <Image
-                        src={product.image.src}
+                        src={product.image}
                         alt={product.title}
-                        width={product.image.width}
-                        height={product.image.height}
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        placeholder="blur"
                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     ) : (

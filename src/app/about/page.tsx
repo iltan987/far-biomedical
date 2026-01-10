@@ -74,11 +74,10 @@ export default function AboutPage() {
                     <div className="aspect-4/3 overflow-hidden">
                       {platform.image ? (
                         <Image
-                          src={platform.image.src}
+                          src={platform.image}
                           alt={platform.title}
-                          width={platform.image.width}
-                          height={platform.image.height}
                           sizes="(max-width: 768px) 100vw, 33vw"
+                          placeholder="blur"
                           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                         />
                       ) : (
