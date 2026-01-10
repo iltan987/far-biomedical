@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { FadeIn } from "@/components/motion";
 import { Button } from "@/components/ui/button";
+import heroImage from "@/images/home/hero.jpg";
 
 export function HeroSection() {
   return (
@@ -62,12 +63,11 @@ export function HeroSection() {
           <FadeIn direction="right" delay={0.2}>
             <div className="aspect-video overflow-hidden rounded-lg shadow-lg">
               <Image
-                src="/images/home/img-1.jpg"
-                alt="Hero Image"
-                width={2889}
-                height={1664}
+                src={heroImage}
+                alt="FAR Better Bio laboratory equipment for blood cell separation"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
+                placeholder="blur"
                 className="h-full w-full object-cover"
               />
             </div>
