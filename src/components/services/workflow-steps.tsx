@@ -1,15 +1,15 @@
 import { ImagePlaceholder } from "@/components/image-placeholder";
-import { StaggerContainer, StaggerItem } from "@/components/motion";
+import { FadeIn } from "@/components/motion";
 import { workflowSteps } from "@/data/services-data";
 
 export function WorkflowSteps() {
   return (
-    <StaggerContainer
+    <div
       className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
       role="list"
     >
-      {workflowSteps.map((step) => (
-        <StaggerItem key={step.number}>
+      {workflowSteps.map((step, index) => (
+        <FadeIn key={step.number} delay={index * 0.1}>
           <article
             role="listitem"
             className="bg-card group relative h-full overflow-hidden rounded-xl border transition-shadow hover:shadow-md"
@@ -41,8 +41,8 @@ export function WorkflowSteps() {
               </p>
             </div>
           </article>
-        </StaggerItem>
+        </FadeIn>
       ))}
-    </StaggerContainer>
+    </div>
   );
 }

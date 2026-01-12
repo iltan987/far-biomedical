@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { ImagePlaceholder } from "@/components/image-placeholder";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
+import { FadeIn } from "@/components/motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -41,12 +41,12 @@ export function ProductsOverview() {
         </FadeIn>
 
         {/* Product Cards */}
-        <StaggerContainer
+        <div
           className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-8"
           role="list"
         >
-          {products.map((product) => (
-            <StaggerItem key={product.title} className="h-full">
+          {products.map((product, index) => (
+            <FadeIn key={product.title} delay={index * 0.1} className="h-full">
               <article role="listitem" className="h-full">
                 <Card className="group focus-within:ring-ring relative h-full overflow-hidden transition-all duration-300 focus-within:ring-2 hover:-translate-y-1 hover:shadow-lg">
                   {/* Product Image */}
@@ -89,9 +89,9 @@ export function ProductsOverview() {
                   </CardContent>
                 </Card>
               </article>
-            </StaggerItem>
+            </FadeIn>
           ))}
-        </StaggerContainer>
+        </div>
 
         {/* Additional Products CTA */}
         <FadeIn direction="none" className="mt-12 text-center lg:mt-16">

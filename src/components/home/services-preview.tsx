@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
+import { FadeIn } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import { services } from "@/data/services";
 import autoCeiveImage from "@/images/home/auto-ceive2.jpeg";
@@ -32,12 +32,12 @@ export function ServicesPreview() {
               international clients.
             </p>
 
-            <StaggerContainer
+            <div
               className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2"
               role="list"
             >
-              {services.map((service) => (
-                <StaggerItem key={service.title}>
+              {services.map((service, index) => (
+                <FadeIn key={service.title} delay={index * 0.1}>
                   <article
                     role="listitem"
                     className="bg-muted/50 hover:bg-muted flex h-full items-start gap-3 rounded-lg p-4 transition-colors"
@@ -55,9 +55,9 @@ export function ServicesPreview() {
                       </p>
                     </div>
                   </article>
-                </StaggerItem>
+                </FadeIn>
               ))}
-            </StaggerContainer>
+            </div>
 
             <Button asChild className="mt-8">
               <Link href="/services">
