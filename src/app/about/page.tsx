@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { AnimatedLogo } from "@/components/animated-logo";
 import { ImagePlaceholder } from "@/components/image-placeholder";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
 import { Button } from "@/components/ui/button";
@@ -41,11 +42,7 @@ export default function AboutPage() {
               </p>
             </FadeIn>
             <FadeIn direction="right" delay={0.2}>
-              <ImagePlaceholder
-                aspectRatio="video"
-                label="Company Image"
-                className="shadow-lg"
-              />
+              <AnimatedLogo />
             </FadeIn>
           </div>
         </div>
