@@ -2,7 +2,7 @@ import { Mail } from "lucide-react";
 import Image from "next/image";
 
 import { ImagePlaceholder } from "@/components/image-placeholder";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
+import { FadeIn } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -13,12 +13,12 @@ import {
 export function ConsumablesGrid() {
   return (
     <div>
-      <StaggerContainer
+      <div
         className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
         role="list"
       >
-        {laboratoryConsumables.map((consumable) => (
-          <StaggerItem key={consumable.id}>
+        {laboratoryConsumables.map((consumable, index) => (
+          <FadeIn key={consumable.id} delay={index * 0.1}>
             <article role="listitem">
               <Card className="group h-full overflow-hidden transition-shadow hover:shadow-md">
                 {/* Consumable Image */}
@@ -50,9 +50,9 @@ export function ConsumablesGrid() {
                 )}
               </Card>
             </article>
-          </StaggerItem>
+          </FadeIn>
         ))}
-      </StaggerContainer>
+      </div>
 
       {/* Order CTA */}
       <FadeIn direction="none" className="mt-12">

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ImagePlaceholder } from "@/components/image-placeholder";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
+import { FadeIn } from "@/components/motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -74,12 +74,12 @@ export default function ProductsPage() {
           <h2 id="categories-heading" className="sr-only">
             Product Categories
           </h2>
-          <StaggerContainer
+          <div
             className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8"
             role="list"
           >
-            {productCategories.map((category) => (
-              <StaggerItem key={category.title} className="h-full">
+            {productCategories.map((category, index) => (
+              <FadeIn key={category.title} delay={index * 0.1} className="h-full">
                 <article role="listitem" className="h-full">
                   <Card className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                     {/* Category Image */}
@@ -127,9 +127,9 @@ export default function ProductsPage() {
                     </CardContent>
                   </Card>
                 </article>
-              </StaggerItem>
+              </FadeIn>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </section>
 

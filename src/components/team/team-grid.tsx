@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { StaggerContainer, StaggerItem } from "@/components/motion";
+import { FadeIn } from "@/components/motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { teamMembers } from "@/data/team-members";
 
@@ -14,12 +14,12 @@ function getInitials(name: string): string {
 
 export function TeamGrid() {
   return (
-    <StaggerContainer
+    <div
       className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8"
       role="list"
     >
-      {teamMembers.map((member) => (
-        <StaggerItem key={member.id}>
+      {teamMembers.map((member, index) => (
+        <FadeIn key={member.id} delay={index * 0.1}>
           <article role="listitem">
             <Card className="h-full overflow-hidden transition-shadow hover:shadow-lg">
               <CardContent className="p-6 text-center">
@@ -62,8 +62,8 @@ export function TeamGrid() {
               </CardContent>
             </Card>
           </article>
-        </StaggerItem>
+        </FadeIn>
       ))}
-    </StaggerContainer>
+    </div>
   );
 }

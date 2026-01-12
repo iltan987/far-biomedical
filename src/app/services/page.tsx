@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ImagePlaceholder } from "@/components/image-placeholder";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
+import { FadeIn } from "@/components/motion";
 import { ServiceFAQs } from "@/components/services/service-faqs";
 import { WorkflowSteps } from "@/components/services/workflow-steps";
 import { Button } from "@/components/ui/button";
@@ -50,8 +50,8 @@ export default function ServicesPage() {
       {/* Service Area */}
       <section className="border-b py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <StaggerContainer className="flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-12">
-            <StaggerItem>
+          <div className="flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-12">
+            <FadeIn delay={0}>
               <article className="flex items-center gap-3">
                 <div
                   className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full"
@@ -66,8 +66,8 @@ export default function ServicesPage() {
                   </p>
                 </div>
               </article>
-            </StaggerItem>
-            <StaggerItem>
+            </FadeIn>
+            <FadeIn delay={0.1}>
               <article className="flex items-center gap-3">
                 <div
                   className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full"
@@ -82,8 +82,8 @@ export default function ServicesPage() {
                   </p>
                 </div>
               </article>
-            </StaggerItem>
-          </StaggerContainer>
+            </FadeIn>
+          </div>
         </div>
       </section>
 

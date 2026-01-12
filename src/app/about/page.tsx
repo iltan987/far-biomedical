@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { AnimatedLogo } from "@/components/animated-logo";
 import { ImagePlaceholder } from "@/components/image-placeholder";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
+import { FadeIn } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { products } from "@/data/products";
@@ -59,12 +59,12 @@ export default function AboutPage() {
               Our Core Platforms
             </h2>
           </FadeIn>
-          <StaggerContainer
+          <div
             className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8"
             role="list"
           >
-            {platforms.map((platform) => (
-              <StaggerItem key={platform.title} className="h-full">
+            {platforms.map((platform, index) => (
+              <FadeIn key={platform.title} delay={index * 0.1} className="h-full">
                 <article role="listitem" className="h-full">
                   <Card className="group hover:border-primary/50 focus-within:ring-ring h-full overflow-hidden border-2 transition-colors focus-within:ring-2">
                     {/* Platform Image */}
@@ -100,9 +100,9 @@ export default function AboutPage() {
                     </CardContent>
                   </Card>
                 </article>
-              </StaggerItem>
+              </FadeIn>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </section>
 
@@ -112,57 +112,63 @@ export default function AboutPage() {
         aria-labelledby="locations-heading"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn direction="none" className="mx-auto max-w-3xl">
-            <h2
-              id="locations-heading"
-              className="mb-8 text-center text-2xl font-bold sm:text-3xl"
-            >
-              Our Locations
-            </h2>
-            <p className="text-muted-foreground mb-8 text-center">
-              Our R&D operations are based in METU Teknokent and METU Research
-              Center (BIOMATEN), where we collaborate with multidisciplinary
-              engineers and scientists.
-            </p>
+          <div className="mx-auto max-w-3xl">
+            <FadeIn direction="none">
+              <h2
+                id="locations-heading"
+                className="mb-8 text-center text-2xl font-bold sm:text-3xl"
+              >
+                Our Locations
+              </h2>
+              <p className="text-muted-foreground mb-8 text-center">
+                Our R&D operations are based in METU Teknokent and METU Research
+                Center (BIOMATEN), where we collaborate with multidisciplinary
+                engineers and scientists.
+              </p>
+            </FadeIn>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <article className="bg-card overflow-hidden rounded-xl border">
-                <ImagePlaceholder
-                  aspectRatio="video"
-                  className="rounded-none"
-                />
-                <div className="flex items-start gap-3 p-4">
-                  <Building2
-                    className="text-primary mt-0.5 h-5 w-5 shrink-0"
-                    aria-hidden="true"
+              <FadeIn>
+                <article className="bg-card overflow-hidden rounded-xl border">
+                  <ImagePlaceholder
+                    aspectRatio="video"
+                    className="rounded-none"
                   />
-                  <div>
-                    <h3 className="font-semibold">METU Teknokent</h3>
-                    <p className="text-muted-foreground text-sm">
-                      Middle East Technical University Technopark
-                    </p>
+                  <div className="flex items-start gap-3 p-4">
+                    <Building2
+                      className="text-primary mt-0.5 h-5 w-5 shrink-0"
+                      aria-hidden="true"
+                    />
+                    <div>
+                      <h3 className="font-semibold">METU Teknokent</h3>
+                      <p className="text-muted-foreground text-sm">
+                        Middle East Technical University Technopark
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </article>
-              <article className="bg-card overflow-hidden rounded-xl border">
-                <ImagePlaceholder
-                  aspectRatio="video"
-                  className="rounded-none"
-                />
-                <div className="flex items-start gap-3 p-4">
-                  <Building2
-                    className="text-primary mt-0.5 h-5 w-5 shrink-0"
-                    aria-hidden="true"
+                </article>
+              </FadeIn>
+              <FadeIn>
+                <article className="bg-card overflow-hidden rounded-xl border">
+                  <ImagePlaceholder
+                    aspectRatio="video"
+                    className="rounded-none"
                   />
-                  <div>
-                    <h3 className="font-semibold">BIOMATEN</h3>
-                    <p className="text-muted-foreground text-sm">
-                      METU Research Center
-                    </p>
+                  <div className="flex items-start gap-3 p-4">
+                    <Building2
+                      className="text-primary mt-0.5 h-5 w-5 shrink-0"
+                      aria-hidden="true"
+                    />
+                    <div>
+                      <h3 className="font-semibold">BIOMATEN</h3>
+                      <p className="text-muted-foreground text-sm">
+                        METU Research Center
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </article>
+                </article>
+              </FadeIn>
             </div>
-          </FadeIn>
+          </div>
         </div>
       </section>
 
