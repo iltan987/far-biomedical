@@ -13,7 +13,7 @@ export const contentType = "image/png";
 export const alt = "FAR Better Bio - Blood Cell Separation Technology";
 
 export default async function Image() {
-  const logoData = await readFile(join(process.cwd(), "public/logo.png"));
+  const logoData = await readFile(join(process.cwd(), "src/images/logo.png"));
   const logoSrc = `data:image/png;base64,${logoData.toString("base64")}`;
 
   return new ImageResponse(
