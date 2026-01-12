@@ -7,7 +7,7 @@ import logo from "@/images/logo.png";
 
 export function AnimatedLogo() {
   return (
-    <div className="flex items-center justify-center overflow-hidden">
+    <div className="flex items-center justify-center overflow-hidden p-8">
       <motion.div
         animate={{
           rotate: 360,
