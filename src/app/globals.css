@@ -124,28 +124,6 @@
   }
 }
 
-/* Instruments layout grid - prevents flash on page load */
-.instruments-grid {
-  @apply grid gap-4 transition-all duration-300;
-}
-
-/* Default layout (before script runs or if no preference) */
-html:not([data-instruments-layout]) .instruments-grid {
-  @apply grid-cols-1 md:grid-cols-2;
-}
-
-[data-instruments-layout="list"] .instruments-grid {
-  @apply grid-cols-1;
-}
-
-[data-instruments-layout="2-col"] .instruments-grid {
-  @apply grid-cols-1 md:grid-cols-2;
-}
-
-[data-instruments-layout="3-col"] .instruments-grid {
-  @apply grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
-}
-
 /* Grid view cards - vertical (default) */
 .instrument-card-header {
   @apply flex items-start justify-between gap-2 pb-3;
@@ -161,29 +139,4 @@ html:not([data-instruments-layout]) .instruments-grid {
 
 .instrument-card-button {
   @apply mt-3 w-full;
-}
-
-/* Card layout for list view - horizontal */
-[data-instruments-layout="list"] .instrument-card {
-  @apply flex flex-col sm:flex-row;
-}
-
-[data-instruments-layout="list"] .instrument-card-header {
-  @apply flex-col items-start justify-start sm:w-64 sm:shrink-0 sm:border-r sm:pb-4;
-}
-
-[data-instruments-layout="list"] .instrument-card-badge {
-  @apply mt-2 w-fit;
-}
-
-[data-instruments-layout="list"] .instrument-card-content {
-  @apply flex-1 pt-4 sm:pt-6;
-}
-
-[data-instruments-layout="list"] .instrument-card-specs {
-  @apply grid gap-1.5 space-y-0 sm:grid-cols-2;
-}
-
-[data-instruments-layout="list"] .instrument-card-button {
-  @apply w-auto;
 }
