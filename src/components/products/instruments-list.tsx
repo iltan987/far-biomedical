@@ -8,7 +8,7 @@ import {
   Search,
 } from "lucide-react";
 import Image from "next/image";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { ImagePlaceholder } from "@/components/image-placeholder";
 import { Badge } from "@/components/ui/badge";
@@ -26,6 +26,8 @@ type LayoutType = "list" | "2-col" | "3-col";
 
 const COOKIE_NAME = "instruments-layout";
 const COOKIE_PATH = "/products/laboratory-instruments";
+// 400 days - maximum practical limit (Chrome caps at 400 days)
+const COOKIE_MAX_AGE = 400 * 24 * 60 * 60;
 
 interface InstrumentsListProps {
   initialLayout: LayoutType;
@@ -41,9 +43,13 @@ export function InstrumentsList({ initialLayout }: InstrumentsListProps) {
 
   const setLayout = useCallback((value: LayoutType) => {
     setLayoutState(value);
-    // Set path-scoped cookie (1 year expiry)
-    document.cookie = `${COOKIE_NAME}=${value}; path=${COOKIE_PATH}; max-age=31536000; SameSite=Lax`;
+    document.cookie = `${COOKIE_NAME}=${value}; path=${COOKIE_PATH}; max-age=${COOKIE_MAX_AGE}; SameSite=Lax`;
   }, []);
+
+  // Refresh cookie on each visit to extend expiration
+  useEffect(() => {
+    document.cookie = `${COOKIE_NAME}=${layout}; path=${COOKIE_PATH}; max-age=${COOKIE_MAX_AGE}; SameSite=Lax`;
+  }, [layout]);
 
   const categories = useMemo(() => {
     const cats = new Set(laboratoryInstruments.map((i) => i.category));
