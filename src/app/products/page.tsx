@@ -2,7 +2,8 @@ import { ArrowRight, Beaker, FlaskConical, Package } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
+import { ImagePlaceholder } from "@/components/image-placeholder";
+import { FadeIn } from "@/components/motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -73,14 +74,21 @@ export default function ProductsPage() {
           <h2 id="categories-heading" className="sr-only">
             Product Categories
           </h2>
-          <StaggerContainer
+          <div
             className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8"
             role="list"
           >
-            {productCategories.map((category) => (
-              <StaggerItem key={category.title}>
-                <article role="listitem">
-                  <Card className="relative h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+            {productCategories.map((category, index) => (
+              <FadeIn key={category.title} delay={index * 0.1} className="h-full">
+                <article role="listitem" className="h-full">
+                  <Card className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    {/* Category Image */}
+                    <div className="overflow-hidden">
+                      <ImagePlaceholder
+                        aspectRatio="4/3"
+                        className="rounded-none transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
                     <CardHeader>
                       <div className="flex items-start justify-between">
                         <div
@@ -97,8 +105,8 @@ export default function ProductsPage() {
                         {category.title}
                       </CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <CardDescription className="mb-4 text-base">
+                    <CardContent className="flex grow flex-col">
+                      <CardDescription className="mb-4 grow text-base">
                         {category.description}
                       </CardDescription>
                       {category.href ? (
@@ -119,9 +127,9 @@ export default function ProductsPage() {
                     </CardContent>
                   </Card>
                 </article>
-              </StaggerItem>
+              </FadeIn>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </section>
 
