@@ -1,9 +1,11 @@
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion";
+import { FadeIn } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import { services } from "@/data/services";
+import autoCeiveImage from "@/images/home/auto-ceive2.jpeg";
 
 export function ServicesPreview() {
   return (
@@ -30,12 +32,12 @@ export function ServicesPreview() {
               international clients.
             </p>
 
-            <StaggerContainer
+            <div
               className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2"
               role="list"
             >
-              {services.map((service) => (
-                <StaggerItem key={service.title}>
+              {services.map((service, index) => (
+                <FadeIn key={service.title} delay={index * 0.1}>
                   <article
                     role="listitem"
                     className="bg-muted/50 hover:bg-muted flex h-full items-start gap-3 rounded-lg p-4 transition-colors"
@@ -53,9 +55,9 @@ export function ServicesPreview() {
                       </p>
                     </div>
                   </article>
-                </StaggerItem>
+                </FadeIn>
               ))}
-            </StaggerContainer>
+            </div>
 
             <Button asChild className="mt-8">
               <Link href="/services">
@@ -67,51 +69,61 @@ export function ServicesPreview() {
 
           {/* AutoCeive Features */}
           <FadeIn direction="none" delay={0.2} className="relative">
-            <div className="bg-card rounded-2xl border p-8 shadow-sm">
-              <h3 className="mb-6 text-2xl font-bold">AutoCeive Features</h3>
-              <ol className="space-y-4" aria-label="AutoCeive key features">
-                <li className="flex items-start gap-3">
-                  <div
-                    className="bg-primary text-primary-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium"
-                    aria-hidden="true"
-                  >
-                    1
-                  </div>
-                  <p className="text-muted-foreground">
-                    Isolates desired cells from fluid sample using an
-                    immunomagnetic cell separation system.
+            <div className="bg-card overflow-hidden rounded-2xl border shadow-sm">
+              {/* AutoCeive Image */}
+              <Image
+                src={autoCeiveImage}
+                alt="AutoCeive Device"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                placeholder="blur"
+                className="h-full w-full object-cover"
+              />
+              <div className="p-8">
+                <h3 className="mb-6 text-2xl font-bold">AutoCeive Features</h3>
+                <ol className="space-y-4" aria-label="AutoCeive key features">
+                  <li className="flex items-start gap-3">
+                    <div
+                      className="bg-primary text-primary-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium"
+                      aria-hidden="true"
+                    >
+                      1
+                    </div>
+                    <p className="text-muted-foreground">
+                      Isolates desired cells from fluid sample using an
+                      immunomagnetic cell separation system.
+                    </p>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div
+                      className="bg-primary text-primary-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium"
+                      aria-hidden="true"
+                    >
+                      2
+                    </div>
+                    <p className="text-muted-foreground">
+                      Processes high numbers of cells in short notice, while
+                      being cost-efficient.
+                    </p>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div
+                      className="bg-primary text-primary-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium"
+                      aria-hidden="true"
+                    >
+                      3
+                    </div>
+                    <p className="text-muted-foreground">
+                      Offers an ideal alternative for cell biology and research
+                      laboratories.
+                    </p>
+                  </li>
+                </ol>
+                <div className="mt-6 border-t pt-6">
+                  <p className="text-primary text-sm font-medium">
+                    Laboratory equipment and reagents now available at our
+                    products page!
                   </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div
-                    className="bg-primary text-primary-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium"
-                    aria-hidden="true"
-                  >
-                    2
-                  </div>
-                  <p className="text-muted-foreground">
-                    Processes high numbers of cells in short notice, while being
-                    cost-efficient.
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div
-                    className="bg-primary text-primary-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-sm font-medium"
-                    aria-hidden="true"
-                  >
-                    3
-                  </div>
-                  <p className="text-muted-foreground">
-                    Offers an ideal alternative for cell biology and research
-                    laboratories.
-                  </p>
-                </li>
-              </ol>
-              <div className="mt-6 border-t pt-6">
-                <p className="text-primary text-sm font-medium">
-                  Laboratory equipment and reagents now available at our
-                  products page!
-                </p>
+                </div>
               </div>
             </div>
           </FadeIn>

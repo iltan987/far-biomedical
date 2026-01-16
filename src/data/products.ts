@@ -1,5 +1,11 @@
 import type { LucideIcon } from "lucide-react";
 import { Activity, Beaker, Code, Magnet } from "lucide-react";
+import type { StaticImageData } from "next/image";
+
+import aphereCeiveImage from "@/images/home/aphere-ceive.jpeg";
+import autoCeiveImage from "@/images/home/auto-ceive.jpeg";
+import miniCeiveImage from "@/images/home/mini-ceive.jpeg";
+import softwareToolsImage from "@/images/home/software-tools.jpeg";
 
 export type Product = {
   title: string;
@@ -8,6 +14,7 @@ export type Product = {
   icon: LucideIcon;
   badge: string;
   href: string;
+  image?: StaticImageData;
 };
 
 export const products: Product[] = [
@@ -20,6 +27,7 @@ export const products: Product[] = [
     icon: Magnet,
     badge: "Coming Soon",
     href: "/products",
+    image: miniCeiveImage,
   },
   {
     title: "AutoCeive",
@@ -30,6 +38,7 @@ export const products: Product[] = [
     icon: Beaker,
     badge: "Coming Soon",
     href: "/products",
+    image: autoCeiveImage,
   },
   {
     title: "AphereCeive",
@@ -40,6 +49,7 @@ export const products: Product[] = [
     icon: Activity,
     badge: "In Development",
     href: "/products",
+    image: aphereCeiveImage,
   },
   {
     title: "Software Tools",
@@ -48,5 +58,6 @@ export const products: Product[] = [
     icon: Code,
     badge: "Coming Soon",
     href: "/products",
+    image: softwareToolsImage,
   },
 ];

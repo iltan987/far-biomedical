@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { ImagePlaceholder } from "@/components/image-placeholder";
 import { FadeIn } from "@/components/motion";
 import { TeamGrid } from "@/components/team/team-grid";
 import { Button } from "@/components/ui/button";
@@ -20,19 +21,28 @@ export default function TeamPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="from-primary/5 to-background bg-linear-to-b py-10 sm:py-14">
+      <section className="from-primary/5 to-background bg-linear-to-b py-10 sm:py-14 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              Our Team
-            </h1>
-            <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
-              Meet the dedicated professionals behind FAR Better Bio. Our
-              multidisciplinary team brings together expertise in biomedical
-              engineering, research, and technology to advance blood-cell
-              separation solutions.
-            </p>
-          </FadeIn>
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <FadeIn className="text-center lg:text-left">
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+                Our Team
+              </h1>
+              <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
+                Meet the dedicated professionals behind FAR Better Bio. Our
+                multidisciplinary team brings together expertise in biomedical
+                engineering, research, and technology to advance blood-cell
+                separation solutions.
+              </p>
+            </FadeIn>
+            <FadeIn direction="right" delay={0.2}>
+              <ImagePlaceholder
+                aspectRatio="video"
+                label="Team Image"
+                className="shadow-lg"
+              />
+            </FadeIn>
+          </div>
         </div>
       </section>
 

@@ -1,3 +1,8 @@
+import eppendorfsPcrTubes from "@/images/consumables/eppendorfs-pcr-tubes.jpeg"
+import falconTubes from "@/images/consumables/falcon-tubes.jpeg"
+import microscopeSlides from "@/images/consumables/microscope-slides.jpeg"
+import pasteurPipettes from "@/images/consumables/pasteur-pipettes.jpeg"
+import tubeRacks from "@/images/consumables/tube-racks.jpeg"
 import type { LaboratoryConsumable } from "@/types";
 
 export const laboratoryConsumables: LaboratoryConsumable[] = [
@@ -6,6 +11,7 @@ export const laboratoryConsumables: LaboratoryConsumable[] = [
     name: "Eppendorfs & PCR Tubes",
     description:
       "High-quality microcentrifuge tubes and PCR tubes for sample storage and molecular biology applications.",
+    image: eppendorfsPcrTubes,
   },
   {
     id: "cryo-tubes",
@@ -18,18 +24,21 @@ export const laboratoryConsumables: LaboratoryConsumable[] = [
     name: "Tube Racks",
     description:
       "Durable tube racks for organized storage and easy access to various tube sizes.",
+    image: tubeRacks,
   },
   {
     id: "falcon-tubes",
     name: "Falcon Tubes",
     description:
       "Conical centrifuge tubes available in various sizes for cell culture and sample processing.",
+    image: falconTubes,
   },
   {
     id: "pasteur-pipettes",
     name: "Pasteur Pipettes",
     description:
       "Disposable glass or plastic pipettes for transferring small volumes of liquids.",
+    image: pasteurPipettes,
   },
   {
     id: "micropipette-tips",
@@ -42,6 +51,7 @@ export const laboratoryConsumables: LaboratoryConsumable[] = [
     name: "Microscope Slides & Coverslips",
     description:
       "High-clarity glass slides and coverslips for microscopic examination and imaging.",
+    image: microscopeSlides,
   },
   {
     id: "storage-containers",

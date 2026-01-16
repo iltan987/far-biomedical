@@ -1,3 +1,5 @@
+import type { StaticImageData } from "next/image";
+
 // Navigation
 export interface NavItem {
   name: string;
@@ -12,6 +14,7 @@ export interface LaboratoryInstrument {
   category: InstrumentCategory;
   specifications: string[];
   description?: string;
+  image?: StaticImageData;
 }
 
 export type InstrumentCategory =
@@ -31,6 +34,7 @@ export interface LaboratoryConsumable {
   id: string;
   name: string;
   description?: string;
+  image?: StaticImageData;
 }
 
 // Team

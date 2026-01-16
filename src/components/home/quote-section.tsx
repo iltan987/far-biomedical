@@ -1,4 +1,4 @@
-import { ArrowRight, Quote } from "lucide-react";
+import { ArrowRight, Quote, User } from "lucide-react";
 import Link from "next/link";
 
 import { FadeIn } from "@/components/motion";
@@ -18,8 +18,17 @@ export function QuoteSection() {
               &quot;Cure is not far away, as long as you and I are willing to
               take things... a little further.&quot;
             </blockquote>
-            <figcaption className="mt-6 text-lg font-semibold opacity-90">
-              — CEO, FAR Better
+            <figcaption className="mt-8 flex flex-col items-center gap-3">
+              {/* CEO Avatar Placeholder */}
+              <div
+                className="bg-primary-foreground/20 flex h-16 w-16 items-center justify-center rounded-full"
+                aria-hidden="true"
+              >
+                <User className="text-primary-foreground/60 h-8 w-8" />
+              </div>
+              <span className="text-lg font-semibold opacity-90">
+                — CEO, FAR Better
+              </span>
             </figcaption>
           </figure>
         </FadeIn>

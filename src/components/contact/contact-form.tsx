@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 
 // Input length limits (must match server-side limits)
 const MAX_NAME_LENGTH = 100;
@@ -44,6 +45,7 @@ export function ContactForm() {
     null
   );
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [confirmationSent, setConfirmationSent] = useState(false);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -96,6 +98,7 @@ export function ContactForm() {
 
       if (result.success) {
         setSubmitStatus("success");
+        setConfirmationSent(result.confirmationSent ?? false);
         setFormData({
           name: "",
           email: "",
@@ -131,10 +134,21 @@ export function ContactForm() {
       <div className="bg-card rounded-xl border p-8 text-center">
         <CheckCircle className="mx-auto mb-4 h-12 w-12 text-green-500" />
         <h3 className="mb-2 text-xl font-semibold">Message Sent!</h3>
-        <p className="text-muted-foreground mb-6">
+        <p
+          className={cn(
+            "text-muted-foreground",
+            confirmationSent ? "mb-2" : "mb-6"
+          )}
+        >
           Thank you for reaching out. We&apos;ll get back to you as soon as
           possible.
         </p>
+        {confirmationSent && (
+          <p className="text-muted-foreground mb-6 text-sm">
+            A confirmation email has been sent to your inbox with a copy of your
+            message.
+          </p>
+        )}
         <Button onClick={() => setSubmitStatus(null)} variant="outline">
           Send Another Message
         </Button>
