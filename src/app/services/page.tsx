@@ -1,12 +1,13 @@
 import { Globe, Mail, Truck } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
-import { ImagePlaceholder } from "@/components/image-placeholder";
 import { FadeIn } from "@/components/motion";
 import { ServiceFAQs } from "@/components/services/service-faqs";
 import { WorkflowSteps } from "@/components/services/workflow-steps";
 import { Button } from "@/components/ui/button";
+import laboratorySupplyServicesImage from "@/images/services/laboratory-supply-services.jpg";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -24,26 +25,17 @@ export default function ServicesPage() {
       {/* Hero Section */}
       <section className="from-primary/5 to-background bg-linear-to-b py-10 sm:py-14 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            <FadeIn className="text-center lg:text-left">
-              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-                Our Services
-              </h1>
-              <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
-                We offer comprehensive laboratory services including the
-                processing of blood samples into PBMCs, isolation of target
-                cells with high efficiency, and the provision of high-quality
-                microscopic imaging.
-              </p>
-            </FadeIn>
-            <FadeIn direction="right" delay={0.2}>
-              <ImagePlaceholder
-                aspectRatio="video"
-                label="Laboratory Services"
-                className="shadow-lg"
-              />
-            </FadeIn>
-          </div>
+          <FadeIn className="mx-auto max-w-3xl text-center">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+              Our Services
+            </h1>
+            <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
+              We offer comprehensive laboratory services including the
+              processing of blood samples into PBMCs, isolation of target cells
+              with high efficiency, and the provision of high-quality
+              microscopic imaging.
+            </p>
+          </FadeIn>
         </div>
       </section>
 
@@ -116,11 +108,15 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
             <FadeIn direction="left">
-              <ImagePlaceholder
-                aspectRatio="video"
-                label="Laboratory Supplies"
-                className="shadow-lg"
-              />
+              <div className="group aspect-video overflow-hidden rounded-lg shadow-lg">
+                <Image
+                  src={laboratorySupplyServicesImage}
+                  alt="Laboratory supply services - scientific equipment and consumables"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  placeholder="blur"
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
             </FadeIn>
             <FadeIn direction="none" delay={0.1}>
               <h2
