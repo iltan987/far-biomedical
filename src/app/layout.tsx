@@ -20,6 +20,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://farbetterbio.com"
+  ),
   title: {
     default: "FAR Better Bio | Blood Cell Separation Technology",
     template: "%s | FAR Better Bio",
@@ -51,12 +54,21 @@ export const metadata: Metadata = {
     title: "FAR Better Bio | Blood Cell Separation Technology",
     description:
       "Advanced blood-cell separation and apheretic blood filtration technologies for research and clinical applications.",
+    images: [
+      {
+        url: "/opengraph-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "FAR Better Bio - Blood Cell Separation Technology",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "FAR Better Bio | Blood Cell Separation Technology",
     description:
       "Advanced blood-cell separation and apheretic blood filtration technologies.",
+    images: ["/twitter-image.jpg"],
   },
   robots: {
     index: true,
