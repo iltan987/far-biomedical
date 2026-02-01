@@ -8,6 +8,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ScrollRestoration } from "@/components/scroll-restoration";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
+import { clientEnv } from "@/env/client";
+import { serverEnv } from "@/env/server";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,10 +22,10 @@ const geistMono = Geist_Mono({
 });
 
 const getBaseUrl = () => {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
-  if (process.env.VERCEL_PROJECT_PRODUCTION_URL)
-    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  if (clientEnv.NEXT_PUBLIC_SITE_URL) return clientEnv.NEXT_PUBLIC_SITE_URL;
+  if (serverEnv.VERCEL_PROJECT_PRODUCTION_URL)
+    return `https://${serverEnv.VERCEL_PROJECT_PRODUCTION_URL}`;
+  if (serverEnv.VERCEL_URL) return `https://${serverEnv.VERCEL_URL}`;
   return "http://localhost:3000";
 };
 

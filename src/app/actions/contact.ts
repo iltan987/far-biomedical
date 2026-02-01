@@ -3,6 +3,7 @@
 import { headers } from "next/headers";
 import nodemailer from "nodemailer";
 
+import { serverEnv } from "@/env/server";
 import { siteConfig } from "@/lib/constants";
 
 // Input length limits
@@ -178,7 +179,7 @@ export async function sendContactEmail(
   }
 
   // Check if environment variables are configured
-  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+  if (!serverEnv.GMAIL_USER || !serverEnv.GMAIL_APP_PASSWORD) {
     console.error(
       "Email configuration missing: GMAIL_USER or GMAIL_APP_PASSWORD not set"
     );
@@ -193,15 +194,15 @@ export async function sendContactEmail(
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD,
+        user: serverEnv.GMAIL_USER,
+        pass: serverEnv.GMAIL_APP_PASSWORD,
       },
     });
 
     // Email content
     const mailOptions = {
-      from: process.env.GMAIL_USER,
-      to: process.env.CONTACT_EMAIL_TO || siteConfig.contact.email,
+      from: serverEnv.GMAIL_USER,
+      to: serverEnv.CONTACT_EMAIL_TO || siteConfig.contact.email,
       replyTo: email,
       subject: `[Website Contact] ${subject}`,
       text: `
@@ -267,12 +268,12 @@ IP: ${clientIp}
     };
 
     // Check if confirmation emails are enabled (defaults to true)
-    const sendConfirmation = process.env.SEND_CONFIRMATION_EMAIL !== "false";
+    const sendConfirmation = serverEnv.SEND_CONFIRMATION_EMAIL !== "false";
 
     if (sendConfirmation) {
       // Confirmation email options (best effort - failures are logged but don't fail the submission)
       const confirmationMailOptions = {
-        from: process.env.GMAIL_USER,
+        from: serverEnv.GMAIL_USER,
         to: email,
         subject: `Thank you for contacting FAR Better Bio - ${subject}`,
         text: generateConfirmationText(name, email, subject, message),
