@@ -1,4 +1,5 @@
-import { ImagePlaceholder } from "@/components/image-placeholder";
+import Image from "next/image";
+
 import { FadeIn } from "@/components/motion";
 import { workflowSteps } from "@/data/services-data";
 
@@ -14,13 +15,18 @@ export function WorkflowSteps() {
             role="listitem"
             className="bg-card group relative h-full overflow-hidden rounded-xl border transition-shadow hover:shadow-md"
           >
-            {/* Step Image */}
-            <div className="overflow-hidden">
-              <ImagePlaceholder
-                aspectRatio="video"
-                className="rounded-none transition-transform duration-300 group-hover:scale-105"
-              />
-            </div>
+            {/* Step Image - only for steps with images */}
+            {step.image && (
+              <div className="aspect-video overflow-hidden">
+                <Image
+                  src={step.image}
+                  alt={step.title}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  placeholder="blur"
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+            )}
 
             <div className="p-6">
               {/* Step Number */}

@@ -9,6 +9,7 @@ import { FadeIn } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { products } from "@/data/products";
+import biomatenImage from "@/images/about/biomaten.jpeg";
 import { siteConfig } from "@/lib/constants";
 
 const platforms = products.slice(0, 3);
@@ -64,7 +65,11 @@ export default function AboutPage() {
             role="list"
           >
             {platforms.map((platform, index) => (
-              <FadeIn key={platform.title} delay={index * 0.1} className="h-full">
+              <FadeIn
+                key={platform.title}
+                delay={index * 0.1}
+                className="h-full"
+              >
                 <article role="listitem" className="h-full">
                   <Card className="group hover:border-primary/50 focus-within:ring-ring h-full overflow-hidden border-2 transition-colors focus-within:ring-2">
                     {/* Platform Image */}
@@ -128,10 +133,10 @@ export default function AboutPage() {
             </FadeIn>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <FadeIn>
-                <article className="bg-card overflow-hidden rounded-xl border">
+                <article className="group bg-card overflow-hidden rounded-xl border">
                   <ImagePlaceholder
                     aspectRatio="video"
-                    className="rounded-none"
+                    className="rounded-none transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="flex items-start gap-3 p-4">
                     <Building2
@@ -148,11 +153,16 @@ export default function AboutPage() {
                 </article>
               </FadeIn>
               <FadeIn>
-                <article className="bg-card overflow-hidden rounded-xl border">
-                  <ImagePlaceholder
-                    aspectRatio="video"
-                    className="rounded-none"
-                  />
+                <article className="group bg-card overflow-hidden rounded-xl border">
+                  <div className="aspect-video overflow-hidden">
+                    <Image
+                      src={biomatenImage}
+                      alt="BIOMATEN - METU Research Center building"
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                      placeholder="blur"
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
                   <div className="flex items-start gap-3 p-4">
                     <Building2
                       className="text-primary mt-0.5 h-5 w-5 shrink-0"

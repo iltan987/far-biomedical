@@ -1,3 +1,6 @@
+import pbmcProcessingImage from "@/images/services/pbmc-processing.png";
+import samplePreparationImage from "@/images/services/sample-preparation.png";
+import targetCellIsolationImage from "@/images/services/target-cell-isolation.png";
 import type { FAQItem, WorkflowStep } from "@/types";
 
 export const workflowSteps: WorkflowStep[] = [
@@ -6,18 +9,21 @@ export const workflowSteps: WorkflowStep[] = [
     title: "Sample Preparation",
     description:
       "Eligible blood samples are collected, stabilized, and processed under controlled conditions to maintain sample integrity and ensure optimal downstream performance.",
+    image: samplePreparationImage,
   },
   {
     number: 2,
     title: "PBMC Processing",
     description:
       "Peripheral blood mononuclear cells (PBMCs) are separated using density-gradient centrifugation techniques such as Ficoll, allowing us to obtain a clean and viable mononuclear cell fraction.",
+    image: pbmcProcessingImage,
   },
   {
     number: 3,
     title: "Target Cell Isolation",
     description:
       "Specific cell populations are isolated using advanced methods tailored to project requirements. In this process, we use our proprietary device to ensure high efficiency, precision, and reproducibility.",
+    image: targetCellIsolationImage,
   },
   {
     number: 4,

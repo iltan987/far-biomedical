@@ -88,6 +88,7 @@ export interface WorkflowStep {
   number: number;
   title: string;
   description: string;
+  image?: StaticImageData;
 }
 
 // FAQ Item
