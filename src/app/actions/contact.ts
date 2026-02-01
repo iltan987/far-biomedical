@@ -190,7 +190,7 @@ export async function sendContactEmail(
 
     // Email content
     const mailOptions = {
-      from: serverEnv.GMAIL_USER,
+      from: `FAR Better Bio <${serverEnv.GMAIL_USER}>`,
       to: serverEnv.CONTACT_EMAIL_TO || siteConfig.contact.email,
       replyTo: email,
       subject: `[Website Contact] ${subject}`,
@@ -259,7 +259,7 @@ IP: ${clientIp}
     if (serverEnv.SEND_CONFIRMATION_EMAIL) {
       // Confirmation email options (best effort - failures are logged but don't fail the submission)
       const confirmationMailOptions = {
-        from: serverEnv.GMAIL_USER,
+        from: `FAR Better Bio <${serverEnv.GMAIL_USER}>`,
         to: email,
         subject: `Thank you for contacting FAR Better Bio - ${subject}`,
         text: generateConfirmationText(name, email, subject, message),
