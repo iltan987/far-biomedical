@@ -178,17 +178,6 @@ export async function sendContactEmail(
     };
   }
 
-  // Check if environment variables are configured
-  if (!serverEnv.GMAIL_USER || !serverEnv.GMAIL_APP_PASSWORD) {
-    console.error(
-      "Email configuration missing: GMAIL_USER or GMAIL_APP_PASSWORD not set"
-    );
-    return {
-      success: false,
-      message: "Email service is not configured. Please contact us directly.",
-    };
-  }
-
   try {
     // Create transporter using Gmail with App Password
     const transporter = nodemailer.createTransport({
@@ -267,10 +256,7 @@ IP: ${clientIp}
       `.trim(),
     };
 
-    // Check if confirmation emails are enabled (defaults to true)
-    const sendConfirmation = serverEnv.SEND_CONFIRMATION_EMAIL !== "false";
-
-    if (sendConfirmation) {
+    if (serverEnv.SEND_CONFIRMATION_EMAIL) {
       // Confirmation email options (best effort - failures are logged but don't fail the submission)
       const confirmationMailOptions = {
         from: serverEnv.GMAIL_USER,
@@ -296,7 +282,7 @@ IP: ${clientIp}
     return {
       success: true,
       message: "Thank you for your message. We'll get back to you soon!",
-      confirmationSent: sendConfirmation,
+      confirmationSent: serverEnv.SEND_CONFIRMATION_EMAIL,
     };
   } catch (error) {
     console.error("Failed to send email:", error);

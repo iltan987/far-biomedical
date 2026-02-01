@@ -3,10 +3,14 @@ import { z } from "zod";
 
 export const serverEnv = createEnv({
   server: {
-    GMAIL_USER: z.email().optional(),
-    GMAIL_APP_PASSWORD: z.string().min(1).optional(),
+    GMAIL_USER: z.email(),
+    GMAIL_APP_PASSWORD: z.string().min(1),
     CONTACT_EMAIL_TO: z.email().optional(),
-    SEND_CONFIRMATION_EMAIL: z.enum(["true", "false"]).optional(),
+    SEND_CONFIRMATION_EMAIL: z
+      .enum(["true", "false"])
+      .transform((val) => val === "true")
+      .optional()
+      .default(true),
     VERCEL_URL: z.string().optional(),
     VERCEL_PROJECT_PRODUCTION_URL: z.string().optional(),
   },
