@@ -10,6 +10,7 @@ import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { clientEnv } from "@/env/client";
 import { serverEnv } from "@/env/server";
+import { siteConfig } from "@/lib/constants";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -73,6 +74,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: {
+    google: "hGmGKdQAypIFOl2RSaZ2w9yi96TVgIeW8eM662h6Ghc",
+  },
 };
 
 export default function RootLayout({
@@ -80,11 +84,34 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    logo: `${siteConfig.url}/logo.svg`,
+    description: siteConfig.description,
+    email: siteConfig.contact.email,
+    telephone: siteConfig.contact.phone,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: `${siteConfig.contact.address.line1}, ${siteConfig.contact.address.line2}`,
+      addressLocality: siteConfig.contact.address.city,
+      postalCode: siteConfig.contact.address.postalCode,
+      addressCountry: "TR",
+    },
+    sameAs: [siteConfig.social.linkedin, siteConfig.social.instagram],
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <ScrollRestoration />
         <SiteHeader />
         <main className="flex-1">{children}</main>
