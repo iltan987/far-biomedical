@@ -4,7 +4,7 @@ export const siteConfig: SiteConfig = {
   name: "FAR Better Bio",
   description:
     "Advanced blood-cell separation and apheretic blood filtration technologies",
-  url: "", // Set when domain is acquired
+  url: "https://www.farbetterbio.com",
 
   contact: {
     email: "farbiomedical@gmail.com",
@@ -25,8 +25,6 @@ export const siteConfig: SiteConfig = {
 
   location: {
     name: "ODTÜ Bilim ve İnovasyon Merkezi",
-    // Placeholder coordinates for METU Teknokent, Ankara
-    // To update: Change latitude and longitude to your exact location
     coordinates: {
       latitude: 39.9077973,
       longitude: 32.7499313,
