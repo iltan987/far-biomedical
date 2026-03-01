@@ -30,4 +30,11 @@ export const teamMembers: TeamMember[] = [
     // To add photo: place image at /public/images/team/iltan-caner.jpg
     imageUrl: undefined,
   },
+  {
+    id: "japher-kabunga",
+    name: "Japher Kabunga",
+    title: "Electrical and Electronics",
+    // To add photo: place image at /public/images/team/japher-kabunga.jpg
+    imageUrl: undefined,
+  },
 ];
