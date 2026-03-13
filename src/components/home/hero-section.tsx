@@ -8,11 +8,11 @@ import heroImage from "@/images/home/hero.jpg";
 
 export function HeroSection() {
   return (
-    <section className="from-primary/5 via-background to-background relative overflow-hidden bg-linear-to-b">
+    <section className="from-primary/5 via-background to-background relative overflow-hidden bg-linear-to-b lg:min-h-[calc(100svh-var(--site-header-height))]">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,var(--primary-glow),transparent)]" />
 
-      <div className="container mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
+      <div className="container mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-14 xl:py-16">
         <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 lg:gap-16">
           {/* Content */}
           <FadeIn className="text-center md:text-left">
@@ -42,9 +42,14 @@ export function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row md:justify-start">
-              <Button render={<Link href="/products" />} nativeButton={false} size="lg" className="w-full sm:w-auto">
-                  Explore Products
-                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+              <Button
+                render={<Link href="/products" />}
+                nativeButton={false}
+                size="lg"
+                className="w-full sm:w-auto"
+              >
+                Explore Products
+                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
               </Button>
               <Button
                 render={<Link href="/contact" />}
@@ -77,7 +82,7 @@ export function HeroSection() {
       {/* Scroll-down indicator */}
       <a
         href="#products-overview"
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 lg:block"
+        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 md:block"
         aria-label="Scroll to next section"
       >
         <ChevronDown className="text-muted-foreground h-8 w-8 animate-bounce" />
