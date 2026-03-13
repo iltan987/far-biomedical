@@ -8,7 +8,7 @@ import { serviceFAQs } from "@/data/services-data";
 
 export function ServiceFAQs() {
   return (
-    <Accordion type="single" collapsible className="w-full">
+    <Accordion className="w-full">
       {serviceFAQs.map((faq, index) => (
         <AccordionItem key={index} value={`item-${index}`}>
           <AccordionTrigger className="text-left">
