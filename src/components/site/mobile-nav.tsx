@@ -29,15 +29,17 @@ export function MobileNav() {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="lg:hidden"
-          aria-label="Open menu"
-        >
-          <Menu className="h-6 w-6" />
-        </Button>
+      <SheetTrigger
+        render={
+          <Button
+            variant="ghost"
+            size="icon"
+            className="lg:hidden"
+            aria-label="Open menu"
+          />
+        }
+      >
+        <Menu className="h-6 w-6" />
       </SheetTrigger>
       <SheetContent
         side="right"
@@ -45,27 +47,29 @@ export function MobileNav() {
         aria-describedby={undefined}
       >
         <SheetHeader className="flex-row items-center justify-between gap-4 border-b pb-4">
-          <SheetTitle asChild>
-            <Link
-              href="/"
-              onClick={() => setOpen(false)}
-              className="flex items-center gap-2"
-            >
-              <Image
-                src="/logo.svg"
-                alt="FAR Better Bio"
-                width={32}
-                height={32}
-                className="h-8 w-auto"
+          <SheetTitle
+            render={
+              <Link
+                href="/"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2"
               />
-              <span className="text-lg font-semibold">FAR Better</span>
-            </Link>
+            }
+          >
+            <Image
+              src="/logo.svg"
+              alt="FAR Better Bio"
+              width={32}
+              height={32}
+              className="h-8 w-auto"
+            />
+            <span className="text-lg font-semibold">FAR Better</span>
           </SheetTitle>
-          <SheetClose asChild>
-            <Button variant="ghost" size="icon" className="shrink-0">
-              <X className="h-5 w-5" />
-              <span className="sr-only">Close</span>
-            </Button>
+          <SheetClose
+            render={<Button variant="ghost" size="icon" className="shrink-0" />}
+          >
+            <X className="h-5 w-5" />
+            <span className="sr-only">Close</span>
           </SheetClose>
         </SheetHeader>
         <nav className="mt-6 flex flex-col gap-1">

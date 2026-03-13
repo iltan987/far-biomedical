@@ -49,15 +49,14 @@ export default function Error({
                 Try Again
               </Button>
               <Button
-                asChild
+                render={<Link href="/" />}
+                nativeButton={false}
                 variant="outline"
                 size="lg"
                 className="w-full sm:w-auto"
               >
-                <Link href="/">
                   <Home className="mr-2 h-4 w-4" aria-hidden="true" />
                   Back to Home
-                </Link>
               </Button>
             </div>
           </FadeIn>

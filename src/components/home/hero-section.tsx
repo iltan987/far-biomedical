@@ -42,19 +42,18 @@ export function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
-              <Button asChild size="lg" className="w-full sm:w-auto">
-                <Link href="/products">
+              <Button render={<Link href="/products" />} nativeButton={false} size="lg" className="w-full sm:w-auto">
                   Explore Products
                   <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                </Link>
               </Button>
               <Button
-                asChild
+                render={<Link href="/contact" />}
+                nativeButton={false}
                 variant="outline"
                 size="lg"
                 className="w-full sm:w-auto"
               >
-                <Link href="/contact">Contact Us</Link>
+                Contact Us
               </Button>
             </div>
           </FadeIn>

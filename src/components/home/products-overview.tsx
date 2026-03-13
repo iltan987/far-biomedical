@@ -103,11 +103,9 @@ export function ProductsOverview() {
                 laboratory materials and instruments.
               </p>
             </div>
-            <Button asChild variant="default" className="shrink-0">
-              <Link href="/products/laboratory-instruments">
+            <Button render={<Link href="/products/laboratory-instruments" />} nativeButton={false} variant="default" className="shrink-0">
                 Browse Products
                 <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-              </Link>
             </Button>
           </div>
         </FadeIn>

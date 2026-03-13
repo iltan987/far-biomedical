@@ -24,11 +24,9 @@ export default function LaboratoryConsumablesPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
           <div className="mb-6">
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/products">
+            <Button render={<Link href="/products" />} nativeButton={false} variant="ghost" size="sm">
                 <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" />
                 Back to Products
-              </Link>
             </Button>
           </div>
 

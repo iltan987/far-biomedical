@@ -16,7 +16,7 @@ import { navigationItems } from "@/data/navigation";
 export function DesktopNav() {
   const pathname = usePathname();
   return (
-    <NavigationMenu viewport={false} className="hidden lg:flex">
+    <NavigationMenu className="hidden lg:flex">
       <NavigationMenuList>
         {navigationItems.map((item) =>
           item.children ? (

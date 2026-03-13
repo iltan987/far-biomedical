@@ -110,14 +110,12 @@ export default function ProductsPage() {
                         {category.description}
                       </CardDescription>
                       {category.href ? (
-                        <Button asChild variant="outline" className="w-full">
-                          <Link href={category.href}>
+                        <Button render={<Link href={category.href} />} nativeButton={false} variant="outline" className="w-full">
                             Browse {category.title}
                             <ArrowRight
                               className="ml-2 h-4 w-4"
                               aria-hidden="true"
                             />
-                          </Link>
                         </Button>
                       ) : (
                         <Button disabled variant="outline" className="w-full">
@@ -151,8 +149,8 @@ export default function ProductsPage() {
               necessary laboratory materials and instruments for your research.
               Contact us with your specific requirements.
             </p>
-            <Button asChild>
-              <Link href="/contact">Contact Us</Link>
+            <Button render={<Link href="/contact" />} nativeButton={false}>
+              Contact Us
             </Button>
           </FadeIn>
         </div>

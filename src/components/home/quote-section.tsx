@@ -43,15 +43,14 @@ export function QuoteSection() {
             provide you the highest quality and most ideal product.
           </p>
           <Button
-            asChild
+            render={<Link href="/contact" />}
+            nativeButton={false}
             variant="secondary"
             size="lg"
             className="text-primary bg-primary-foreground hover:bg-primary-foreground/90"
           >
-            <Link href="/contact">
               Contact Us
               <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-            </Link>
           </Button>
         </FadeIn>
       </div>

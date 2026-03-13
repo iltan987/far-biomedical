@@ -74,8 +74,8 @@ export default function TeamPage() {
               We&apos;re always looking for talented individuals passionate
               about advancing biomedical research.
             </p>
-            <Button asChild>
-              <Link href="/contact">Get in Touch</Link>
+            <Button render={<Link href="/contact" />} nativeButton={false}>
+              Get in Touch
             </Button>
           </FadeIn>
         </div>

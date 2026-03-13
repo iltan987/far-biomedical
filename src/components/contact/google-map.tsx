@@ -53,17 +53,13 @@ export function GoogleMap({ className }: GoogleMapProps) {
           </p>
         </div>
         <div className="flex gap-2">
-          <Button asChild variant="outline" size="sm">
-            <a href={directUrl} target="_blank" rel="noopener noreferrer">
+          <Button render={<a href={directUrl} target="_blank" rel="noopener noreferrer" />} nativeButton={false} variant="outline" size="sm">
               <ExternalLink className="mr-2 h-4 w-4" />
               Open Map
-            </a>
           </Button>
-          <Button asChild size="sm">
-            <a href={directionsUrl} target="_blank" rel="noopener noreferrer">
+          <Button render={<a href={directionsUrl} target="_blank" rel="noopener noreferrer" />} nativeButton={false} size="sm">
               <Navigation className="mr-2 h-4 w-4" />
               Directions
-            </a>
           </Button>
         </div>
       </div>
