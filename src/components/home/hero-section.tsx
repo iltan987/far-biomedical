@@ -80,13 +80,13 @@ export function HeroSection() {
       </div>
 
       {/* Scroll-down indicator */}
-      <a
+      <Link
         href="#products-overview"
         className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 md:block"
         aria-label="Scroll to next section"
       >
         <ChevronDown className="text-muted-foreground h-8 w-8 animate-bounce" />
-      </a>
+      </Link>
     </section>
   );
 }
