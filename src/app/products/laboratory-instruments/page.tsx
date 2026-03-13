@@ -61,7 +61,7 @@ export default async function LaboratoryInstrumentsPage() {
       </section>
 
       {/* Instruments List */}
-      <section className="py-12 sm:py-16" aria-labelledby="instruments-heading">
+      <section className="no-snap py-12 sm:py-16" aria-labelledby="instruments-heading">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 id="instruments-heading" className="sr-only">
             Available Instruments

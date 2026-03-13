@@ -18,6 +18,7 @@ import { products } from "@/data/products";
 export function ProductsOverview() {
   return (
     <section
+      id="products-overview"
       className="bg-muted/30 py-16 sm:py-24 lg:py-32"
       aria-labelledby="products-heading"
     >

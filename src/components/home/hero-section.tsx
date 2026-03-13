@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -73,6 +73,15 @@ export function HeroSection() {
           </FadeIn>
         </div>
       </div>
+
+      {/* Scroll-down indicator */}
+      <a
+        href="#products-overview"
+        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 lg:block"
+        aria-label="Scroll to next section"
+      >
+        <ChevronDown className="text-muted-foreground h-8 w-8 animate-bounce" />
+      </a>
     </section>
   );
 }
