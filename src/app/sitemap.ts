@@ -4,6 +4,7 @@ import { siteConfig } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
+  const lastModified = new Date("2026-03-13");
 
   const routes = [
     { path: "/", priority: 1.0, changeFrequency: "weekly" as const },
@@ -26,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return routes.map(({ path, priority, changeFrequency }) => ({
     url: `${baseUrl}${path}`,
-    lastModified: new Date(),
+    lastModified,
     changeFrequency,
     priority,
   }));

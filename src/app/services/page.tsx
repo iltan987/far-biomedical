@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "Comprehensive laboratory services including PBMC processing, target cell isolation, quality control, and microscopic imaging throughout Turkey.",
+  alternates: {
+    canonical: "/services",
+  },
   openGraph: {
     title: "Laboratory Services - FAR Better Bio",
     description: "Professional cell isolation and laboratory services.",

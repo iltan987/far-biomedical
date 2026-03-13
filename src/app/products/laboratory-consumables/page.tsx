@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Laboratory Consumables",
   description:
     "Browse our selection of laboratory consumables including tubes, pipettes, slides, and storage containers.",
+  alternates: {
+    canonical: "/products/laboratory-consumables",
+  },
   openGraph: {
     title: "Laboratory Consumables - FAR Better Bio",
     description: "Essential laboratory consumables for your research needs.",

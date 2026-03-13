@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Our Team",
   description:
     "Meet the team behind FAR Better Bio - experts in biomedical engineering, software development, and cell separation technology.",
+  alternates: {
+    canonical: "/team",
+  },
   openGraph: {
     title: "Our Team - FAR Better Bio",
     description:
