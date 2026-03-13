@@ -106,7 +106,7 @@ export default function ServicesPage() {
         aria-labelledby="supply-heading"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 lg:gap-16">
             <FadeIn direction="left">
               <div className="group aspect-video overflow-hidden rounded-lg shadow-lg">
                 <Image
@@ -121,18 +121,18 @@ export default function ServicesPage() {
             <FadeIn direction="none" delay={0.1}>
               <h2
                 id="supply-heading"
-                className="mb-4 text-center text-2xl font-bold sm:text-3xl lg:text-left"
+                className="mb-4 text-center text-2xl font-bold sm:text-3xl md:text-left"
               >
                 Laboratory Supply Services
               </h2>
-              <p className="text-muted-foreground mb-8 text-center lg:text-left">
+              <p className="text-muted-foreground mb-8 text-center md:text-left">
                 We provide comprehensive supply services for research
                 laboratories. Whatever your needs may be, our specialized team
                 identifies high-quality, specific products from around the world
                 and delivers them to you in a manner tailored to your
                 requirements.
               </p>
-              <div className="flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
+              <div className="flex flex-col justify-center gap-4 sm:flex-row md:justify-start">
                 <Button render={<Link href="/products/laboratory-instruments" />} nativeButton={false}>
                     Browse Instruments
                 </Button>

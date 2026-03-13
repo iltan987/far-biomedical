@@ -23,8 +23,8 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="from-primary/5 to-background bg-linear-to-b py-8 sm:py-10 lg:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            <FadeIn className="text-center lg:text-left">
+          <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 lg:gap-16">
+            <FadeIn className="text-center md:text-left">
               <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
                 Contact Us
               </h1>
@@ -54,7 +54,7 @@ export default function ContactPage() {
         </h2>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Row 1: Form + Contact Info */}
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
             {/* Contact Form */}
             <FadeIn delay={0.1}>
               <h3 className="mb-4 text-xl font-semibold">Send Us a Message</h3>

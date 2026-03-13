@@ -31,8 +31,8 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="from-primary/5 to-background bg-linear-to-b py-10 sm:py-14 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            <FadeIn className="text-center lg:text-left">
+          <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 lg:gap-16">
+            <FadeIn className="text-center md:text-left">
               <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
                 About Us
               </h1>
@@ -61,7 +61,7 @@ export default function AboutPage() {
             </h2>
           </FadeIn>
           <div
-            className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8"
+            className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8"
             role="list"
           >
             {platforms.map((platform, index) => (
