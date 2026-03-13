@@ -37,4 +37,11 @@ export const teamMembers: TeamMember[] = [
     // To add photo: place image at /public/images/team/japher-kabunga.jpg
     imageUrl: undefined,
   },
+  {
+    id: "ali-demir",
+    name: "Ali Demir",
+    title: "Lead Mechanical Designer",
+    // To add photo: place image at /public/images/team/ali-demir.jpg
+    imageUrl: undefined,
+  },
 ];
