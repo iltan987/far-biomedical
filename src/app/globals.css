@@ -47,6 +47,7 @@
 }
 
 :root {
+  --site-header-height: 4rem;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -150,12 +151,12 @@
 @media (min-width: 1024px) {
   html {
     scroll-snap-type: y proximity;
-    scroll-padding-top: 4rem;
+    scroll-padding-top: var(--site-header-height);
   }
 
   main > section {
     scroll-snap-align: start;
-    min-height: calc(100svh - 4rem);
+    min-height: calc(100svh - var(--site-header-height));
     display: flex;
     flex-direction: column;
     justify-content: center;
