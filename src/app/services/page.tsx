@@ -133,15 +133,11 @@ export default function ServicesPage() {
                 requirements.
               </p>
               <div className="flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
-                <Button asChild>
-                  <Link href="/products/laboratory-instruments">
+                <Button render={<Link href="/products/laboratory-instruments" />} nativeButton={false}>
                     Browse Instruments
-                  </Link>
                 </Button>
-                <Button asChild variant="outline">
-                  <Link href="/products/laboratory-consumables">
+                <Button render={<Link href="/products/laboratory-consumables" />} nativeButton={false} variant="outline">
                     Browse Consumables
-                  </Link>
                 </Button>
               </div>
             </FadeIn>
@@ -185,15 +181,14 @@ export default function ServicesPage() {
               solutions.
             </p>
             <Button
-              asChild
+              render={<Link href="/contact" />}
+              nativeButton={false}
               variant="secondary"
               size="lg"
               className="text-primary bg-primary-foreground hover:bg-primary-foreground/90"
             >
-              <Link href="/contact">
                 <Mail className="mr-2 h-4 w-4" aria-hidden="true" />
                 Contact Us
-              </Link>
             </Button>
           </FadeIn>
         </div>

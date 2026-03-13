@@ -199,15 +199,11 @@ export default function AboutPage() {
               high-quality materials.
             </p>
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
-              <Button asChild>
-                <Link href="/products/laboratory-instruments">
+              <Button render={<Link href="/products/laboratory-instruments" />} nativeButton={false}>
                   Browse Instruments
-                </Link>
               </Button>
-              <Button asChild variant="outline">
-                <Link href="/products/laboratory-consumables">
+              <Button render={<Link href="/products/laboratory-consumables" />} nativeButton={false} variant="outline">
                   Browse Consumables
-                </Link>
               </Button>
             </div>
           </FadeIn>
@@ -240,11 +236,12 @@ export default function AboutPage() {
                 {siteConfig.contact.email}
               </a>
               <Button
-                asChild
+                render={<Link href="/contact" />}
+                nativeButton={false}
                 variant="secondary"
                 className="text-primary bg-primary-foreground hover:bg-primary-foreground/90"
               >
-                <Link href="/contact">Contact Us</Link>
+                Contact Us
               </Button>
             </div>
           </FadeIn>

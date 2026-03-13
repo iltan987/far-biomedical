@@ -59,11 +59,9 @@ export function ServicesPreview() {
               ))}
             </div>
 
-            <Button asChild className="mt-8">
-              <Link href="/services">
+            <Button render={<Link href="/services" />} nativeButton={false} className="mt-8">
                 Learn More About Our Services
                 <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-              </Link>
             </Button>
           </FadeIn>
 

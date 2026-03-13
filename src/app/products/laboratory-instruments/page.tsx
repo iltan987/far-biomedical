@@ -38,11 +38,9 @@ export default async function LaboratoryInstrumentsPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
           <div className="mb-6">
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/products">
+            <Button render={<Link href="/products" />} nativeButton={false} variant="ghost" size="sm">
                 <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" />
                 Back to Products
-              </Link>
             </Button>
           </div>
 
@@ -86,11 +84,9 @@ export default async function LaboratoryInstrumentsPage() {
               Our team can help you find the right instruments for your specific
               requirements. Contact us for personalized recommendations.
             </p>
-            <Button asChild>
-              <a href={`mailto:${siteConfig.contact.email}`}>
+            <Button render={<a href={`mailto:${siteConfig.contact.email}`} />} nativeButton={false}>
                 <Mail className="mr-2 h-4 w-4" aria-hidden="true" />
                 Contact Us
-              </a>
             </Button>
           </FadeIn>
         </div>

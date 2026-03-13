@@ -42,22 +42,19 @@ export default function NotFound() {
           {/* Action Buttons */}
           <FadeIn delay={0.3}>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button asChild size="lg" className="w-full sm:w-auto">
-                <Link href="/">
+              <Button render={<Link href="/" />} nativeButton={false} size="lg" className="w-full sm:w-auto">
                   <Home className="mr-2 h-4 w-4" aria-hidden="true" />
                   Back to Home
-                </Link>
               </Button>
               <Button
-                asChild
+                render={<Link href="/contact" />}
+                nativeButton={false}
                 variant="outline"
                 size="lg"
                 className="w-full sm:w-auto"
               >
-                <Link href="/contact">
                   <Mail className="mr-2 h-4 w-4" aria-hidden="true" />
                   Contact Us
-                </Link>
               </Button>
             </div>
           </FadeIn>

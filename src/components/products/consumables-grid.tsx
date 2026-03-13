@@ -61,11 +61,9 @@ export function ConsumablesGrid() {
           <p className="text-muted-foreground mb-4">
             Submit your order by contacting us directly via email.
           </p>
-          <Button asChild>
-            <a href={`mailto:${consumablesOrderEmail}`}>
+          <Button render={<a href={`mailto:${consumablesOrderEmail}`} />} nativeButton={false}>
               <Mail className="mr-2 h-4 w-4" aria-hidden="true" />
               {consumablesOrderEmail}
-            </a>
           </Button>
         </div>
       </FadeIn>
