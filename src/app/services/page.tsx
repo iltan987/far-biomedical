@@ -26,7 +26,7 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="from-primary/5 to-background bg-linear-to-b py-10 sm:py-14 lg:py-20">
+      <section className="no-snap from-primary/5 to-background bg-linear-to-b py-10 sm:py-14 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
@@ -43,7 +43,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Service Area */}
-      <section className="border-b py-12">
+      <section className="no-snap border-b py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-12">
             <FadeIn delay={0}>

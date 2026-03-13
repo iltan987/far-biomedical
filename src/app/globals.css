@@ -145,3 +145,29 @@
 .instrument-card-button {
   @apply mt-3 w-full;
 }
+
+/* Scroll snap — full-viewport sections (desktop only) */
+@media (min-width: 1024px) {
+  html {
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 4rem;
+  }
+
+  main > section {
+    scroll-snap-align: start;
+    min-height: calc(100svh - 4rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  footer {
+    scroll-snap-align: start;
+  }
+
+  main > section.no-snap {
+    scroll-snap-align: none;
+    min-height: unset;
+    display: block;
+  }
+}
