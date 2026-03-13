@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: "Our Products",
   description:
     "Explore FAR Better Bio's laboratory instruments, consumables, and upcoming AutoCeive cell separation device.",
+  alternates: {
+    canonical: "/products",
+  },
   openGraph: {
     title: "Products - FAR Better Bio",
     description: "Laboratory instruments and consumables for research.",

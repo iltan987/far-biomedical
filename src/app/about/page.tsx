@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: "About Us",
   description:
     "Learn about FAR Better Bio, an R&D company at METU Teknokent developing AutoCeive and AphereCeive blood cell separation technologies.",
+  alternates: {
+    canonical: "/about",
+  },
   openGraph: {
     title: "About FAR Better Bio",
     description:

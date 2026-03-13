@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: "Contact Us",
   description:
     "Get in touch with FAR Better Bio. Located at METU Teknokent, Ankara, Turkey. Contact us for laboratory services and products.",
+  alternates: {
+    canonical: "/contact",
+  },
   openGraph: {
     title: "Contact FAR Better Bio",
     description: "Reach out to our team for inquiries and support.",

@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Laboratory Instruments",
   description:
     "Browse our selection of high-quality laboratory instruments including centrifuges, incubators, ovens, balances, autoclaves, and more.",
+  alternates: {
+    canonical: "/products/laboratory-instruments",
+  },
   openGraph: {
     title: "Laboratory Instruments - FAR Better Bio",
     description:
