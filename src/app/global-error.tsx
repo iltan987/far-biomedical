@@ -7,10 +7,9 @@ import { Geist } from "next/font/google";
 import Link from "next/link";
 import { useEffect } from "react";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { cn } from "@/lib/utils";
+
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 export default function GlobalError({
   error,
@@ -24,10 +23,8 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} bg-background text-foreground flex min-h-screen flex-col items-center justify-center px-4 font-sans antialiased`}
-      >
+    <html lang="en" className={cn("font-sans", geist.variable)}>
+      <body className="bg-background text-foreground flex min-h-screen flex-col items-center justify-center px-4 antialiased">
         <div className="text-center">
           <div className="mb-6 flex justify-center">
             <div className="bg-destructive/10 text-destructive flex h-16 w-16 items-center justify-center rounded-2xl">

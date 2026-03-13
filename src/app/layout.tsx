@@ -3,7 +3,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 
 import { ScrollRestoration } from "@/components/scroll-restoration";
 import { SiteFooter } from "@/components/site/site-footer";
@@ -11,16 +11,9 @@ import { SiteHeader } from "@/components/site/site-header";
 import { clientEnv } from "@/env/client";
 import { serverEnv } from "@/env/server";
 import { siteConfig } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const getBaseUrl = () => {
   if (clientEnv.NEXT_PUBLIC_SITE_URL) return clientEnv.NEXT_PUBLIC_SITE_URL;
@@ -101,10 +94,12 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col antialiased`}
-      >
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={cn("font-sans", geist.variable)}
+    >
+      <body className="flex min-h-screen flex-col antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
