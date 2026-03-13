@@ -75,7 +75,7 @@ export default function ProductsPage() {
             Product Categories
           </h2>
           <div
-            className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8"
+            className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8"
             role="list"
           >
             {productCategories.map((category, index) => (
