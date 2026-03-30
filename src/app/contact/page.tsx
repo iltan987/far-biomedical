@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 
 import { ContactForm } from "@/components/contact/contact-form";
 import { GoogleMap } from "@/components/contact/google-map";
-import { ImagePlaceholder } from "@/components/image-placeholder";
 import { FadeIn } from "@/components/motion";
 import { siteConfig } from "@/lib/constants";
 
@@ -23,52 +22,38 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="from-primary/5 to-background bg-linear-to-b py-8 sm:py-10 lg:py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 lg:gap-16">
-            <FadeIn className="text-center md:text-left">
-              <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                Contact Us
-              </h1>
-              <p className="text-muted-foreground mt-3 text-base leading-relaxed">
-                Have questions? We&apos;d love to hear from you. Get in touch
-                with our team for inquiries about our products and services.
-              </p>
-            </FadeIn>
-            <FadeIn direction="right" delay={0.2}>
-              <ImagePlaceholder
-                aspectRatio="video"
-                label="Office Image"
-                className="shadow-lg"
-              />
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Content Section */}
+      {/* Contact Section */}
       <section
-        className="py-10 sm:py-12"
+        className="from-primary/5 to-background bg-linear-to-b py-8 sm:py-10 lg:py-16"
         aria-labelledby="contact-main-heading"
       >
-        <h2 id="contact-main-heading" className="sr-only">
-          Contact Details
-        </h2>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Row 1: Form + Contact Info */}
+          <FadeIn className="mb-8 max-w-2xl sm:mb-10">
+            <h1
+              id="contact-main-heading"
+              className="text-3xl font-bold tracking-tight sm:text-4xl"
+            >
+              Contact Us
+            </h1>
+            <p className="text-muted-foreground mt-3 text-base leading-relaxed">
+              Have questions? We&apos;d love to hear from you. Get in touch with
+              our team for inquiries about our products and services.
+            </p>
+          </FadeIn>
+
+          {/* Form + Contact Info */}
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
             {/* Contact Form */}
             <FadeIn delay={0.1}>
-              <h3 className="mb-4 text-xl font-semibold">Send Us a Message</h3>
+              <h2 className="mb-4 text-xl font-semibold">Send Us a Message</h2>
               <ContactForm />
             </FadeIn>
 
             {/* Contact Info */}
             <FadeIn delay={0.2}>
-              <h3 className="mb-4 text-xl font-semibold">
+              <h2 className="mb-4 text-xl font-semibold">
                 Contact Information
-              </h3>
+              </h2>
               <div className="space-y-3">
                 <article className="bg-muted/50 hover:bg-muted/70 flex items-start gap-3 rounded-lg p-4 transition-colors">
                   <div
@@ -130,9 +115,9 @@ export default function ContactPage() {
             </FadeIn>
           </div>
 
-          {/* Row 2: Full-width Map */}
+          {/* Full-width Map */}
           <FadeIn delay={0.3} className="mt-10">
-            <h3 className="mb-4 text-xl font-semibold">Our Location</h3>
+            <h2 className="mb-4 text-xl font-semibold">Our Location</h2>
             <GoogleMap />
           </FadeIn>
         </div>
