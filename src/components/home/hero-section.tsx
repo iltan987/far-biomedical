@@ -8,14 +8,17 @@ import heroImage from "@/images/home/hero.jpg";
 
 export function HeroSection() {
   return (
-    <section className="from-primary/5 via-background to-background relative overflow-hidden bg-linear-to-b lg:min-h-[calc(100svh-var(--site-header-height))]">
+    <section className="from-primary/5 via-background to-background relative overflow-hidden bg-linear-to-b md:h-[calc(100svh-var(--site-header-height))]">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,var(--primary-glow),transparent)]" />
 
-      <div className="container mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-14 xl:py-16">
-        <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 lg:gap-16">
+      <div className="container mx-auto h-full px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-10 xl:py-12">
+        <div className="grid h-full grid-cols-1 items-center gap-8 md:grid-cols-2 lg:gap-12">
           {/* Content */}
-          <FadeIn renderStrategy="paint-safe" className="text-center md:text-left">
+          <FadeIn
+            renderStrategy="paint-safe"
+            className="text-center md:text-left"
+          >
             {/* Badge */}
             <div className="border-primary/20 bg-primary/5 text-primary mb-6 inline-flex items-center rounded-full border px-4 py-1.5 text-sm">
               <span className="bg-primary mr-2 h-2 w-2 animate-pulse rounded-full" />
@@ -42,12 +45,8 @@ export function HeroSection() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row md:justify-start">
-              <CtaLink
-                href="/products"
-                size="lg"
-                className="w-full sm:w-auto"
-              >
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row md:justify-start">
+              <CtaLink href="/products" size="lg" className="w-full sm:w-auto">
                 Explore Products
                 <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
               </CtaLink>
@@ -63,11 +62,7 @@ export function HeroSection() {
           </FadeIn>
 
           {/* Hero Image */}
-          <FadeIn
-            direction="right"
-            delay={0.2}
-            renderStrategy="paint-safe"
-          >
+          <FadeIn direction="right" delay={0.2} renderStrategy="paint-safe">
             <div className="aspect-video overflow-hidden rounded-lg shadow-lg">
               <Image
                 src={heroImage}
