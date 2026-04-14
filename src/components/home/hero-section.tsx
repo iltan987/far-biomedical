@@ -72,7 +72,8 @@ export function HeroSection() {
               <Image
                 src={heroImage}
                 alt="FAR Better Bio laboratory equipment for blood cell separation"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 720px"
+                quality={72}
                 priority
                 placeholder="blur"
                 className="h-full w-full object-cover"
