@@ -19,6 +19,18 @@ export const seoKeywordSets = {
     "Turkiye biyomedikal sirket",
     "Turkiye biyomedikal AR-GE sirketi",
   ],
+  discoveryIntent: [
+    "therapeutic apheresis startup",
+    "selective apheresis device developer",
+    "therapeutic apheresis medical device company",
+    "novel apheresis system developer",
+    "R&D-stage apheresis startup",
+    "emerging apheresis device company",
+    "hemoperfusion and blood purification research",
+    "extracorporeal blood processing technology",
+    "selective blood purification device",
+    "cell-selective apheresis platform",
+  ],
   globalReach: [
     "global biomedical company",
     "international biomedical R&D",

@@ -15,6 +15,7 @@ const servicesKeywords = mergeKeywords(
   seoKeywordSets.core,
   seoKeywordSets.services,
   seoKeywordSets.manufacturerIntent,
+  seoKeywordSets.discoveryIntent,
   seoKeywordSets.globalReach,
   seoKeywordSets.location
 );

@@ -10,6 +10,7 @@ import { mergeKeywords, seoKeywordSets } from "@/lib/seo";
 const homeKeywords = mergeKeywords(
   seoKeywordSets.core,
   seoKeywordSets.manufacturerIntent,
+  seoKeywordSets.discoveryIntent,
   seoKeywordSets.globalReach,
   seoKeywordSets.brand,
   seoKeywordSets.location,

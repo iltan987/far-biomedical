@@ -17,6 +17,7 @@ const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 const sitewideKeywords = mergeKeywords(
   seoKeywordSets.core,
   seoKeywordSets.manufacturerIntent,
+  seoKeywordSets.discoveryIntent,
   seoKeywordSets.globalReach,
   seoKeywordSets.brand,
   seoKeywordSets.location,
@@ -28,7 +29,7 @@ const getBaseUrl = () => {
   if (serverEnv.VERCEL_PROJECT_PRODUCTION_URL)
     return `https://${serverEnv.VERCEL_PROJECT_PRODUCTION_URL}`;
   if (serverEnv.VERCEL_URL) return `https://${serverEnv.VERCEL_URL}`;
-  return "http://localhost:3000";
+  return siteConfig.url;
 };
 
 export const metadata: Metadata = {
@@ -75,6 +76,7 @@ export default function RootLayout({
     url: siteConfig.url,
     logo: `${siteConfig.url}/logo.png`,
     description: siteConfig.description,
+    alternateName: ["FAR Biomedical", "FAR Better"],
     email: siteConfig.contact.email,
     telephone: siteConfig.contact.phone,
     address: {

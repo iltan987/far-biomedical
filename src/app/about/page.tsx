@@ -18,6 +18,7 @@ const platforms = products.slice(0, 3);
 const aboutKeywords = mergeKeywords(
   seoKeywordSets.core,
   seoKeywordSets.manufacturerIntent,
+  seoKeywordSets.discoveryIntent,
   seoKeywordSets.globalReach,
   seoKeywordSets.brand,
   seoKeywordSets.location

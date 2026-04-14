@@ -19,6 +19,7 @@ const productsKeywords = mergeKeywords(
   seoKeywordSets.core,
   seoKeywordSets.products,
   seoKeywordSets.manufacturerIntent,
+  seoKeywordSets.discoveryIntent,
   seoKeywordSets.globalReach,
   seoKeywordSets.brand,
   seoKeywordSets.location
