@@ -10,9 +10,18 @@ import { SiteHeader } from "@/components/site/site-header";
 import { clientEnv } from "@/env/client";
 import { serverEnv } from "@/env/server";
 import { siteConfig } from "@/lib/constants";
+import { mergeKeywords, seoKeywordSets } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+const sitewideKeywords = mergeKeywords(
+  seoKeywordSets.core,
+  seoKeywordSets.manufacturerIntent,
+  seoKeywordSets.globalReach,
+  seoKeywordSets.brand,
+  seoKeywordSets.location,
+  seoKeywordSets.products
+);
 
 const getBaseUrl = () => {
   if (clientEnv.NEXT_PUBLIC_SITE_URL) return clientEnv.NEXT_PUBLIC_SITE_URL;
@@ -29,38 +38,24 @@ export const metadata: Metadata = {
     template: "%s | FAR Better Bio",
   },
   description:
-    "FAR Better Bio is an R&D company developing advanced blood-cell separation and apheretic blood filtration technologies. Specializing in AutoCeive and AphereCeive platforms for research and clinical applications.",
-  keywords: [
-    "blood cell separation",
-    "apheresis",
-    "cell isolation",
-    "biomedical research",
-    "laboratory equipment",
-    "PBMC isolation",
-    "AutoCeive",
-    "AphereCeive",
-    "METU Teknokent",
-    "ODTU Bilim ve Inovasyon Merkezi",
-    "ODTÜ Bilim ve İnovasyon Merkezi",
-    "METU Science and Innovation Center",
-    "laboratory instruments",
-    "laboratory consumables",
-  ],
+    "FAR Better Bio is a biomedical R&D company based in Turkiye, developing apheresis and aferez-focused blood-cell separation technologies for global research and medical device workflows.",
+  keywords: sitewideKeywords,
   authors: [{ name: "FAR Better Bio" }],
   creator: "FAR Better Bio",
   openGraph: {
     type: "website",
     locale: "en_US",
+    alternateLocale: "tr_TR",
     siteName: "FAR Better Bio",
     title: "FAR Better Bio | Blood Cell Separation Technology",
     description:
-      "Advanced blood-cell separation and apheretic blood filtration technologies for research and clinical applications.",
+      "Biomedical R&D company based in Turkiye, developing apheresis and aferez-oriented blood-cell separation technologies for global research and medical device applications.",
   },
   twitter: {
     card: "summary_large_image",
     title: "FAR Better Bio | Blood Cell Separation Technology",
     description:
-      "Advanced blood-cell separation and apheretic blood filtration technologies.",
+      "Turkiye-based biomedical company serving global partners with apheresis and aferez-focused cell separation technology.",
   },
   robots: {
     index: true,
@@ -73,9 +68,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
-    "@context": "https://schema.org",
+  const organizationSchema = {
     "@type": "Organization",
+    "@id": `${siteConfig.url}/#organization`,
     name: siteConfig.name,
     url: siteConfig.url,
     logo: `${siteConfig.url}/logo.png`,
@@ -89,7 +84,36 @@ export default function RootLayout({
       postalCode: siteConfig.contact.address.postalCode,
       addressCountry: "TR",
     },
+    areaServed: [
+      { "@type": "Country", name: "Turkey" },
+      { "@type": "Place", name: "Worldwide" },
+    ],
+    availableLanguage: ["en", "tr"],
+    knowsAbout: [
+      "Apheresis",
+      "Aferez",
+      "Blood Cell Separation",
+      "Target Cell Isolation",
+      "Biomedical R&D",
+      "Medical Device Development",
+    ],
     sameAs: [siteConfig.social.linkedin, siteConfig.social.instagram],
+  };
+  const websiteSchema = {
+    "@type": "WebSite",
+    "@id": `${siteConfig.url}/#website`,
+    name: siteConfig.name,
+    url: siteConfig.url,
+    inLanguage: ["en", "tr"],
+    publisher: {
+      "@id": `${siteConfig.url}/#organization`,
+    },
+    description:
+      "Turkiye-based biomedical R&D website for global apheresis and aferez device development, laboratory products, and isolation services.",
+  };
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [organizationSchema, websiteSchema],
   };
 
   return (

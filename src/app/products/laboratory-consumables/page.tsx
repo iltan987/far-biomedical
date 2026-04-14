@@ -4,24 +4,54 @@ import Link from "next/link";
 
 import { FadeIn } from "@/components/motion";
 import { ConsumablesGrid } from "@/components/products/consumables-grid";
+import { PageSchema } from "@/components/seo/page-schema";
 import { Button } from "@/components/ui/button";
+import { mergeKeywords, seoKeywordSets } from "@/lib/seo";
+
+const consumablesKeywords = mergeKeywords(
+  seoKeywordSets.core,
+  seoKeywordSets.products,
+  seoKeywordSets.globalReach,
+  [
+    "laboratory consumables Turkey",
+    "biomedical consumables Turkiye",
+    "laboratory consumables supplier worldwide",
+    "aferez arastirma laboratuvar sarf malzemeleri",
+  ]
+);
 
 export const metadata: Metadata = {
   title: "Laboratory Consumables",
   description:
-    "Browse our selection of laboratory consumables including tubes, pipettes, slides, and storage containers.",
+    "Browse laboratory consumables from Turkiye including tubes, pipettes, slides, and storage supplies for global biomedical and apheresis-related workflows.",
+  keywords: consumablesKeywords,
   alternates: {
     canonical: "/products/laboratory-consumables",
   },
   openGraph: {
-    title: "Laboratory Consumables - FAR Better Bio",
-    description: "Essential laboratory consumables for your research needs.",
+    title: "Laboratory Consumables | FAR Better Bio Global Supply",
+    description:
+      "Essential laboratory consumables for global biomedical, target cell isolation, and apheresis-oriented research needs.",
+    url: "/products/laboratory-consumables",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Laboratory Consumables | FAR Better Bio Worldwide",
+    description:
+      "Find consumables for cell isolation, PBMC processing, and global biomedical lab workflows.",
   },
 };
 
 export default function LaboratoryConsumablesPage() {
   return (
     <>
+      <PageSchema
+        path="/products/laboratory-consumables"
+        type="CollectionPage"
+        title="Laboratory Consumables | FAR Better Bio Global Supply"
+        description="Laboratory consumables supporting biomedical and apheresis-oriented research workflows from Turkiye to global teams."
+        keywords={consumablesKeywords}
+      />
       {/* Hero Section */}
       <section className="from-primary/5 to-background bg-linear-to-b py-10 sm:py-14">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,7 +70,15 @@ export default function LaboratoryConsumablesPage() {
             <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
               Essential laboratory consumables for your research needs. We
               provide high-quality tubes, pipettes, slides, and storage
-              containers.
+              containers for biomedical, PBMC, and apheresis-related workflows.
+            </p>
+            <p className="text-muted-foreground mt-3 text-sm">
+              Need a custom consumables list for your biomedical workflow
+              anywhere in the world?{" "}
+              <Link href="/contact" className="text-primary hover:underline">
+                Send your requirements
+              </Link>
+              .
             </p>
           </FadeIn>
         </div>

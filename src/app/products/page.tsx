@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 
 import { ImagePlaceholder } from "@/components/image-placeholder";
 import { FadeIn } from "@/components/motion";
+import { PageSchema } from "@/components/seo/page-schema";
 import { CtaButton, CtaLink } from "@/components/site/cta-link";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -12,17 +13,36 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { mergeKeywords, seoKeywordSets } from "@/lib/seo";
+
+const productsKeywords = mergeKeywords(
+  seoKeywordSets.core,
+  seoKeywordSets.products,
+  seoKeywordSets.manufacturerIntent,
+  seoKeywordSets.globalReach,
+  seoKeywordSets.brand,
+  seoKeywordSets.location
+);
 
 export const metadata: Metadata = {
   title: "Our Products",
   description:
-    "Explore FAR Better Bio's laboratory instruments, consumables, and upcoming AutoCeive cell separation device.",
+    "Explore FAR Better Bio products including apheresis and aferez-focused device development programs, laboratory instruments, and consumables for global biomedical workflows.",
+  keywords: productsKeywords,
   alternates: {
     canonical: "/products",
   },
   openGraph: {
-    title: "Products - FAR Better Bio",
-    description: "Laboratory instruments and consumables for research.",
+    title: "Products | Global Apheresis and Aferez Device Programs",
+    description:
+      "Review AutoCeive and related biomedical device programs plus laboratory instruments and consumables for international research teams.",
+    url: "/products",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FAR Better Bio Products | Global Apheresis and Aferez Focus",
+    description:
+      "A biomedical product portfolio covering device R&D, laboratory instruments, and consumables for worldwide partners.",
   },
 };
 
@@ -54,6 +74,13 @@ const productCategories = [
 export default function ProductsPage() {
   return (
     <>
+      <PageSchema
+        path="/products"
+        type="CollectionPage"
+        title="Products | Global Apheresis and Aferez Device Programs"
+        description="FAR Better Bio product collection with apheresis and aferez-focused device development, laboratory instruments, and consumables for global partners."
+        keywords={productsKeywords}
+      />
       {/* Hero Section */}
       <section className="from-primary/5 to-background bg-linear-to-b py-10 sm:py-14">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,7 +91,8 @@ export default function ProductsPage() {
             <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
               From our innovative cell separation devices to a comprehensive
               range of laboratory equipment and consumables, we provide
-              everything you need for your research.
+              everything you need for apheresis and aferez-oriented research
+              workflows in Turkiye and beyond.
             </p>
           </FadeIn>
         </div>
@@ -161,7 +189,8 @@ export default function ProductsPage() {
             <p className="text-muted-foreground mb-6">
               We work with local and international companies to provide
               necessary laboratory materials and instruments for your research.
-              Contact us with your specific requirements.
+              Contact us with your specific requirements for device development,
+              laboratory supply, or target cell isolation workflows.
             </p>
             <CtaLink href="/contact">Contact Us</CtaLink>
           </FadeIn>

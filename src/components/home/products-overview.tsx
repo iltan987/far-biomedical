@@ -35,8 +35,8 @@ export function ProductsOverview() {
           </p>
           <p className="text-muted-foreground mt-4 text-lg">
             Our long-term goal is to build cell-targeted blood filtration and
-            processing devices engineered for advanced apheresis and gene
-            therapies.
+            processing devices engineered for advanced apheresis and aferez
+            workflows in Turkiye and global gene therapy ecosystems.
           </p>
         </FadeIn>
 

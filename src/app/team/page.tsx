@@ -3,26 +3,50 @@ import Link from "next/link";
 
 import { ImagePlaceholder } from "@/components/image-placeholder";
 import { FadeIn } from "@/components/motion";
+import { PageSchema } from "@/components/seo/page-schema";
 import { TeamGrid } from "@/components/team/team-grid";
 import { Button } from "@/components/ui/button";
+import { mergeKeywords, seoKeywordSets } from "@/lib/seo";
+
+const teamKeywords = mergeKeywords(
+  seoKeywordSets.core,
+  seoKeywordSets.globalReach,
+  seoKeywordSets.brand,
+  seoKeywordSets.location
+);
 
 export const metadata: Metadata = {
   title: "Our Team",
   description:
-    "Meet the team behind FAR Better Bio - experts in biomedical engineering, software development, and cell separation technology.",
+    "Meet the FAR Better Bio team in Turkiye: experts in biomedical engineering, apheresis-focused device development, and global cell separation AR-GE collaborations.",
+  keywords: teamKeywords,
   alternates: {
     canonical: "/team",
   },
   openGraph: {
     title: "Our Team - FAR Better Bio",
     description:
-      "Meet the experts driving innovation in blood cell separation.",
+      "Meet the experts driving blood cell separation and apheresis-focused biomedical R&D in Turkiye for global partners.",
+    url: "/team",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FAR Better Bio Team | Biomedical AR-GE in Turkiye",
+    description:
+      "Our multidisciplinary team builds apheresis and aferez-oriented device technologies for global biomedical research.",
   },
 };
 
 export default function TeamPage() {
   return (
     <>
+      <PageSchema
+        path="/team"
+        type="AboutPage"
+        title="FAR Better Bio Team | Biomedical AR-GE in Turkiye"
+        description="Meet the multidisciplinary team behind FAR Better Bio's apheresis and aferez-focused device development in Turkiye for global applications."
+        keywords={teamKeywords}
+      />
       {/* Hero Section */}
       <section className="from-primary/5 to-background bg-linear-to-b py-10 sm:py-14 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,7 +59,7 @@ export default function TeamPage() {
                 Meet the dedicated professionals behind FAR Better Bio. Our
                 multidisciplinary team brings together expertise in biomedical
                 engineering, research, and technology to advance blood-cell
-                separation solutions.
+                separation and apheresis-oriented medical device solutions.
               </p>
             </FadeIn>
             <FadeIn direction="right" delay={0.2}>

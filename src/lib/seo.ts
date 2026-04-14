@@ -1,0 +1,64 @@
+export const seoKeywordSets = {
+  core: [
+    "blood cell separation",
+    "cell isolation technology",
+    "apheresis technology",
+    "aferez teknolojisi",
+    "biomedical research and development",
+    "biomedical R&D company",
+    "medical device R&D",
+    "tibbi cihaz AR-GE",
+  ],
+  manufacturerIntent: [
+    "apheresis device manufacturer Turkey",
+    "Turkey apheresis device company",
+    "aferez cihazi uretici Turkiye",
+    "aferez cihazi gelistiren sirket",
+    "Turkey biomedical company develops apheresis devices",
+    "Turkey medical device manufacturer",
+    "Turkiye biyomedikal sirket",
+    "Turkiye biyomedikal AR-GE sirketi",
+  ],
+  globalReach: [
+    "global biomedical company",
+    "international biomedical R&D",
+    "apheresis device manufacturer",
+    "cell separation device company",
+    "medical device innovation company",
+    "worldwide biomedical partnerships",
+    "international laboratory services",
+  ],
+  brand: [
+    "FAR Better Bio",
+    "AutoCeive",
+    "AphereCeive",
+    "FAR Biomedical",
+    "FAR Better",
+  ],
+  location: [
+    "Ankara biomedical company",
+    "METU Teknokent",
+    "ODTU Bilim ve Inovasyon Merkezi",
+    "ODTU BIOMATEN",
+    "Turkiye",
+    "Turkey",
+  ],
+  products: [
+    "laboratory instruments Turkey",
+    "laboratory consumables Turkey",
+    "PBMC isolation",
+    "target cell isolation device",
+    "immunomagnetic cell separation",
+  ],
+  services: [
+    "target cell isolation services",
+    "PBMC processing services",
+    "cell separation workflow",
+    "remote technical support",
+    "laboratory services Turkiye",
+  ],
+};
+
+export function mergeKeywords(...groups: string[][]): string[] {
+  return Array.from(new Set(groups.flat()));
+}

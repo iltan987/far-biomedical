@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "FAR Better Bio",
     short_name: "FAR Better Bio",
     description:
-      "Advanced blood-cell separation and apheretic blood filtration technologies",
+      "Turkiye biomedical R&D company developing apheresis and aferez-focused blood-cell separation technologies",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

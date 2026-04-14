@@ -6,31 +6,55 @@ import Link from "next/link";
 import { AnimatedLogo } from "@/components/animated-logo";
 import { ImagePlaceholder } from "@/components/image-placeholder";
 import { FadeIn } from "@/components/motion";
+import { PageSchema } from "@/components/seo/page-schema";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { products } from "@/data/products";
 import biomatenImage from "@/images/about/biomaten.jpeg";
 import { siteConfig } from "@/lib/constants";
+import { mergeKeywords, seoKeywordSets } from "@/lib/seo";
 
 const platforms = products.slice(0, 3);
+const aboutKeywords = mergeKeywords(
+  seoKeywordSets.core,
+  seoKeywordSets.manufacturerIntent,
+  seoKeywordSets.globalReach,
+  seoKeywordSets.brand,
+  seoKeywordSets.location
+);
 
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about FAR Better Bio, an R&D company at METU Teknokent developing AutoCeive and AphereCeive blood cell separation technologies.",
+    "Learn about FAR Better Bio, a Turkiye-based biomedical AR-GE company at METU Teknokent developing apheresis and aferez device technologies for global research and medical device ecosystems.",
+  keywords: aboutKeywords,
   alternates: {
     canonical: "/about",
   },
   openGraph: {
-    title: "About FAR Better Bio",
+    title: "About FAR Better Bio | Turkiye Biomedical AR-GE Team",
     description:
-      "Learn about our mission to advance blood-cell separation technology.",
+      "Meet the team behind a Turkiye biomedical R&D company developing apheresis and aferez-oriented cell separation technology for international collaboration.",
+    url: "/about",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About FAR Better Bio | Apheresis and Aferez AR-GE",
+    description:
+      "FAR Better Bio advances blood-cell separation and apheresis-focused medical device R&D from Ankara, Turkiye, for global partners.",
   },
 };
 
 export default function AboutPage() {
   return (
     <>
+      <PageSchema
+        path="/about"
+        type="AboutPage"
+        title="About FAR Better Bio | Turkiye Biomedical AR-GE Team"
+        description="FAR Better Bio is a Turkiye-based biomedical AR-GE company developing apheresis and aferez-focused blood-cell separation technologies for global applications."
+        keywords={aboutKeywords}
+      />
       {/* Hero Section */}
       <section className="from-primary/5 to-background bg-linear-to-b py-10 sm:py-14 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,6 +67,18 @@ export default function AboutPage() {
                 <strong>FAR Better Bio</strong> is an R&D company developing
                 advanced blood-cell separation and apheretic blood filtration
                 technologies.
+              </p>
+              <p className="text-muted-foreground mt-3 text-base">
+                Explore our{" "}
+                <Link href="/products" className="text-primary hover:underline">
+                  apheresis-focused product roadmap
+                </Link>{" "}
+                and{" "}
+                <Link href="/services" className="text-primary hover:underline">
+                  target cell isolation services
+                </Link>{" "}
+                to see how our R&D in Turkiye translates into practical global
+                workflows.
               </p>
             </FadeIn>
             <FadeIn direction="right" delay={0.2}>
@@ -202,11 +238,18 @@ export default function AboutPage() {
               high-quality materials.
             </p>
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
-              <Button render={<Link href="/products/laboratory-instruments" />} nativeButton={false}>
-                  Browse Instruments
+              <Button
+                render={<Link href="/products/laboratory-instruments" />}
+                nativeButton={false}
+              >
+                Browse Instruments
               </Button>
-              <Button render={<Link href="/products/laboratory-consumables" />} nativeButton={false} variant="outline">
-                  Browse Consumables
+              <Button
+                render={<Link href="/products/laboratory-consumables" />}
+                nativeButton={false}
+                variant="outline"
+              >
+                Browse Consumables
               </Button>
             </div>
           </FadeIn>

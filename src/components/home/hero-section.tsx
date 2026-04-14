@@ -29,14 +29,15 @@ export function HeroSection() {
 
             {/* Subheadline */}
             <p className="text-muted-foreground mt-6 text-lg leading-relaxed sm:text-xl lg:text-2xl">
-              FAR is our way of taking responsibility for making scientific
-              research more accessible.
+              FAR is our way of helping make scientific research and biomedical
+              AR-GE in Turkiye more accessible for global partners.
             </p>
 
             <p className="text-muted-foreground mt-4 max-w-2xl text-base sm:text-lg md:mx-0">
               We believe that innovation should not be slowed down by repetitive
               groundwork. Our R&D mission is to develop tools that streamline
-              the most demanding parts of laboratory work — so scientists can
+              the most demanding parts of laboratory work, including apheresis
+              and aferez-oriented cell separation workflows, so scientists can
               focus on what truly matters: discovery and progress.
             </p>
 

@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 import { FadeIn } from "@/components/motion";
 import { CtaLink } from "@/components/site/cta-link";
@@ -29,6 +30,17 @@ export function ServicesPreview() {
               We offer comprehensive target cell isolation services available
               nationwide across Türkiye, with remote technical support for
               international clients.
+            </p>
+            <p className="text-muted-foreground mt-3 text-sm">
+              See our{" "}
+              <Link href="/products" className="text-primary hover:underline">
+                apheresis and aferez-focused product portfolio
+              </Link>{" "}
+              or{" "}
+              <Link href="/contact" className="text-primary hover:underline">
+                contact our Turkiye-based biomedical team
+              </Link>{" "}
+              for manufacturer and R&D collaboration inquiries.
             </p>
 
             <div

@@ -4,27 +4,53 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { FadeIn } from "@/components/motion";
+import { PageSchema } from "@/components/seo/page-schema";
 import { ServiceFAQs } from "@/components/services/service-faqs";
 import { WorkflowSteps } from "@/components/services/workflow-steps";
 import { Button } from "@/components/ui/button";
 import laboratorySupplyServicesImage from "@/images/services/laboratory-supply-services.jpg";
+import { mergeKeywords, seoKeywordSets } from "@/lib/seo";
+
+const servicesKeywords = mergeKeywords(
+  seoKeywordSets.core,
+  seoKeywordSets.services,
+  seoKeywordSets.manufacturerIntent,
+  seoKeywordSets.globalReach,
+  seoKeywordSets.location
+);
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Comprehensive laboratory services including PBMC processing, target cell isolation, quality control, and microscopic imaging throughout Turkey.",
+    "Comprehensive laboratory services from Turkiye including PBMC processing, target cell isolation, and apheresis-ready workflows for global biomedical and medical device R&D teams.",
+  keywords: servicesKeywords,
   alternates: {
     canonical: "/services",
   },
   openGraph: {
-    title: "Laboratory Services - FAR Better Bio",
-    description: "Professional cell isolation and laboratory services.",
+    title:
+      "Laboratory Services from Turkiye | Apheresis and Aferez Workflows",
+    description:
+      "Target cell isolation, PBMC processing, and apheresis-supporting laboratory services for global research teams.",
+    url: "/services",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FAR Better Bio Services | Global Target Cell Isolation Support",
+    description:
+      "Professional PBMC and target cell isolation services for apheresis-focused biomedical projects worldwide.",
   },
 };
 
 export default function ServicesPage() {
   return (
     <>
+      <PageSchema
+        path="/services"
+        title="Laboratory Services from Turkiye | Apheresis and Aferez Workflows"
+        description="Turkiye-based laboratory services for PBMC processing, target cell isolation, and apheresis-oriented biomedical projects worldwide."
+        keywords={servicesKeywords}
+      />
       {/* Hero Section */}
       <section className="no-snap from-primary/5 to-background bg-linear-to-b py-10 sm:py-14 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,7 +62,8 @@ export default function ServicesPage() {
               We offer comprehensive laboratory services including the
               processing of blood samples into PBMCs, isolation of target cells
               with high efficiency, and the provision of high-quality
-              microscopic imaging.
+              microscopic imaging for apheresis and aferez-oriented biomedical
+              R&D projects.
             </p>
           </FadeIn>
         </div>
@@ -133,7 +160,11 @@ export default function ServicesPage() {
                 laboratories. Whatever your needs may be, our specialized team
                 identifies high-quality, specific products from around the world
                 and delivers them to you in a manner tailored to your
-                requirements.
+                requirements. You can also review our{" "}
+                <Link href="/products" className="text-primary hover:underline">
+                  apheresis and aferez-focused product roadmap
+                </Link>{" "}
+                for device and consumable planning.
               </p>
               <div className="flex flex-col justify-center gap-4 sm:flex-row md:justify-start">
                 <Button render={<Link href="/products/laboratory-instruments" />} nativeButton={false}>

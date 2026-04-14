@@ -49,7 +49,12 @@ export const serviceFAQs: FAQItem[] = [
   {
     question: "What services do you provide for cell isolation?",
     answer:
-      "We offer comprehensive cell isolation services, including PBMC separation, target cell isolation using our proprietary device, purification, quality control, and microscopic imaging. Our workflow ensures high efficiency, precision, and reproducibility.",
+      "We offer comprehensive cell isolation services, including PBMC separation, target cell isolation using our proprietary device, purification, quality control, and microscopic imaging. Our workflow supports apheresis and aferez-oriented biomedical research with high efficiency and reproducibility.",
+  },
+  {
+    question: "Do you develop apheresis or aferez medical devices in Turkiye?",
+    answer:
+      "Yes. FAR Better Bio is a Turkiye-based biomedical AR-GE company developing apheresis and aferez-focused blood-cell separation technologies, including AutoCeive and AphereCeive programs.",
   },
   {
     question: "Can your services be used internationally?",

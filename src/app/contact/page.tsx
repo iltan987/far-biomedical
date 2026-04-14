@@ -1,27 +1,54 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { ContactForm } from "@/components/contact/contact-form";
 import { GoogleMap } from "@/components/contact/google-map";
 import { FadeIn } from "@/components/motion";
+import { PageSchema } from "@/components/seo/page-schema";
 import { siteConfig } from "@/lib/constants";
+import { mergeKeywords, seoKeywordSets } from "@/lib/seo";
+
+const contactKeywords = mergeKeywords(
+  seoKeywordSets.core,
+  seoKeywordSets.manufacturerIntent,
+  seoKeywordSets.globalReach,
+  seoKeywordSets.location,
+  seoKeywordSets.services
+);
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with FAR Better Bio. Located at METU Teknokent, Ankara, Turkey. Contact us for laboratory services and products.",
+    "Contact FAR Better Bio in Ankara, Turkiye for global apheresis and aferez device development inquiries, laboratory services, and biomedical product supply.",
+  keywords: contactKeywords,
   alternates: {
     canonical: "/contact",
   },
   openGraph: {
-    title: "Contact FAR Better Bio",
-    description: "Reach out to our team for inquiries and support.",
+    title: "Contact FAR Better Bio | Turkiye Biomedical Apheresis Team",
+    description:
+      "Reach our Turkiye-based biomedical team for international apheresis/aferez device development, services, and product inquiries.",
+    url: "/contact",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact FAR Better Bio | Apheresis and Aferez Inquiries",
+    description:
+      "Get support for global cell separation services, medical device collaboration, and laboratory supply requests.",
   },
 };
 
 export default function ContactPage() {
   return (
     <>
+      <PageSchema
+        path="/contact"
+        type="ContactPage"
+        title="Contact FAR Better Bio | Turkiye Biomedical Apheresis Team"
+        description="Contact FAR Better Bio in Ankara, Turkiye for global apheresis and aferez-oriented medical device, service, and product inquiries."
+        keywords={contactKeywords}
+      />
       {/* Contact Section */}
       <section
         className="from-primary/5 to-background bg-linear-to-b py-8 sm:py-10 lg:py-16"
@@ -37,7 +64,15 @@ export default function ContactPage() {
             </h1>
             <p className="text-muted-foreground mt-3 text-base leading-relaxed">
               Have questions? We&apos;d love to hear from you. Get in touch with
-              our team for inquiries about our products and services.
+              our team for inquiries about our apheresis and aferez-focused{" "}
+              <Link href="/products" className="text-primary hover:underline">
+                product programs
+              </Link>{" "}
+              and{" "}
+              <Link href="/services" className="text-primary hover:underline">
+                cell isolation services
+              </Link>
+              .
             </p>
           </FadeIn>
 
