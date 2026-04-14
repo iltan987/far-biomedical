@@ -1,8 +1,8 @@
 import { ExternalLink, Navigation } from "lucide-react";
 
+import { DeferredMapEmbed } from "@/components/contact/deferred-map-embed";
 import { CtaAnchor } from "@/components/site/cta-link";
 import { siteConfig } from "@/lib/constants";
-import { cn } from "@/lib/utils";
 
 interface GoogleMapProps {
   className?: string;
@@ -24,24 +24,11 @@ export function GoogleMap({ className }: GoogleMapProps) {
   return (
     <div className="space-y-4">
       {/* Map Embed */}
-      <div
-        className={cn(
-          "bg-muted h-80 w-full overflow-hidden rounded-xl border sm:h-96",
-          className
-        )}
-      >
-        <iframe
-          src={embedUrl}
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title={`${siteConfig.location.name} Location`}
-          className="h-full w-full"
-        />
-      </div>
+      <DeferredMapEmbed
+        embedUrl={embedUrl}
+        title={`${siteConfig.location.name} Location`}
+        className={className}
+      />
 
       {/* Location Info & Actions */}
       <div className="bg-muted/50 flex flex-col items-start justify-between gap-4 rounded-lg p-4 sm:flex-row sm:items-center">
