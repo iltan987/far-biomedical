@@ -55,7 +55,10 @@ export default function ContactPage() {
         aria-labelledby="contact-main-heading"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn className="mb-8 max-w-2xl sm:mb-10">
+          <FadeIn
+            renderStrategy="paint-safe"
+            className="mb-8 max-w-2xl sm:mb-10"
+          >
             <h1
               id="contact-main-heading"
               className="text-3xl font-bold tracking-tight sm:text-4xl"
@@ -79,13 +82,13 @@ export default function ContactPage() {
           {/* Form + Contact Info */}
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
             {/* Contact Form */}
-            <FadeIn delay={0.1}>
+            <FadeIn delay={0.1} renderStrategy="paint-safe">
               <h2 className="mb-4 text-xl font-semibold">Send Us a Message</h2>
               <ContactForm />
             </FadeIn>
 
             {/* Contact Info */}
-            <FadeIn delay={0.2}>
+            <FadeIn delay={0.2} renderStrategy="paint-safe">
               <h2 className="mb-4 text-xl font-semibold">
                 Contact Information
               </h2>

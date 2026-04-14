@@ -15,7 +15,7 @@ export function HeroSection() {
       <div className="container mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-14 xl:py-16">
         <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 lg:gap-16">
           {/* Content */}
-          <FadeIn className="text-center md:text-left">
+          <FadeIn renderStrategy="paint-safe" className="text-center md:text-left">
             {/* Badge */}
             <div className="border-primary/20 bg-primary/5 text-primary mb-6 inline-flex items-center rounded-full border px-4 py-1.5 text-sm">
               <span className="bg-primary mr-2 h-2 w-2 animate-pulse rounded-full" />
@@ -63,7 +63,11 @@ export function HeroSection() {
           </FadeIn>
 
           {/* Hero Image */}
-          <FadeIn direction="right" delay={0.2}>
+          <FadeIn
+            direction="right"
+            delay={0.2}
+            renderStrategy="paint-safe"
+          >
             <div className="aspect-video overflow-hidden rounded-lg shadow-lg">
               <Image
                 src={heroImage}

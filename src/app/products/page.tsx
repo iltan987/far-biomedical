@@ -84,7 +84,10 @@ export default function ProductsPage() {
       {/* Hero Section */}
       <section className="from-primary/5 to-background bg-linear-to-b py-10 sm:py-14">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn className="mx-auto max-w-3xl text-center">
+          <FadeIn
+            renderStrategy="paint-safe"
+            className="mx-auto max-w-3xl text-center"
+          >
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
               Our Products
             </h1>
@@ -112,6 +115,7 @@ export default function ProductsPage() {
               <FadeIn
                 key={category.title}
                 delay={index * 0.1}
+                renderStrategy="paint-safe"
                 className="h-full"
               >
                 <article role="listitem" className="h-full">
