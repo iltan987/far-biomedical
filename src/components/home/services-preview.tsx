@@ -1,9 +1,8 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 import { FadeIn } from "@/components/motion";
-import { Button } from "@/components/ui/button";
+import { CtaLink } from "@/components/site/cta-link";
 import { services } from "@/data/services";
 import autoCeiveImage from "@/images/home/auto-ceive2.jpeg";
 
@@ -59,10 +58,10 @@ export function ServicesPreview() {
               ))}
             </div>
 
-            <Button render={<Link href="/services" />} nativeButton={false} className="mt-8">
-                Learn More About Our Services
-                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-            </Button>
+            <CtaLink href="/services" className="mt-8">
+              Learn More About Our Services
+              <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+            </CtaLink>
           </FadeIn>
 
           {/* AutoCeive Features */}

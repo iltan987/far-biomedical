@@ -1,8 +1,7 @@
 import { ArrowRight, Quote, User } from "lucide-react";
-import Link from "next/link";
 
 import { FadeIn } from "@/components/motion";
-import { Button } from "@/components/ui/button";
+import { CtaLink } from "@/components/site/cta-link";
 
 export function QuoteSection() {
   return (
@@ -42,16 +41,15 @@ export function QuoteSection() {
             You can contact us about the product you need. Our team is here to
             provide you the highest quality and most ideal product.
           </p>
-          <Button
-            render={<Link href="/contact" />}
-            nativeButton={false}
+          <CtaLink
+            href="/contact"
             variant="secondary"
             size="lg"
             className="text-primary bg-primary-foreground hover:bg-primary-foreground/90"
           >
-              Contact Us
-              <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-          </Button>
+            Contact Us
+            <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+          </CtaLink>
         </FadeIn>
       </div>
     </section>

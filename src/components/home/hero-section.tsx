@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { FadeIn } from "@/components/motion";
-import { Button } from "@/components/ui/button";
+import { CtaLink } from "@/components/site/cta-link";
 import heroImage from "@/images/home/hero.jpg";
 
 export function HeroSection() {
@@ -42,24 +42,22 @@ export function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row md:justify-start">
-              <Button
-                render={<Link href="/products" />}
-                nativeButton={false}
+              <CtaLink
+                href="/products"
                 size="lg"
                 className="w-full sm:w-auto"
               >
                 Explore Products
                 <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-              </Button>
-              <Button
-                render={<Link href="/contact" />}
-                nativeButton={false}
+              </CtaLink>
+              <CtaLink
+                href="/contact"
                 variant="outline"
                 size="lg"
                 className="w-full sm:w-auto"
               >
                 Contact Us
-              </Button>
+              </CtaLink>
             </div>
           </FadeIn>
 

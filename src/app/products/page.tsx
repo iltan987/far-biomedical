@@ -1,11 +1,10 @@
 import { ArrowRight, Beaker, FlaskConical, Package } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { ImagePlaceholder } from "@/components/image-placeholder";
 import { FadeIn } from "@/components/motion";
+import { CtaButton, CtaLink } from "@/components/site/cta-link";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -82,7 +81,11 @@ export default function ProductsPage() {
             role="list"
           >
             {productCategories.map((category, index) => (
-              <FadeIn key={category.title} delay={index * 0.1} className="h-full">
+              <FadeIn
+                key={category.title}
+                delay={index * 0.1}
+                className="h-full"
+              >
                 <article role="listitem" className="h-full">
                   <Card className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                     {/* Category Image */}
@@ -113,17 +116,25 @@ export default function ProductsPage() {
                         {category.description}
                       </CardDescription>
                       {category.href ? (
-                        <Button render={<Link href={category.href} />} nativeButton={false} variant="outline" className="w-full">
-                            Browse {category.title}
-                            <ArrowRight
-                              className="ml-2 h-4 w-4"
-                              aria-hidden="true"
-                            />
-                        </Button>
+                        <CtaLink
+                          href={category.href}
+                          variant="outline"
+                          className="w-full"
+                        >
+                          Browse {category.title}
+                          <ArrowRight
+                            className="ml-2 h-4 w-4"
+                            aria-hidden="true"
+                          />
+                        </CtaLink>
                       ) : (
-                        <Button disabled variant="outline" className="w-full">
+                        <CtaButton
+                          disabled
+                          variant="outline"
+                          className="w-full"
+                        >
                           Coming Soon
-                        </Button>
+                        </CtaButton>
                       )}
                     </CardContent>
                   </Card>
@@ -152,9 +163,7 @@ export default function ProductsPage() {
               necessary laboratory materials and instruments for your research.
               Contact us with your specific requirements.
             </p>
-            <Button render={<Link href="/contact" />} nativeButton={false}>
-              Contact Us
-            </Button>
+            <CtaLink href="/contact">Contact Us</CtaLink>
           </FadeIn>
         </div>
       </section>

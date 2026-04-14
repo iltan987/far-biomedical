@@ -5,7 +5,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 
-import { ScrollRestoration } from "@/components/scroll-restoration";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { clientEnv } from "@/env/client";
@@ -104,7 +103,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <ScrollRestoration />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

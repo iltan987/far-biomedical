@@ -1,6 +1,6 @@
 import { ExternalLink, Navigation } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { CtaAnchor } from "@/components/site/cta-link";
 import { siteConfig } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -53,14 +53,25 @@ export function GoogleMap({ className }: GoogleMapProps) {
           </p>
         </div>
         <div className="flex gap-2">
-          <Button render={<a href={directUrl} target="_blank" rel="noopener noreferrer" />} nativeButton={false} variant="outline" size="sm">
-              <ExternalLink className="mr-2 h-4 w-4" />
-              Open Map
-          </Button>
-          <Button render={<a href={directionsUrl} target="_blank" rel="noopener noreferrer" />} nativeButton={false} size="sm">
-              <Navigation className="mr-2 h-4 w-4" />
-              Directions
-          </Button>
+          <CtaAnchor
+            href={directUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="outline"
+            size="sm"
+          >
+            <ExternalLink className="mr-2 h-4 w-4" />
+            Open Map
+          </CtaAnchor>
+          <CtaAnchor
+            href={directionsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            size="sm"
+          >
+            <Navigation className="mr-2 h-4 w-4" />
+            Directions
+          </CtaAnchor>
         </div>
       </div>
     </div>
