@@ -1,6 +1,4 @@
-import type { SiteConfig } from "@/types";
-
-export const siteConfig: SiteConfig = {
+export const siteConfig = {
   name: "FAR Better Bio",
   description:
     "Advanced blood-cell separation and apheretic blood filtration technologies",
@@ -32,16 +30,4 @@ export const siteConfig: SiteConfig = {
   },
 };
 
-export const instrumentCategories: Record<string, string> = {
-  "fume-hoods": "Fume Hoods",
-  ovens: "Ovens",
-  incubators: "Incubators",
-  "ultrasonic-baths": "Ultrasonic Baths",
-  shakers: "Shakers",
-  "vortex-mixers": "Vortex Mixers",
-  pipettes: "Pipettes & Micropipettes",
-  centrifuges: "Centrifuges",
-  balances: "Balances",
-  autoclaves: "Autoclaves",
-  pumps: "Pumps",
-};
+export { instrumentCategoryLabels as instrumentCategories } from "@/data/laboratory-instruments";

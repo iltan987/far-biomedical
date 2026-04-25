@@ -54,35 +54,6 @@ export interface ContactFormData {
   message: string;
 }
 
-// Site Config
-export interface SiteConfig {
-  name: string;
-  description: string;
-  url: string;
-  contact: {
-    email: string;
-    phone: string;
-    address: {
-      line1: string;
-      line2: string;
-      city: string;
-      country: string;
-      postalCode: string;
-    };
-  };
-  social: {
-    linkedin: string;
-    instagram: string;
-  };
-  location: {
-    name: string;
-    coordinates: {
-      latitude: number;
-      longitude: number;
-    };
-  };
-}
-
 // Workflow Step
 export interface WorkflowStep {
   number: number;

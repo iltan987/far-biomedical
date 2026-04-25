@@ -5,27 +5,54 @@ import { ImagePlaceholder } from "@/components/image-placeholder";
 import { FadeIn } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  consumablesOrderEmail,
-  laboratoryConsumables,
-} from "@/data/laboratory-consumables";
 
-export function ConsumablesGrid() {
+export type ConsumableData = {
+  _id: string;
+  name: string;
+  description?: string;
+  imageUrl?: string;
+  nameAttr?: string;
+  descriptionAttr?: string;
+  imageAttr?: string;
+};
+
+export function ConsumablesGrid({
+  consumables,
+  orderEmail,
+  orderCtaHeading = "Ready to Order?",
+  orderCtaDescription = "Submit your order by contacting us directly via email.",
+  orderCtaButtonLabel,
+  orderCtaHeadingAttr,
+  orderCtaDescriptionAttr,
+  orderCtaButtonLabelAttr,
+}: {
+  consumables: ConsumableData[];
+  orderEmail: string;
+  orderCtaHeading?: string;
+  orderCtaDescription?: string;
+  orderCtaButtonLabel?: string;
+  orderCtaHeadingAttr?: string;
+  orderCtaDescriptionAttr?: string;
+  orderCtaButtonLabelAttr?: string;
+}) {
   return (
     <div>
       <div
         className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
         role="list"
       >
-        {laboratoryConsumables.map((consumable, index) => (
-          <FadeIn key={consumable.id} delay={index * 0.1}>
+        {consumables.map((consumable, index) => (
+          <FadeIn key={consumable._id} delay={index * 0.1}>
             <article role="listitem">
               <Card className="group h-full overflow-hidden transition-shadow hover:shadow-md">
                 {/* Consumable Image */}
-                <div className="relative aspect-4/3 overflow-hidden">
-                  {consumable.image ? (
+                <div
+                  className="relative aspect-4/3 overflow-hidden"
+                  data-sanity={consumable.imageAttr}
+                >
+                  {consumable.imageUrl ? (
                     <Image
-                      src={consumable.image}
+                      src={consumable.imageUrl}
                       alt={consumable.name}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -39,11 +66,16 @@ export function ConsumablesGrid() {
                   )}
                 </div>
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg">{consumable.name}</CardTitle>
+                  <CardTitle className="text-lg" data-sanity={consumable.nameAttr}>
+                    {consumable.name}
+                  </CardTitle>
                 </CardHeader>
                 {consumable.description && (
                   <CardContent>
-                    <p className="text-muted-foreground text-sm">
+                    <p
+                      className="text-muted-foreground text-sm"
+                      data-sanity={consumable.descriptionAttr}
+                    >
                       {consumable.description}
                     </p>
                   </CardContent>
@@ -57,13 +89,25 @@ export function ConsumablesGrid() {
       {/* Order CTA */}
       <FadeIn direction="none" className="mt-12">
         <div className="bg-muted/30 rounded-xl border p-6 text-center">
-          <h3 className="mb-2 text-xl font-semibold">Ready to Order?</h3>
-          <p className="text-muted-foreground mb-4">
-            Submit your order by contacting us directly via email.
+          <h3
+            className="mb-2 text-xl font-semibold"
+            data-sanity={orderCtaHeadingAttr}
+          >
+            {orderCtaHeading}
+          </h3>
+          <p
+            className="text-muted-foreground mb-4"
+            data-sanity={orderCtaDescriptionAttr}
+          >
+            {orderCtaDescription}
           </p>
-          <Button render={<a href={`mailto:${consumablesOrderEmail}`} />} nativeButton={false}>
-              <Mail className="mr-2 h-4 w-4" aria-hidden="true" />
-              {consumablesOrderEmail}
+          <Button
+            render={<a href={`mailto:${orderEmail}`} />}
+            nativeButton={false}
+            data-sanity={orderCtaButtonLabelAttr}
+          >
+            <Mail className="mr-2 h-4 w-4" aria-hidden="true" />
+            {orderCtaButtonLabel || orderEmail}
           </Button>
         </div>
       </FadeIn>

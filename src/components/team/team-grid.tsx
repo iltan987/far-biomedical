@@ -4,7 +4,18 @@ import { FaLinkedin } from "react-icons/fa";
 
 import { FadeIn } from "@/components/motion";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { teamMembers } from "@/data/team-members";
+
+export type TeamMemberData = {
+  _id: string;
+  name: string;
+  title: string;
+  imageUrl?: string;
+  linkedinUrl?: string;
+  nameAttr?: string;
+  titleAttr?: string;
+  photoAttr?: string;
+  linkedinUrlAttr?: string;
+};
 
 function getInitials(name: string): string {
   return name
@@ -14,19 +25,22 @@ function getInitials(name: string): string {
     .toUpperCase();
 }
 
-export function TeamGrid() {
+export function TeamGrid({ members }: { members: TeamMemberData[] }) {
   return (
     <div
       className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4"
       role="list"
     >
-      {teamMembers.map((member, index) => (
-        <FadeIn key={member.id} delay={index * 0.1}>
+      {members.map((member, index) => (
+        <FadeIn key={member._id} delay={index * 0.1}>
           <article role="listitem">
             <Card className="border-border/70 bg-card/90 h-full gap-0 border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
               <CardContent className="p-6 text-center">
                 {/* Avatar */}
-                <div className="bg-muted ring-primary/10 mx-auto mb-4 flex h-32 w-32 items-center justify-center overflow-hidden rounded-full ring-4">
+                <div
+                  className="bg-muted ring-primary/10 mx-auto mb-4 flex h-32 w-32 items-center justify-center overflow-hidden rounded-full ring-4"
+                  data-sanity={member.photoAttr}
+                >
                   {member.imageUrl ? (
                     <Image
                       src={member.imageUrl}
@@ -45,8 +59,13 @@ export function TeamGrid() {
                 </div>
 
                 {/* Info */}
-                <h3 className="text-xl font-semibold">{member.name}</h3>
-                <p className="text-muted-foreground mt-1 text-sm">
+                <h3 className="text-xl font-semibold" data-sanity={member.nameAttr}>
+                  {member.name}
+                </h3>
+                <p
+                  className="text-muted-foreground mt-1 text-sm"
+                  data-sanity={member.titleAttr}
+                >
                   {member.title}
                 </p>
               </CardContent>
@@ -58,6 +77,7 @@ export function TeamGrid() {
                     href={member.linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-sanity={member.linkedinUrlAttr}
                     className="text-muted-foreground hover:text-foreground group inline-flex items-center gap-1 text-sm font-medium transition-colors focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[#0A66C2]/35 focus-visible:outline-none"
                     aria-label={`Open ${member.name} LinkedIn profile`}
                   >

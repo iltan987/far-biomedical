@@ -5,13 +5,10 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 
-import { SiteFooter } from "@/components/site/site-footer";
-import { SiteHeader } from "@/components/site/site-header";
-import { clientEnv } from "@/env/client";
-import { serverEnv } from "@/env/server";
-import { siteConfig } from "@/lib/constants";
 import { mergeKeywords, seoKeywordSets } from "@/lib/seo";
+import { getBaseUrl } from "@/lib/site-url";
 import { cn } from "@/lib/utils";
+import { getSiteSettings } from "@/sanity/lib/site-settings";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 const sitewideKeywords = mergeKeywords(
@@ -23,14 +20,6 @@ const sitewideKeywords = mergeKeywords(
   seoKeywordSets.location,
   seoKeywordSets.products
 );
-
-const getBaseUrl = () => {
-  if (clientEnv.NEXT_PUBLIC_SITE_URL) return clientEnv.NEXT_PUBLIC_SITE_URL;
-  if (serverEnv.VERCEL_PROJECT_PRODUCTION_URL)
-    return `https://${serverEnv.VERCEL_PROJECT_PRODUCTION_URL}`;
-  if (serverEnv.VERCEL_URL) return `https://${serverEnv.VERCEL_URL}`;
-  return siteConfig.url;
-};
 
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseUrl()),
@@ -69,21 +58,42 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const baseUrl = getBaseUrl();
+  const settingsPromise = getSiteSettings();
+  return (
+    <RootLayoutContent baseUrl={baseUrl} settingsPromise={settingsPromise}>
+      {children}
+    </RootLayoutContent>
+  );
+}
+
+async function RootLayoutContent({
+  children,
+  baseUrl,
+  settingsPromise,
+}: Readonly<{
+  children: React.ReactNode;
+  baseUrl: string;
+  settingsPromise: ReturnType<typeof getSiteSettings>;
+}>) {
+  const settings = await settingsPromise;
+  const organizationId = `${baseUrl}/#organization`;
+
   const organizationSchema = {
     "@type": "Organization",
-    "@id": `${siteConfig.url}/#organization`,
-    name: siteConfig.name,
-    url: siteConfig.url,
-    logo: `${siteConfig.url}/logo.png`,
-    description: siteConfig.description,
+    "@id": organizationId,
+    name: settings.siteName,
+    url: baseUrl,
+    logo: `${baseUrl}/logo.png`,
+    description: settings.siteDescription,
     alternateName: ["FAR Biomedical", "FAR Better"],
-    email: siteConfig.contact.email,
-    telephone: siteConfig.contact.phone,
+    email: settings.contactEmail,
+    telephone: settings.phone,
     address: {
       "@type": "PostalAddress",
-      streetAddress: `${siteConfig.contact.address.line1}, ${siteConfig.contact.address.line2}`,
-      addressLocality: siteConfig.contact.address.city,
-      postalCode: siteConfig.contact.address.postalCode,
+      streetAddress: `${settings.addressLine1}, ${settings.addressLine2}`,
+      addressLocality: settings.city,
+      postalCode: settings.postalCode,
       addressCountry: "TR",
     },
     areaServed: [
@@ -99,16 +109,16 @@ export default function RootLayout({
       "Biomedical R&D",
       "Medical Device Development",
     ],
-    sameAs: [siteConfig.social.linkedin, siteConfig.social.instagram],
+    sameAs: [settings.linkedinUrl, settings.instagramUrl].filter(Boolean),
   };
   const websiteSchema = {
     "@type": "WebSite",
-    "@id": `${siteConfig.url}/#website`,
-    name: siteConfig.name,
-    url: siteConfig.url,
+    "@id": `${baseUrl}/#website`,
+    name: settings.siteName,
+    url: baseUrl,
     inLanguage: ["en", "tr"],
     publisher: {
-      "@id": `${siteConfig.url}/#organization`,
+      "@id": organizationId,
     },
     description:
       "Turkiye-based biomedical R&D website for global apheresis and aferez device development, laboratory products, and isolation services.",
@@ -129,9 +139,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
+        {children}
         <Analytics />
         <SpeedInsights />
       </body>

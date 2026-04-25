@@ -4,17 +4,27 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { serviceFAQs } from "@/data/services-data";
 
-export function ServiceFAQs() {
+export type FAQData = {
+  _id: string;
+  question: string;
+  answer: string;
+  questionAttr?: string;
+  answerAttr?: string;
+};
+
+export function ServiceFAQs({ faqs }: { faqs: FAQData[] }) {
   return (
     <Accordion className="w-full">
-      {serviceFAQs.map((faq, index) => (
-        <AccordionItem key={index} value={`item-${index}`}>
-          <AccordionTrigger className="text-left">
+      {faqs.map((faq, index) => (
+        <AccordionItem key={faq._id} value={`item-${index}`}>
+          <AccordionTrigger className="text-left" data-sanity={faq.questionAttr}>
             {faq.question}
           </AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">
+          <AccordionContent
+            className="text-muted-foreground"
+            data-sanity={faq.answerAttr}
+          >
             {faq.answer}
           </AccordionContent>
         </AccordionItem>

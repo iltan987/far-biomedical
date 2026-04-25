@@ -13,6 +13,7 @@ export const serverEnv = createEnv({
       .default(true),
     VERCEL_URL: z.string().optional(),
     VERCEL_PROJECT_PRODUCTION_URL: z.string().optional(),
+    SANITY_API_READ_TOKEN: z.string().optional(),
   },
   runtimeEnv: {
     GMAIL_USER: process.env.GMAIL_USER,
@@ -21,5 +22,6 @@ export const serverEnv = createEnv({
     SEND_CONFIRMATION_EMAIL: process.env.SEND_CONFIRMATION_EMAIL,
     VERCEL_URL: process.env.VERCEL_URL,
     VERCEL_PROJECT_PRODUCTION_URL: process.env.VERCEL_PROJECT_PRODUCTION_URL,
+    SANITY_API_READ_TOKEN: process.env.SANITY_API_READ_TOKEN,
   },
 });

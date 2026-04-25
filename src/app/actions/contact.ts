@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 import nodemailer from "nodemailer";
 
 import { serverEnv } from "@/env/server";
-import { siteConfig } from "@/lib/constants";
+import { getSiteSettings, type ResolvedSiteSettings } from "@/sanity/lib/site-settings";
 
 // Input length limits
 const MAX_NAME_LENGTH = 100;
@@ -179,6 +179,8 @@ export async function sendContactEmail(
   }
 
   try {
+    const settings = await getSiteSettings();
+
     // Create transporter using Gmail with App Password
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -190,8 +192,8 @@ export async function sendContactEmail(
 
     // Email content
     const mailOptions = {
-      from: `FAR Better Bio <${serverEnv.GMAIL_USER}>`,
-      to: serverEnv.CONTACT_EMAIL_TO || siteConfig.contact.email,
+      from: `${settings.siteName} <${serverEnv.GMAIL_USER}>`,
+      to: serverEnv.CONTACT_EMAIL_TO || settings.contactEmail,
       replyTo: email,
       subject: `[Website Contact] ${subject}`,
       text: `
@@ -203,7 +205,7 @@ Message:
 ${message}
 
 ---
-This message was sent from the FAR Better Bio website contact form.
+This message was sent from the ${settings.siteName} website contact form.
 IP: ${clientIp}
       `.trim(),
       html: `
@@ -246,7 +248,7 @@ IP: ${clientIp}
         <div class="message-box">${escapeHtml(message).replace(/\n/g, "<br>")}</div>
       </div>
       <div class="footer">
-        This message was sent from the FAR Better Bio website contact form.<br>
+        This message was sent from the ${escapeHtml(settings.siteName)} website contact form.<br>
         <small>IP: ${escapeHtml(clientIp)}</small>
       </div>
     </div>
@@ -259,11 +261,11 @@ IP: ${clientIp}
     if (serverEnv.SEND_CONFIRMATION_EMAIL) {
       // Confirmation email options (best effort - failures are logged but don't fail the submission)
       const confirmationMailOptions = {
-        from: `FAR Better Bio <${serverEnv.GMAIL_USER}>`,
+        from: `${settings.siteName} <${serverEnv.GMAIL_USER}>`,
         to: email,
-        subject: `Thank you for contacting FAR Better Bio - ${subject}`,
-        text: generateConfirmationText(name, email, subject, message),
-        html: generateConfirmationHtml(name, email, subject, message),
+        subject: `Thank you for contacting ${settings.siteName} - ${subject}`,
+        text: generateConfirmationText(name, email, subject, message, settings),
+        html: generateConfirmationHtml(name, email, subject, message, settings),
       };
 
       // Send both emails in parallel
@@ -311,7 +313,8 @@ function generateConfirmationText(
   name: string,
   email: string,
   subject: string,
-  message: string
+  message: string,
+  settings: ResolvedSiteSettings
 ): string {
   const timestamp = new Date().toLocaleString("en-US", {
     dateStyle: "full",
@@ -321,7 +324,7 @@ function generateConfirmationText(
   return `
 Dear ${name},
 
-Thank you for contacting FAR Better Bio. This email confirms that we have received your inquiry.
+Thank you for contacting ${settings.siteName}. This email confirms that we have received your inquiry.
 
 SUBMISSION DETAILS
 ------------------
@@ -334,17 +337,17 @@ ${message}
 
 ------------------
 
-We typically respond within 1-2 business days. If your matter is urgent, please call us at ${siteConfig.contact.phone}.
+We typically respond within 1-2 business days. If your matter is urgent, please call us at ${settings.phone}.
 
 Best regards,
-FAR Better Bio Team
+${settings.siteName} Team
 
 ---
-FAR Better Bio
-Advanced blood-cell separation and apheretic blood filtration technologies
-${siteConfig.contact.address.line1}
-${siteConfig.contact.address.line2}
-${siteConfig.contact.address.city}, ${siteConfig.contact.address.country} ${siteConfig.contact.address.postalCode}
+${settings.siteName}
+${settings.siteDescription}
+${settings.addressLine1}
+${settings.addressLine2}
+${settings.city}, ${settings.country} ${settings.postalCode}
 
 This is an automated confirmation. Please do not reply to this email.
   `.trim();
@@ -355,7 +358,8 @@ function generateConfirmationHtml(
   name: string,
   email: string,
   subject: string,
-  message: string
+  message: string,
+  settings: ResolvedSiteSettings
 ): string {
   const timestamp = new Date().toLocaleString("en-US", {
     dateStyle: "full",
@@ -501,7 +505,7 @@ function generateConfirmationHtml(
   <div class="wrapper">
     <div class="container">
       <div class="header">
-        <h1>FAR Better Bio</h1>
+        <h1>${escapeHtml(settings.siteName)}</h1>
         <p>Thank you for contacting us</p>
       </div>
 
@@ -543,20 +547,20 @@ function generateConfirmationHtml(
           <h4>What happens next?</h4>
           <p>
             Our team typically responds within 1-2 business days.
-            If your matter is urgent, please call us at <strong>${siteConfig.contact.phone}</strong>.
+            If your matter is urgent, please call us at <strong>${escapeHtml(settings.phone)}</strong>.
           </p>
         </div>
       </div>
 
       <div class="footer">
-        <div class="footer-logo">FAR Better Bio</div>
+        <div class="footer-logo">${escapeHtml(settings.siteName)}</div>
         <div class="footer-tagline">
-          Advanced blood-cell separation and apheretic blood filtration technologies
+          ${escapeHtml(settings.siteDescription)}
         </div>
         <div class="footer-address">
-          ${siteConfig.contact.address.line1}<br>
-          ${siteConfig.contact.address.line2}<br>
-          ${siteConfig.contact.address.city}, ${siteConfig.contact.address.country} ${siteConfig.contact.address.postalCode}
+          ${escapeHtml(settings.addressLine1)}<br>
+          ${escapeHtml(settings.addressLine2)}<br>
+          ${escapeHtml(settings.city)}, ${escapeHtml(settings.country)} ${escapeHtml(settings.postalCode)}
         </div>
         <div class="footer-note">
           This is an automated confirmation. Please do not reply to this email.

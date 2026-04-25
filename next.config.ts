@@ -2,36 +2,31 @@ import type { NextConfig } from "next";
 
 const securityHeaders = [
   {
-    // Prevent clickjacking - don't allow site to be embedded in iframes
     key: "X-Frame-Options",
-    value: "DENY",
+    value: "SAMEORIGIN",
   },
   {
-    // Prevent MIME type sniffing
     key: "X-Content-Type-Options",
     value: "nosniff",
   },
   {
-    // Control referrer information sent with requests
     key: "Referrer-Policy",
     value: "strict-origin-when-cross-origin",
   },
   {
-    // Restrict browser features (camera, microphone, etc.)
     key: "Permissions-Policy",
     value: "camera=(), microphone=(), geolocation=()",
   },
   {
-    // Content Security Policy - prevent XSS attacks
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com", // Next.js requires unsafe-inline/eval
-      "style-src 'self' 'unsafe-inline'", // Tailwind requires unsafe-inline
-      "img-src 'self' data: blob:",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: blob: https://cdn.sanity.io",
       "font-src 'self'",
-      "frame-src 'self' https://www.google.com", // Google Maps iframe
-      "connect-src 'self' https://va.vercel-scripts.com",
+      "frame-src 'self' https://www.google.com",
+      "connect-src 'self' https://va.vercel-scripts.com https://*.api.sanity.io https://*.apicdn.sanity.io wss://*.api.sanity.io",
     ].join("; "),
   },
 ];
@@ -39,13 +34,31 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   images: {
     qualities: [72, 75],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+      },
+    ],
   },
   async headers() {
     return [
       {
-        // Apply security headers to all routes
         source: "/:path*",
         headers: securityHeaders,
+      },
+      {
+        // Studio loads scripts/fonts/connections from many sanity.io origins —
+        // override the strict CSP from the catch-all above.
+        source: "/studio/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          {
+            key: "Content-Security-Policy",
+            value: "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;",
+          },
+        ],
       },
     ];
   },

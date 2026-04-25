@@ -17,8 +17,18 @@ import {
 } from "@/components/ui/sheet";
 import { navigationItems } from "@/data/navigation";
 import { cn } from "@/lib/utils";
+import type {
+  ResolvedSiteSettings,
+  SiteSettingsAttrs,
+} from "@/sanity/lib/site-settings";
 
-export function MobileNav() {
+export function MobileNav({
+  settings,
+  attrs,
+}: {
+  settings: ResolvedSiteSettings;
+  attrs?: SiteSettingsAttrs;
+}) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
@@ -53,17 +63,18 @@ export function MobileNav() {
                 href="/"
                 onClick={() => setOpen(false)}
                 className="flex items-center gap-2"
+                data-sanity={attrs?.logoText}
               />
             }
           >
             <Image
               src="/logo.svg"
-              alt="FAR Better Bio"
+              alt={settings.siteName}
               width={32}
               height={32}
               className="h-8 w-auto"
             />
-            <span className="text-lg font-semibold">FAR Better</span>
+            <span className="text-lg font-semibold">{settings.logoText}</span>
           </SheetTitle>
           <SheetClose
             render={<Button variant="ghost" size="icon" className="shrink-0" />}

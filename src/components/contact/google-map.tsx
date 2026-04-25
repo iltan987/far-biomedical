@@ -2,41 +2,57 @@ import { ExternalLink, Navigation } from "lucide-react";
 
 import { DeferredMapEmbed } from "@/components/contact/deferred-map-embed";
 import { CtaAnchor } from "@/components/site/cta-link";
-import { siteConfig } from "@/lib/constants";
 
 interface GoogleMapProps {
   className?: string;
+  embedUrl: string;
+  directUrl: string;
+  directionsUrl: string;
+  locationName: string;
+  addressLine1: string;
+  city: string;
+  openMapLabel?: string;
+  directionsLabel?: string;
+  embedAttr?: string;
+  locationNameAttr?: string;
+  addressAttr?: string;
+  openMapLabelAttr?: string;
+  directionsLabelAttr?: string;
 }
 
-export function GoogleMap({ className }: GoogleMapProps) {
-  const { latitude, longitude } = siteConfig.location.coordinates;
-
-  // Google Maps embed URL with place marker for ODTÜ Bilim ve İnovasyon Merkezi
-  const embedUrl =
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1819.7938467854915!2d32.748980826364466!3d39.90746193280172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d347d5026bfabf%3A0x12ff20e2b9024f49!2sODT%C3%9C%20Bilim%20ve%20%C4%B0novasyon%20Merkezi!5e0!3m2!1str!2str!4v1766090275981!5m2!1str!2str";
-
-  // Direct link to open in Google Maps (using place ID for accurate location)
-  const directUrl = `https://maps.app.goo.gl/sS2FzQWZ4yLP9pHn9`;
-
-  // Directions link
-  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}&destination_place_id=7Pcq5CSbxnNM2Jqt8`;
-
+export function GoogleMap({
+  className,
+  embedUrl,
+  directUrl,
+  directionsUrl,
+  locationName,
+  addressLine1,
+  city,
+  openMapLabel = "Open Map",
+  directionsLabel = "Directions",
+  embedAttr,
+  locationNameAttr,
+  addressAttr,
+  openMapLabelAttr,
+  directionsLabelAttr,
+}: GoogleMapProps) {
   return (
     <div className="space-y-4">
-      {/* Map Embed */}
-      <DeferredMapEmbed
-        embedUrl={embedUrl}
-        title={`${siteConfig.location.name} Location`}
-        className={className}
-      />
+      <div data-sanity={embedAttr}>
+        <DeferredMapEmbed
+          embedUrl={embedUrl}
+          title={`${locationName} Location`}
+          className={className}
+        />
+      </div>
 
-      {/* Location Info & Actions */}
       <div className="bg-muted/50 flex flex-col items-start justify-between gap-4 rounded-lg p-4 sm:flex-row sm:items-center">
         <div>
-          <h3 className="font-semibold">{siteConfig.location.name}</h3>
-          <p className="text-muted-foreground text-sm">
-            {siteConfig.contact.address.line1},{" "}
-            {siteConfig.contact.address.city}
+          <h3 className="font-semibold" data-sanity={locationNameAttr}>
+            {locationName}
+          </h3>
+          <p className="text-muted-foreground text-sm" data-sanity={addressAttr}>
+            {addressLine1}, {city}
           </p>
         </div>
         <div className="flex gap-2">
@@ -46,18 +62,20 @@ export function GoogleMap({ className }: GoogleMapProps) {
             rel="noopener noreferrer"
             variant="outline"
             size="sm"
+            data-sanity={openMapLabelAttr}
           >
             <ExternalLink className="mr-2 h-4 w-4" />
-            Open Map
+            {openMapLabel}
           </CtaAnchor>
           <CtaAnchor
             href={directionsUrl}
             target="_blank"
             rel="noopener noreferrer"
             size="sm"
+            data-sanity={directionsLabelAttr}
           >
             <Navigation className="mr-2 h-4 w-4" />
-            Directions
+            {directionsLabel}
           </CtaAnchor>
         </div>
       </div>

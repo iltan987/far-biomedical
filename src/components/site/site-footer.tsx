@@ -5,9 +5,18 @@ import { FaInstagram, FaLinkedin } from "react-icons/fa";
 
 import { Separator } from "@/components/ui/separator";
 import { footerLinks } from "@/data/navigation";
-import { siteConfig } from "@/lib/constants";
+import type {
+  ResolvedSiteSettings,
+  SiteSettingsAttrs,
+} from "@/sanity/lib/site-settings";
 
-export function SiteFooter() {
+export function SiteFooter({
+  settings,
+  attrs,
+}: {
+  settings: ResolvedSiteSettings;
+  attrs?: SiteSettingsAttrs;
+}) {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -16,24 +25,31 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="mb-4 flex items-center gap-2">
+            <Link
+              href="/"
+              className="mb-4 flex items-center gap-2"
+              data-sanity={attrs?.logoText}
+            >
               <Image
                 src="/logo.svg"
-                alt="FAR Better Bio"
+                alt={settings.siteName}
                 width={40}
                 height={40}
                 className="h-10 w-auto"
               />
-              <span className="text-xl font-bold">FAR Better</span>
+              <span className="text-xl font-bold">{settings.logoText}</span>
             </Link>
-            <p className="text-muted-foreground mb-4 text-sm">
-              Advanced blood-cell separation and apheretic blood filtration
-              technologies for research and clinical applications.
+            <p
+              className="text-muted-foreground mb-4 text-sm"
+              data-sanity={attrs?.siteDescription}
+            >
+              {settings.siteDescription}
             </p>
             {/* Social Links */}
             <div className="flex gap-3">
               <a
-                href={siteConfig.social.linkedin}
+                href={settings.linkedinUrl}
+                data-sanity={attrs?.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground flex h-10 w-10 items-center justify-center rounded-full transition-colors"
@@ -42,7 +58,8 @@ export function SiteFooter() {
                 <FaLinkedin className="h-5 w-5" />
               </a>
               <a
-                href={siteConfig.social.instagram}
+                href={settings.instagramUrl}
+                data-sanity={attrs?.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground flex h-10 w-10 items-center justify-center rounded-full transition-colors"
@@ -55,7 +72,12 @@ export function SiteFooter() {
 
           {/* Company Links */}
           <div>
-            <h3 className="mb-4 text-base font-semibold">Company</h3>
+            <h3
+              className="mb-4 text-base font-semibold"
+              data-sanity={attrs?.footerCompanyHeading}
+            >
+              {settings.footerCompanyHeading}
+            </h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.href}>
@@ -72,7 +94,12 @@ export function SiteFooter() {
 
           {/* Products Links */}
           <div>
-            <h3 className="mb-4 text-base font-semibold">Products</h3>
+            <h3
+              className="mb-4 text-base font-semibold"
+              data-sanity={attrs?.footerProductsHeading}
+            >
+              {settings.footerProductsHeading}
+            </h3>
             <ul className="space-y-3">
               {footerLinks.products.map((link) => (
                 <li key={link.href}>
@@ -89,33 +116,42 @@ export function SiteFooter() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="mb-4 text-base font-semibold">Contact</h3>
+            <h3
+              className="mb-4 text-base font-semibold"
+              data-sanity={attrs?.footerContactHeading}
+            >
+              {settings.footerContactHeading}
+            </h3>
             <ul className="space-y-3">
               <li>
                 <a
-                  href={`mailto:${siteConfig.contact.email}`}
+                  href={`mailto:${settings.contactEmail}`}
+                  data-sanity={attrs?.contactEmail}
                   className="text-muted-foreground hover:text-primary flex items-start gap-2 text-sm transition-colors"
                 >
                   <Mail className="mt-0.5 h-4 w-4 shrink-0" />
-                  <span>{siteConfig.contact.email}</span>
+                  <span>{settings.contactEmail}</span>
                 </a>
               </li>
               <li>
                 <a
-                  href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`}
+                  href={`tel:${settings.phone.replace(/\s/g, "")}`}
+                  data-sanity={attrs?.phone}
                   className="text-muted-foreground hover:text-primary flex items-start gap-2 text-sm transition-colors"
                 >
                   <Phone className="mt-0.5 h-4 w-4 shrink-0" />
-                  <span>{siteConfig.contact.phone}</span>
+                  <span>{settings.phone}</span>
                 </a>
               </li>
-              <li className="text-muted-foreground flex items-start gap-2 text-sm">
+              <li
+                className="text-muted-foreground flex items-start gap-2 text-sm"
+                data-sanity={attrs?.addressLine1}
+              >
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
                 <span>
-                  {siteConfig.contact.address.line1}
+                  {settings.addressLine1}
                   <br />
-                  {siteConfig.contact.address.city},{" "}
-                  {siteConfig.contact.address.country}
+                  {settings.city}, {settings.country}
                 </span>
               </li>
             </ul>
@@ -126,13 +162,17 @@ export function SiteFooter() {
 
         {/* Copyright */}
         <div className="text-muted-foreground flex flex-col items-center justify-between gap-4 text-sm sm:flex-row">
-          <p>&copy; {currentYear} FAR Better Bio. All rights reserved.</p>
+          <p data-sanity={attrs?.footerCopyrightSuffix}>
+            &copy; {currentYear} {settings.siteName}.{" "}
+            {settings.footerCopyrightSuffix}
+          </p>
           <div className="flex gap-4">
             <Link
               href="/contact"
+              data-sanity={attrs?.footerContactLinkLabel}
               className="hover:text-primary transition-colors"
             >
-              Contact Us
+              {settings.footerContactLinkLabel}
             </Link>
           </div>
         </div>
